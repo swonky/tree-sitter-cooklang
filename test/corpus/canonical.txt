@@ -1,0 +1,814 @@
+========
+BasicDirection
+========
+Add a bit of chilli
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+CommentsAfterIngredients
+========
+@thyme{2%sprigs} -- testing comments
+and some text
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))
+    (comment)
+    (text)))
+
+========
+Comments
+========
+-- testing comments
+
+--------
+
+(recipe
+  (comment_line))
+
+========
+CommentsWithIngredients
+========
+-- testing comments
+@thyme{2%sprigs}
+
+--------
+
+(recipe
+  (comment_line)
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))))
+
+========
+CookwareWithUnicodeWhitespace
+========
+Add to #pot then boil
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))
+    (text)))
+
+========
+DirectionsWithDegrees
+========
+Heat oven up to 200°C
+
+--------
+
+(recipe
+  (step
+    (text)
+    (temperature
+      quantity: (integer)
+      scale: (scale))))
+
+========
+DirectionsWithNumbers
+========
+Heat 5L of water
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+DirectionWithIngredient
+========
+Add @chilli{3%items}, @ginger{10%g} and @milk{1%l}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))
+    (text)
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))
+    (text)
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))
+    (text)))
+
+========
+EquipmentMultipleWords
+========
+Fry in #frying pan{}
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))))
+
+========
+EquipmentMultipleWordsWithLeadingNumber
+========
+Fry in #7-inch nonstick frying pan{ }
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))))
+
+========
+EquipmentMultipleWordsWithSpaces
+========
+Fry in #frying pan{ }
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))))
+
+========
+EquipmentOneWord
+========
+Simmer in #pan for some time
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))
+    (text)))
+
+========
+EquipmentQuantity
+========
+#frying pan{2}
+
+--------
+
+(recipe
+  (step
+    (cookware
+      name: (identifier)
+      quantity: (integer))))
+
+========
+EquipmentQuantityMultipleWords
+========
+#frying pan{two small}
+
+--------
+
+(recipe
+  (step
+    (cookware
+      name: (identifier)
+      quantity: (string))))
+
+========
+EquipmentQuantityOneWord
+========
+#frying pan{three}
+
+--------
+
+(recipe
+  (step
+    (cookware
+      name: (identifier)
+      quantity: (string))))
+
+========
+Fractions
+========
+@milk{1/2%cup}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (fractional
+        left: (integer)
+        right: (integer))
+      unit: (unit))))
+
+========
+FractionsInDirections
+========
+knife cut about every 1/2 inches
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+FractionsLike
+========
+@milk{01/2%cup}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (string)
+      unit: (unit))))
+
+========
+FractionsWithSpaces
+========
+@milk{1 / 2 %cup}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (fractional
+        left: (integer)
+        right: (integer))
+      unit: (unit))))
+
+========
+IngredientExplicitUnits
+========
+@chilli{3%items}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))))
+
+========
+IngredientExplicitUnitsWithSpaces
+========
+@chilli{ 3 % items }
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (string)
+      unit: (unit))))
+
+========
+IngredientImplicitUnits
+========
+@chilli{3}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer))))
+
+========
+IngredientMultipleWordsWithLeadingNumber
+========
+Top with @1000 island dressing{ }
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier))))
+
+========
+IngredientNoUnits
+========
+@chilli
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier))))
+
+========
+IngredientNoUnitsNotOnlyString
+========
+@5peppers
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier))))
+
+========
+IngredientWithEmoji
+========
+Add some @🧂
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier))))
+
+========
+IngredientWithNumbers
+========
+@tipo 00 flour{250%g}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))))
+
+========
+IngredientWithoutStopper
+========
+@chilli cut into pieces
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier))
+    (text)))
+
+========
+IngredientWithUnicodeWhitespace
+========
+Add @chilli then bake
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier))
+    (text)))
+
+========
+InvalidMultiWordCookware
+========
+Recipe # 10{}
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+InvalidMultiWordIngredient
+========
+Message @ example{}
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+InvalidMultiWordTimer
+========
+It is ~ {5}
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+InvalidSingleWordCookware
+========
+Recipe # 5
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+InvalidSingleWordIngredient
+========
+Message me @ example
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+InvalidSingleWordTimer
+========
+It is ~ 5
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+MetadataBreak
+========
+hello ---
+sourced: babooshka
+---
+
+--------
+
+(recipe
+  (step
+    (text)
+    (comment)
+    (text))
+  (comment_line))
+
+========
+Metadata
+========
+---
+sourced: babooshka
+---
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    content: (metadata_content)
+    (metadata_end)))
+
+========
+MetadataMultiwordKey
+========
+---
+cooking time: 30 mins
+---
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    content: (metadata_content)
+    (metadata_end)))
+
+========
+MetadataMultiwordKeyWithSpaces
+========
+---
+cooking time    :30 mins
+---
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    content: (metadata_content)
+    (metadata_end)))
+
+========
+MultiLineDirections
+========
+Add a bit of chilli
+
+Add a bit of hummus
+
+--------
+
+(recipe
+  (step
+    (text))
+  (step
+    (text)))
+
+========
+MultipleLines
+========
+---
+Prep Time: 15 minutes
+Cook Time: 30 minutes
+---
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    content: (metadata_content)
+    (metadata_end)))
+
+========
+MultiWordIngredient
+========
+@hot chilli{3}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer))))
+
+========
+MultiWordIngredientNoAmount
+========
+@hot chilli{}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier))))
+
+========
+MutipleIngredientsWithoutStopper
+========
+@chilli cut into pieces and @garlic
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier))
+    (text)
+    (ingredient
+      name: (identifier))))
+
+========
+QuantityAsText
+========
+@thyme{few%sprigs}
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (string)
+      unit: (unit))))
+
+========
+QuantityDigitalString
+========
+@water{7 k }
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))))
+
+========
+Servings
+========
+---
+servings: 1|2|3
+---
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    content: (metadata_content)
+    (metadata_end)))
+
+========
+SingleWordCookwareWithPunctuation
+========
+Place in #pot, then boil
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))
+    (text)))
+
+========
+SingleWordCookwareWithUnicodePunctuation
+========
+Place in #pot⸫ then boil
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      name: (identifier))
+    (text)))
+
+========
+SingleWordIngredientWithPunctuation
+========
+Add some @chilli, then serve
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier))
+    (text)))
+
+========
+SingleWordIngredientWithUnicodePunctuation
+========
+Add @chilli⸫ then bake
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      name: (identifier))
+    (text)))
+
+========
+SingleWordTimer
+========
+Let it ~rest after plating
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+SingleWordTimerWithPunctuation
+========
+Let it ~rest, then serve
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+SingleWordTimerWithUnicodePunctuation
+========
+Let it ~rest⸫ then serve
+
+--------
+
+(recipe
+  (step
+    (text)))
+
+========
+SlashInText
+========
+Preheat the oven to 200℃/Fan 180°C.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (temperature
+      quantity: (integer)
+      scale: (scale))
+    (text)))
+
+========
+TimerDecimal
+========
+Fry for ~{1.5%minutes}
+
+--------
+
+(recipe
+  (step
+    (text)
+    (timer
+      quantity: (decimal)
+      unit: (unit))))
+
+========
+TimerFractional
+========
+Fry for ~{1/2%hour}
+
+--------
+
+(recipe
+  (step
+    (text)
+    (timer
+      quantity: (fractional
+        left: (integer)
+        right: (integer))
+      unit: (unit))))
+
+========
+TimerInteger
+========
+Fry for ~{10%minutes}
+
+--------
+
+(recipe
+  (step
+    (text)
+    (timer
+      quantity: (integer)
+      unit: (unit))))
+
+========
+TimerWithName
+========
+Fry for ~potato{42%minutes}
+
+--------
+
+(recipe
+  (step
+    (text)
+    (timer
+      name: (identifier)
+      quantity: (integer)
+      unit: (unit))))
+
+========
+TimerWithUnicodeWhitespace
+========
+Let it ~rest then serve
+
+--------
+
+(recipe
+  (step
+    (text)))

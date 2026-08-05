@@ -1,0 +1,4 @@
+build/
+.clang-format
+.prettierrc.json
+*.sh

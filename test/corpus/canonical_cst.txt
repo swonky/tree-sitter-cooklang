@@ -1,0 +1,972 @@
+========
+BasicDirection_cst
+:cst
+========
+Add a bit of chilli
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:19       text `Add a bit of chilli`
+
+========
+CommentsAfterIngredients_cst
+:cst
+========
+@thyme{2%sprigs} -- testing comments
+and some text
+
+--------
+
+0:0  - 2:0    recipe
+0:0  - 2:0      step
+0:0  - 0:16       ingredient
+0:1  - 0:6          name: identifier `thyme`
+0:6  - 0:7          "{"
+0:7  - 0:8          quantity: integer `2`
+0:8  - 0:9          "%"
+0:9  - 0:15         unit: unit `sprigs`
+0:15 - 0:16         "}"
+0:17 - 0:36       comment `-- testing comments`
+1:0  - 1:13       text `and some text`
+
+========
+Comments_cst
+:cst
+========
+-- testing comments
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 0:19     comment_line `-- testing comments`
+
+========
+CommentsWithIngredients_cst
+:cst
+========
+-- testing comments
+@thyme{2%sprigs}
+
+--------
+
+0:0  - 2:0    recipe
+0:0  - 0:19     comment_line `-- testing comments`
+1:0  - 2:0      step
+1:0  - 1:16       ingredient
+1:1  - 1:6          name: identifier `thyme`
+1:6  - 1:7          "{"
+1:7  - 1:8          quantity: integer `2`
+1:8  - 1:9          "%"
+1:9  - 1:15         unit: unit `sprigs`
+1:15 - 1:16         "}"
+
+========
+CookwareWithUnicodeWhitespace_cst
+:cst
+========
+Add to #pot then boil
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        text `Add to `
+0:7  - 0:11       cookware
+0:7  - 0:8          "#"
+0:8  - 0:11         name: identifier `pot`
+0:14 - 0:23       text `then boil`
+
+========
+DirectionsWithDegrees_cst
+:cst
+========
+Heat oven up to 200°C
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:16       text `Heat oven up to `
+0:16 - 0:22       temperature
+0:16 - 0:19         quantity: integer `200`
+0:21 - 0:22         scale: scale `C`
+
+========
+DirectionsWithNumbers_cst
+:cst
+========
+Heat 5L of water
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:16       text `Heat 5L of water`
+
+========
+DirectionWithIngredient_cst
+:cst
+========
+Add @chilli{3%items}, @ginger{10%g} and @milk{1%l}.
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:4        text `Add `
+0:4  - 0:20       ingredient
+0:5  - 0:11         name: identifier `chilli`
+0:11 - 0:12         "{"
+0:12 - 0:13         quantity: integer `3`
+0:13 - 0:14         "%"
+0:14 - 0:19         unit: unit `items`
+0:19 - 0:20         "}"
+0:20 - 0:22       text `, `
+0:22 - 0:35       ingredient
+0:23 - 0:29         name: identifier `ginger`
+0:29 - 0:30         "{"
+0:30 - 0:32         quantity: integer `10`
+0:32 - 0:33         "%"
+0:33 - 0:34         unit: unit `g`
+0:34 - 0:35         "}"
+0:36 - 0:40       text `and `
+0:40 - 0:50       ingredient
+0:41 - 0:45         name: identifier `milk`
+0:45 - 0:46         "{"
+0:46 - 0:47         quantity: integer `1`
+0:47 - 0:48         "%"
+0:48 - 0:49         unit: unit `l`
+0:49 - 0:50         "}"
+0:50 - 0:51       text `.`
+
+========
+EquipmentMultipleWords_cst
+:cst
+========
+Fry in #frying pan{}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        text `Fry in `
+0:7  - 0:20       cookware
+0:7  - 0:8          "#"
+0:8  - 0:18         name: identifier `frying pan`
+0:18 - 0:19         "{"
+0:19 - 0:20         "}"
+
+========
+EquipmentMultipleWordsWithLeadingNumber_cst
+:cst
+========
+Fry in #7-inch nonstick frying pan{ }
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        text `Fry in `
+0:7  - 0:37       cookware
+0:7  - 0:8          "#"
+0:8  - 0:34         name: identifier `7-inch nonstick frying pan`
+0:34 - 0:35         "{"
+0:36 - 0:37         "}"
+
+========
+EquipmentMultipleWordsWithSpaces_cst
+:cst
+========
+Fry in #frying pan{ }
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        text `Fry in `
+0:7  - 0:21       cookware
+0:7  - 0:8          "#"
+0:8  - 0:18         name: identifier `frying pan`
+0:18 - 0:19         "{"
+0:20 - 0:21         "}"
+
+========
+EquipmentOneWord_cst
+:cst
+========
+Simmer in #pan for some time
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:10       text `Simmer in `
+0:10 - 0:14       cookware
+0:10 - 0:11         "#"
+0:11 - 0:14         name: identifier `pan`
+0:15 - 0:28       text `for some time`
+
+========
+EquipmentQuantity_cst
+:cst
+========
+#frying pan{2}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:14       cookware
+0:0  - 0:1          "#"
+0:1  - 0:11         name: identifier `frying pan`
+0:11 - 0:12         "{"
+0:12 - 0:13         quantity: integer `2`
+0:13 - 0:14         "}"
+
+========
+EquipmentQuantityMultipleWords_cst
+:cst
+========
+#frying pan{two small}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:22       cookware
+0:0  - 0:1          "#"
+0:1  - 0:11         name: identifier `frying pan`
+0:11 - 0:12         "{"
+0:12 - 0:21         quantity: string `two small`
+0:21 - 0:22         "}"
+
+========
+EquipmentQuantityOneWord_cst
+:cst
+========
+#frying pan{three}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:18       cookware
+0:0  - 0:1          "#"
+0:1  - 0:11         name: identifier `frying pan`
+0:11 - 0:12         "{"
+0:12 - 0:17         quantity: string `three`
+0:17 - 0:18         "}"
+
+========
+Fractions_cst
+:cst
+========
+@milk{1/2%cup}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:14       ingredient
+0:1  - 0:5          name: identifier `milk`
+0:5  - 0:6          "{"
+0:6  - 0:9          quantity: fractional
+0:6  - 0:7            left: integer `1`
+0:7  - 0:8            "/"
+0:8  - 0:9            right: integer `2`
+0:9  - 0:10         "%"
+0:10 - 0:13         unit: unit `cup`
+0:13 - 0:14         "}"
+
+========
+FractionsInDirections_cst
+:cst
+========
+knife cut about every 1/2 inches
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:32       text `knife cut about every 1/2 inches`
+
+========
+FractionsLike_cst
+:cst
+========
+@milk{01/2%cup}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:15       ingredient
+0:1  - 0:5          name: identifier `milk`
+0:5  - 0:6          "{"
+0:6  - 0:10         quantity: string `01/2`
+0:10 - 0:11         "%"
+0:11 - 0:14         unit: unit `cup`
+0:14 - 0:15         "}"
+
+========
+FractionsWithSpaces_cst
+:cst
+========
+@milk{1 / 2 %cup}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:17       ingredient
+0:1  - 0:5          name: identifier `milk`
+0:5  - 0:6          "{"
+0:6  - 0:11         quantity: fractional
+0:6  - 0:7            left: integer `1`
+0:8  - 0:9            "/"
+0:10 - 0:11           right: integer `2`
+0:12 - 0:13         "%"
+0:13 - 0:16         unit: unit `cup`
+0:16 - 0:17         "}"
+
+========
+IngredientExplicitUnits_cst
+:cst
+========
+@chilli{3%items}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:16       ingredient
+0:1  - 0:7          name: identifier `chilli`
+0:7  - 0:8          "{"
+0:8  - 0:9          quantity: integer `3`
+0:9  - 0:10         "%"
+0:10 - 0:15         unit: unit `items`
+0:15 - 0:16         "}"
+
+========
+IngredientExplicitUnitsWithSpaces_cst
+:cst
+========
+@chilli{ 3 % items }
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:20       ingredient
+0:1  - 0:7          name: identifier `chilli`
+0:7  - 0:8          "{"
+0:8  - 0:11         quantity: string ` 3 `
+0:11 - 0:12         "%"
+0:13 - 0:19         unit: unit `items `
+0:19 - 0:20         "}"
+
+========
+IngredientImplicitUnits_cst
+:cst
+========
+@chilli{3}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:10       ingredient
+0:1  - 0:7          name: identifier `chilli`
+0:7  - 0:8          "{"
+0:8  - 0:9          quantity: integer `3`
+0:9  - 0:10         "}"
+
+========
+IngredientMultipleWordsWithLeadingNumber_cst
+:cst
+========
+Top with @1000 island dressing{ }
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:9        text `Top with `
+0:9  - 0:33       ingredient
+0:10 - 0:30         name: identifier `1000 island dressing`
+0:30 - 0:31         "{"
+0:32 - 0:33         "}"
+
+========
+IngredientNoUnits_cst
+:cst
+========
+@chilli
+
+--------
+
+0:0 - 1:0   recipe
+0:0 - 1:0     step
+0:0 - 0:7       ingredient
+0:1 - 0:7         name: identifier `chilli`
+
+========
+IngredientNoUnitsNotOnlyString_cst
+:cst
+========
+@5peppers
+
+--------
+
+0:0 - 1:0   recipe
+0:0 - 1:0     step
+0:0 - 0:9       ingredient
+0:1 - 0:9         name: identifier `5peppers`
+
+========
+IngredientWithEmoji_cst
+:cst
+========
+Add some @🧂
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:9        text `Add some `
+0:9  - 0:14       ingredient
+0:10 - 0:14         name: identifier `🧂`
+
+========
+IngredientWithNumbers_cst
+:cst
+========
+@tipo 00 flour{250%g}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:21       ingredient
+0:1  - 0:14         name: identifier `tipo 00 flour`
+0:14 - 0:15         "{"
+0:15 - 0:18         quantity: integer `250`
+0:18 - 0:19         "%"
+0:19 - 0:20         unit: unit `g`
+0:20 - 0:21         "}"
+
+========
+IngredientWithoutStopper_cst
+:cst
+========
+@chilli cut into pieces
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        ingredient
+0:1  - 0:7          name: identifier `chilli`
+0:8  - 0:23       text `cut into pieces`
+
+========
+IngredientWithUnicodeWhitespace_cst
+:cst
+========
+Add @chilli then bake
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:4        text `Add `
+0:4  - 0:11       ingredient
+0:5  - 0:11         name: identifier `chilli`
+0:14 - 0:23       text `then bake`
+
+========
+InvalidMultiWordCookware_cst
+:cst
+========
+Recipe # 10{}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:13       text `Recipe # 10{}`
+
+========
+InvalidMultiWordIngredient_cst
+:cst
+========
+Message @ example{}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:19       text `Message @ example{}`
+
+========
+InvalidMultiWordTimer_cst
+:cst
+========
+It is ~ {5}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:11       text `It is ~ {5}`
+
+========
+InvalidSingleWordCookware_cst
+:cst
+========
+Recipe # 5
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:10       text `Recipe # 5`
+
+========
+InvalidSingleWordIngredient_cst
+:cst
+========
+Message me @ example
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:20       text `Message me @ example`
+
+========
+InvalidSingleWordTimer_cst
+:cst
+========
+It is ~ 5
+
+--------
+
+0:0 - 1:0   recipe
+0:0 - 1:0     step
+0:0 - 0:9       text `It is ~ 5`
+
+========
+MetadataBreak_cst
+:cst
+========
+hello ---
+sourced: babooshka
+---
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 2:0      step
+0:0  - 0:6        text `hello `
+0:6  - 0:9        comment `---`
+1:0  - 1:18       text `sourced: babooshka`
+2:0  - 2:3      comment_line `---`
+
+========
+Metadata_cst
+:cst
+========
+---
+sourced: babooshka
+---
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 2:3      metadata
+0:0  - 1:0        metadata_start
+0:0  - 0:4          `---\n`
+1:0  - 2:0        content: metadata_content
+1:0  - 1:19         `sourced: babooshka\n`
+2:0  - 2:3        metadata_end `---`
+
+========
+MetadataMultiwordKey_cst
+:cst
+========
+---
+cooking time: 30 mins
+---
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 2:3      metadata
+0:0  - 1:0        metadata_start
+0:0  - 0:4          `---\n`
+1:0  - 2:0        content: metadata_content
+1:0  - 1:22         `cooking time: 30 mins\n`
+2:0  - 2:3        metadata_end `---`
+
+========
+MetadataMultiwordKeyWithSpaces_cst
+:cst
+========
+---
+cooking time    :30 mins
+---
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 2:3      metadata
+0:0  - 1:0        metadata_start
+0:0  - 0:4          `---\n`
+1:0  - 2:0        content: metadata_content
+1:0  - 1:25         `cooking time    :30 mins\n`
+2:0  - 2:3        metadata_end `---`
+
+========
+MultiLineDirections_cst
+:cst
+========
+Add a bit of chilli
+
+Add a bit of hummus
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 1:0      step
+0:0  - 0:19       text `Add a bit of chilli`
+2:0  - 3:0      step
+2:0  - 2:19       text `Add a bit of hummus`
+
+========
+MultipleLines_cst
+:cst
+========
+---
+Prep Time: 15 minutes
+Cook Time: 30 minutes
+---
+
+--------
+
+0:0  - 4:0    recipe
+0:0  - 3:3      metadata
+0:0  - 1:0        metadata_start
+0:0  - 0:4          `---\n`
+1:0  - 3:0        content: metadata_content
+1:0  - 1:22         `Prep Time: 15 minutes\n`
+2:0  - 2:22         `Cook Time: 30 minutes\n`
+3:0  - 3:3        metadata_end `---`
+
+========
+MultiWordIngredient_cst
+:cst
+========
+@hot chilli{3}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:14       ingredient
+0:1  - 0:11         name: identifier `hot chilli`
+0:11 - 0:12         "{"
+0:12 - 0:13         quantity: integer `3`
+0:13 - 0:14         "}"
+
+========
+MultiWordIngredientNoAmount_cst
+:cst
+========
+@hot chilli{}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:13       ingredient
+0:1  - 0:11         name: identifier `hot chilli`
+0:11 - 0:12         "{"
+0:12 - 0:13         "}"
+
+========
+MutipleIngredientsWithoutStopper_cst
+:cst
+========
+@chilli cut into pieces and @garlic
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:7        ingredient
+0:1  - 0:7          name: identifier `chilli`
+0:8  - 0:28       text `cut into pieces and `
+0:28 - 0:35       ingredient
+0:29 - 0:35         name: identifier `garlic`
+
+========
+QuantityAsText_cst
+:cst
+========
+@thyme{few%sprigs}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:18       ingredient
+0:1  - 0:6          name: identifier `thyme`
+0:6  - 0:7          "{"
+0:7  - 0:10         quantity: string `few`
+0:10 - 0:11         "%"
+0:11 - 0:17         unit: unit `sprigs`
+0:17 - 0:18         "}"
+
+========
+QuantityDigitalString_cst
+:cst
+========
+@water{7 k }
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:12       ingredient
+0:1  - 0:6          name: identifier `water`
+0:6  - 0:7          "{"
+0:7  - 0:8          quantity: integer `7`
+0:9  - 0:11         unit: unit `k `
+0:11 - 0:12         "}"
+
+========
+Servings_cst
+:cst
+========
+---
+servings: 1|2|3
+---
+
+--------
+
+0:0  - 3:0    recipe
+0:0  - 2:3      metadata
+0:0  - 1:0        metadata_start
+0:0  - 0:4          `---\n`
+1:0  - 2:0        content: metadata_content
+1:0  - 1:16         `servings: 1|2|3\n`
+2:0  - 2:3        metadata_end `---`
+
+========
+SingleWordCookwareWithPunctuation_cst
+:cst
+========
+Place in #pot, then boil
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:9        text `Place in `
+0:9  - 0:13       cookware
+0:9  - 0:10         "#"
+0:10 - 0:13         name: identifier `pot`
+0:13 - 0:24       text `, then boil`
+
+========
+SingleWordCookwareWithUnicodePunctuation_cst
+:cst
+========
+Place in #pot⸫ then boil
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:9        text `Place in `
+0:9  - 0:13       cookware
+0:9  - 0:10         "#"
+0:10 - 0:13         name: identifier `pot`
+0:13 - 0:26       text `⸫ then boil`
+
+========
+SingleWordIngredientWithPunctuation_cst
+:cst
+========
+Add some @chilli, then serve
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:9        text `Add some `
+0:9  - 0:16       ingredient
+0:10 - 0:16         name: identifier `chilli`
+0:16 - 0:28       text `, then serve`
+
+========
+SingleWordIngredientWithUnicodePunctuation_cst
+:cst
+========
+Add @chilli⸫ then bake
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:4        text `Add `
+0:4  - 0:11       ingredient
+0:5  - 0:11         name: identifier `chilli`
+0:11 - 0:24       text `⸫ then bake`
+
+========
+SingleWordTimer_cst
+:cst
+========
+Let it ~rest after plating
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:26       text `Let it ~rest after plating`
+
+========
+SingleWordTimerWithPunctuation_cst
+:cst
+========
+Let it ~rest, then serve
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:24       text `Let it ~rest, then serve`
+
+========
+SingleWordTimerWithUnicodePunctuation_cst
+:cst
+========
+Let it ~rest⸫ then serve
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:26       text `Let it ~rest⸫ then serve`
+
+========
+SlashInText_cst
+:cst
+========
+Preheat the oven to 200℃/Fan 180°C.
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:31       text `Preheat the oven to 200℃/Fan `
+0:31 - 0:37       temperature
+0:31 - 0:34         quantity: integer `180`
+0:36 - 0:37         scale: scale `C`
+0:37 - 0:38       text `.`
+
+========
+TimerDecimal_cst
+:cst
+========
+Fry for ~{1.5%minutes}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:8        text `Fry for `
+0:8  - 0:22       timer
+0:8  - 0:9          "~"
+0:9  - 0:10         "{"
+0:10 - 0:13         quantity: decimal `1.5`
+0:13 - 0:14         "%"
+0:14 - 0:21         unit: unit `minutes`
+0:21 - 0:22         "}"
+
+========
+TimerFractional_cst
+:cst
+========
+Fry for ~{1/2%hour}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:8        text `Fry for `
+0:8  - 0:19       timer
+0:8  - 0:9          "~"
+0:9  - 0:10         "{"
+0:10 - 0:13         quantity: fractional
+0:10 - 0:11           left: integer `1`
+0:11 - 0:12           "/"
+0:12 - 0:13           right: integer `2`
+0:13 - 0:14         "%"
+0:14 - 0:18         unit: unit `hour`
+0:18 - 0:19         "}"
+
+========
+TimerInteger_cst
+:cst
+========
+Fry for ~{10%minutes}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:8        text `Fry for `
+0:8  - 0:21       timer
+0:8  - 0:9          "~"
+0:9  - 0:10         "{"
+0:10 - 0:12         quantity: integer `10`
+0:12 - 0:13         "%"
+0:13 - 0:20         unit: unit `minutes`
+0:20 - 0:21         "}"
+
+========
+TimerWithName_cst
+:cst
+========
+Fry for ~potato{42%minutes}
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:8        text `Fry for `
+0:8  - 0:27       timer
+0:8  - 0:9          "~"
+0:9  - 0:15         name: identifier `potato`
+0:15 - 0:16         "{"
+0:16 - 0:18         quantity: integer `42`
+0:18 - 0:19         "%"
+0:19 - 0:26         unit: unit `minutes`
+0:26 - 0:27         "}"
+
+========
+TimerWithUnicodeWhitespace_cst
+:cst
+========
+Let it ~rest then serve
+
+--------
+
+0:0  - 1:0    recipe
+0:0  - 1:0      step
+0:0  - 0:25       text `Let it ~rest then serve`

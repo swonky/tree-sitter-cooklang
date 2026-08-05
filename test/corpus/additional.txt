@@ -1,0 +1,428 @@
+========
+Heading
+========
+= Sauce
+
+Simmer for ~{20%minutes}
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (timer
+        (integer)
+        (unit)))))
+
+========
+MultipleHeadings
+========
+= Dough
+
+Mix @flour{500%g}
+
+= Sauce
+
+Heat @tomatoes{400%g}
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit))))
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+HeadingWithoutFollowingStep
+========
+= Garnish
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))))
+
+========
+EmptyHeading
+========
+=
+
+Toast bread
+
+--------
+
+(recipe
+  (section
+    (heading)
+    (step
+      (text))))
+
+========
+HeadingWithUnicode
+========
+= Crème brûlée 🔥
+
+Caramelise the sugar
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))
+    (step
+      (text))))
+
+========
+MultiStepRecipe
+========
+Toast @bread{2%slices}
+
+Spread @butter
+
+Top with @jam
+
+Serve immediately
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit)))
+  (step
+    (text)
+    (ingredient
+      (identifier)))
+  (step
+    (text)
+    (ingredient
+      (identifier)))
+  (step
+    (text)))
+
+========
+Note
+========
+> Use ripe tomatoes.
+
+Toast bread
+
+--------
+
+(recipe
+  (note
+    (text))
+  (step
+    (text)))
+
+========
+MultiLineNote
+========
+> Use ripe tomatoes.
+> Don't overcook the pasta.
+> Taste before serving.
+
+Cook @pasta{500%g}
+
+--------
+
+(recipe
+  (note
+    (text)
+    (text)
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))))
+
+========
+MultipleNotes
+========
+> Prepare all ingredients first.
+
+Mix everything.
+
+> Best served immediately.
+
+--------
+
+(recipe
+  (note
+    (text))
+  (step
+    (text))
+  (note
+    (text)))
+
+========
+NoteBetweenSteps
+========
+Toast @bread
+
+> Allow to cool slightly.
+
+Spread @butter
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)))
+  (note
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier))))
+
+========
+NoteAfterHeading
+========
+= Filling
+
+> Mix until smooth.
+
+Combine @cream cheese{250%g}
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))
+    (note
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+HeadingAfterMetadata
+========
+---
+servings: 4
+---
+
+= Dough
+
+Mix @flour{500%g}
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    (metadata_content)
+    (metadata_end))
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+MetadataHeadingNoteRecipe
+========
+---
+servings: 4
+prep time: 15 min
+---
+
+= Dough
+
+> Keep everything cold.
+
+Mix @flour{500%g}
+Add @butter{250%g}
+
+= Filling
+
+Cook @apples{4}
+
+Serve
+
+--------
+
+(recipe
+  (metadata
+    (metadata_start)
+    (metadata_content)
+    (metadata_end))
+  (section
+    (heading
+      (text))
+    (note
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit))
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit))))
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)))
+    (step
+      (text))))
+
+========
+CommentBeforeHeading
+========
+-- Dough section
+
+= Dough
+
+Mix @flour{500%g}
+
+--------
+
+(recipe
+  (comment_line)
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+CommentBeforeNote
+========
+-- Read carefully
+
+> Do not overmix.
+
+Mix ingredients.
+
+--------
+
+(recipe
+  (comment_line)
+  (note
+    (text))
+  (step
+    (text)))
+
+========
+ConsecutiveHeadings
+========
+= Dough
+
+= Filling
+
+Mix @flour{500%g}
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text)))
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+HeadingWithTrailingWhitespace
+========
+= Sauce    
+
+Heat @tomatoes{400%g}
+
+--------
+
+(recipe
+  (section
+    (heading
+      (text))
+    (step
+      (text)
+      (ingredient
+        (identifier)
+        (integer)
+        (unit)))))
+
+========
+NoteWithIngredient
+========
+> Reserve @parsley{10%g} for garnish.
+
+Cook everything else.
+
+--------
+
+(recipe
+  (note
+    (text))
+  (step
+    (text)))
+
+========
+NoteWithCookwareAndTimer
+========
+> Use #cast iron pan{} for ~{10%minutes}.
+
+Cook steak.
+
+--------
+
+(recipe
+  (note
+    (text))
+  (step
+    (text)))

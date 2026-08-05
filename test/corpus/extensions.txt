@@ -1,0 +1,338 @@
+========
+RecipeModifier
+========
+Add @@tomato sauce{200%ml}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+ReferenceModifier
+========
+Add @flour{200%g}, then add @&flour{300%g}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+HiddenModifier
+========
+Season with @-salt.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier))
+    (text)))
+
+========
+OptionalModifier
+========
+Add @?thyme before serving.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier))
+    (text)))
+
+========
+CombinedOptionalReferenceModifier
+========
+Mix @flour{200%g}.
+
+Add @?&flour{50%g}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+RecipeModifierWithAlias
+========
+Add @@tomato sauce|sauce{200%ml}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+IngredientAlias
+========
+Add @white wine|wine{}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (identifier))
+    (text)))
+
+========
+ReferenceWithAlias
+========
+Add @tipo zero flour{500%g}.
+
+Add @&tipo zero flour|flour{100%g}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+CookwareAlias
+========
+Heat #cast iron skillet|pan{}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      (identifier)
+      (identifier))
+    (text)))
+
+========
+AdvancedUnitsIngredient
+========
+Add @water{1 L}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text)))
+
+========
+AdvancedUnitsDecimal
+========
+Add @milk{1.5 cups}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (decimal)
+      (unit))
+    (text)))
+
+========
+AdvancedUnitsTimer
+========
+Bake for ~{45 min}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (timer
+      (integer)
+      (unit))
+    (text)))
+
+========
+RangeValueInteger
+========
+Add @eggs{2-4}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (range
+        (integer)
+        (integer)))
+    (text)))
+
+========
+RangeValueWithUnit
+========
+Add @tomato sauce{200-300%ml}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (range
+        (integer)
+        (integer))
+      (unit))
+    (text)))
+
+========
+RangeValueDecimal
+========
+Add @water{1.5-2%l}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (range
+        (decimal)
+        (integer))
+      (unit))
+    (text)))
+
+========
+ReferenceRangeValue
+========
+Add @flour{100%g}.
+
+Later add @&flour{200-400%g}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (integer)
+      (unit))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (range
+        (integer)
+        (integer))
+      (unit))
+    (text)))
+
+========
+MixedExtensions
+========
+Heat #cast iron skillet|pan{}.
+
+Add @@tomato sauce|sauce{200-300 ml}.
+
+Season with @-salt and @?pepper.
+
+Finish with @&tomato sauce|sauce{50-100 ml}.
+
+--------
+
+(recipe
+  (step
+    (text)
+    (cookware
+      (identifier)
+      (identifier))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (identifier)
+      (range
+        (integer)
+        (integer))
+      (unit))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier))
+    (text)
+    (ingredient
+      (identifier))
+    (text))
+  (step
+    (text)
+    (ingredient
+      (identifier)
+      (identifier)
+      (range
+        (integer)
+        (integer))
+      (unit))
+    (text)))
