@@ -1,90 +1,66 @@
 # tree-sitter-cooklang
 
-Unofficial [tree-Sitter](https://github.com/tree-sitter/tree-sitter) grammar for [Cooklang](https://cooklang.org/).
+A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github.com/tree-sitter/tree-sitter) parser generator.
 
-This grammar is intentionally permissive compared with the reference parser. 
-Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as highlighting, navigation, and incremental parsing to continue operating on incomplete or non-conforming documents.
 
-> **YAML frontmatter metadata is captured, not parsed.** This parser supports injected syntax trees for `metadata_content` token. 
-To enable full document parsing, the [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) grammar should also be installed.
+> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable yaml frontmatter metadata parsing.
 
+## Features
+- Implements the current Cooklang language specification.
+- Supports the documented Cooklang extensions listed below.
+- Unicode-aware parsing.
+- Query files for syntax highlighting, folding, and YAML frontmatter injection.
+- Structured numeric quantity tokens (`integer`, `decimal`, `fractional`, `range`).
+- Comprehensive test corpus covering canonical recipes and extensions.
 
 ## Supported extensions 
+> see more: [^3]
+
 A limited number of extensions are currently supported.
 
-### Modifiers
-Ingredient identifiers can be prefixed with any number of modifier characters (`@`, `+`, `-`, `&`, `?`). The parser does not validate against repeated or incompabible modifier combinations. Modifiertokens are expressed in the syntax tree as anonymous nodes.
-```cooklang
-@@+-&?chicken
-```
-```query
-(ingredient "@" "+" "-" "&" "?"
-    name: (identifier) ; `chicken`
-)
+- [x] Modifiers
+- [x] Component alias
+- [x] Advanced units
+- [x] Range values
+- [x] Timer requires time (otherwise rendered as plain text)
+- [x] Temperature (unicode-aware and some plain English expressions)
+- [ ] Intermediate preparations
+- [ ] Modes
 
-```
-### Aliases
-Aliases are supported for ingredients and cookware.
-```cooklang
-@white wine|wine{}
-```
-```query
-(ingredient
-    name: (identifier)      ; `white wine`
-    alias: (identifier))))  ; `wine`
-```
+Where possible, numeric amounts are classified as `integer` or `decimal` leaf tokens, or as structured `fractional` or `range` nodes. 
+Non-conforming or ambiguous values fall back to representation as a `string` rather than being represented as untyped text.
 
-### 'Range' and 'Advanced units'
-Where possible, numeric amounts are classified as `integer` or `decimal` leaf tokens, or as structured `fractional` or `range` nodes. Non-conforming or ambiguous values fallback to representation as a `string` rather than being represented as untyped text.
+## Deviations from specification
+This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation.
+Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
 
-The `range` node can contain mixed `integer` and `decimal` components.
-```cooklang
-@water{1.5-2%l}
-```
-```query
-(ingredient
-    name: (identifier)      ; `water`
-    quantity: (range
-        left: (decimal)     ; `1.5`
-        right: (integer))   ; `2`
-    unit: (unit))))         ; `l`
+Inline block comments are recognised only where plain text is valid.
+Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. 
+Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. 
+As an implementation trade-off, this parser recognises block comments only where plain text is valid.
+
+## Testing
+The repository contains a several test suites. (see more: [tree-sitter - writing tests](https://tree-sitter.github.io/tree-sitter/creating-parsers/5-writing-tests.html)).
+Running the tests requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
+
+```bash
+# runs all tests in the corpus
+tree-sitter test
+# fuzzing must exclude cst-based tests
+tree-sitter fuzz --exclude "\b\w+_cst\b"
 ```
 
-The 'advanced units' extension allows typed tokenisation without a `%` delimiter.
-```cooklang
-@water{1 L} is the same as @water{1%L}
-```
-```query
-(ingredient
-    name: (identifier)   ; `water`
-    quantity: (integer)  ; `1`
-    unit: (unit))))      ; `L`
-```
+| File | Content |
+| ---- | ------- |
+| canonical.txt     | adapted from the cooklang-rs test file [^5] |
+| canonical_cst.txt | same inputs as above, but shows captured content as a concrete syntax tree |
+| additional.txt    | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
+| extensions.txt    | tests covering extended language features described in [^3] |
 
-### Temperature
-Temperature expressions in free text are parsed as structured temperature nodes to enable editor tooling and semantic analysis. The parser recognises common unicode degree symbols (`U+00B0`, `U+00BA`, and `U+02DA`), and some plain English expressions.
-```cooklang
-Preheat the oven to 100C, or 100 deg C, 100 degrees Celsius, or 100 C, or 100 degC, or 100 ºC,  or 100ºF, and so on...
-```
-```query
-(temperature
-    quantity: (integer)
-    scale: (scale))
-```
-
-## Deviations
-* Inline block comments are recognised only where plain text is valid. 
-They are not recognised inside ingredients, cookware, timers, or other structured tokens.
-Unfortunately, tree-sitter cannot preprocess the document before parsing like the reference implementation.
-
-## Notes
-
-* Bare timers (eg. `~`) are treated as plain text rather than timer nodes. 
-The official specification allows bare timers, but the reference parser with recent extensions will reject them. 
-Considering that timers without durations are semantically incomplete, this parser only recognises timers with explicit quantities (e.g. `~{10%minutes}` or `~boil{10%minutes}`).
 
 ## References
-* [Official tree-sitter-cooklang](https://github.com/addcninblue/tree-sitter-cooklang)
-* [Cooklang specification](https://github.com/cooklang/spec)
-* [cooklang-rs Extensions](https://github.com/cooklang/cooklang-rs/blob/main/extensions.md)
-* [cooklang-rs Playground](https://cooklang.github.io/cooklang-rs/)
+[^1]: [Cooklang](https://www.cooklang.org)
+[^2]: [Cooklang specification](https://github.com/cooklang/spec)
+[^3]: [cooklang-rs Extensions](https://github.com/cooklang/cooklang-rs/blob/main/extensions.md)
+[^4]: [cooklang-rs Playground](https://cooklang.github.io/cooklang-rs/)
+[^5]: [cooklang-rs Tests](https://github.com/cooklang/cooklang-rs/blob/main/tests/canonical.yaml)
