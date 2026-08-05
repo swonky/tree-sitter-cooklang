@@ -3,7 +3,7 @@
 A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github.com/tree-sitter/tree-sitter) parser generator.
 
 
-> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable yaml frontmatter metadata parsing.
+> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
 
 ## Features
 - Implements the current Cooklang language base specification [^2].
@@ -25,17 +25,13 @@ A limited number of extensions [^3] are currently supported.
 - [ ] Intermediate preparations
 - [ ] Modes
 
-Where possible, numeric amounts are classified as `integer` or `decimal` leaf tokens, or as structured `fractional` or `range` nodes. 
+Where possible, numeric amounts are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
 Non-conforming or ambiguous values fall back to representation as a `string` rather than being represented as untyped text.
 
 ## Deviations from specification
-This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation.
-Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
+This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation. Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
 
-Inline block comments are recognised only where plain text is valid.
-Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. 
-Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. 
-As an implementation trade-off, this parser recognises block comments only where plain text is valid.
+- __Inline block comments are recognised only where plain text is valid.__ Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. As an implementation trade-off, this parser recognises block comments only where plain text is valid.
 
 ## Testing [^4]
 The repository contains a several test suites located within `./test/corpus`.
