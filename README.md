@@ -53,8 +53,154 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 | additional.txt    | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
 | extensions.txt    | tests covering extended language features [^3]. |
 
-## Highlighting example
+## Example
+
 ![Syntax highlighting example](docs/example.svg)
+
+### Concrete syntax tree
+```yaml
+recipe:
+  metadata:
+    metadata_start:
+    content: !metadata_content |
+      'title: !Stuffed Peppers\n'
+      'tags: [dinner, vegetarian]\n'
+      'servings: !4\n'
+      'prep: !time: !!20 minutes\n'
+      'cook: !time: !!35 minutes\n'
+    metadata_end: '---'
+  note:
+    text: 'These freeze well. Double the batch and freeze half for a quick weeknight dinner.'
+  section:
+    heading:
+      name: !text 'Filling'
+    step:
+      text: 'Cook '
+      ingredient:
+        name: !identifier 'rice'
+        quantity: !integer '200'
+        unit: !unit 'g'
+      text: 'according to '
+      comment: '[- todo: !maybe add flavoured rice recipe -]'
+      text: 'package directions.'
+    step:
+      text: 'Sauté '
+      ingredient:
+        name: !identifier 'onion'
+        quantity: !fractional
+          left: !integer '1'
+          right: !integer '2'
+        preparation: !string 'diced'
+      text: 'and '
+      ingredient:
+        name: !identifier 'garlic'
+        quantity: !range
+          left: !integer '2'
+          right: !integer '3'
+        unit: !unit 'cloves'
+        preparation: !string 'minced'
+      text: 'in '
+      ingredient:
+        name: !identifier 'olive oil'
+        quantity: !integer '2'
+        unit: !unit 'tbsp'
+      text: 'in a '
+      cookware:
+        name: !identifier 'large skillet'
+      text: 'until softened, about '
+      timer:
+        name: !identifier 'fry'
+        quantity: !integer '5'
+        unit: !unit 'minutes'
+      text: '.'
+    step:
+      text: 'Add '
+      ingredient:
+        name: !identifier 'canned tomatoes'
+        quantity: !integer '400'
+        unit: !unit 'g'
+      text: ', '
+      ingredient:
+        name: !identifier 'black beans'
+        quantity: !integer '240'
+        unit: !unit 'g'
+        preparation: !string 'drained'
+      text: ','
+      ingredient:
+        name: !identifier 'cumin'
+        quantity: !integer '1'
+        unit: !unit 'tsp'
+      text: ', and '
+      ingredient:
+        name: !identifier 'smoked paprika'
+        quantity: !integer '1'
+        unit: !unit 'tsp'
+      text: '. Stir in the cooked '
+      ingredient:
+        name: !identifier 'rice'
+      text: '.'
+  section:
+    heading:
+      name: !text 'Assembly'
+    comment_line: '-- perhaps add sauce section here later?'
+    step:
+      text: 'Cut the tops off '
+      ingredient:
+        name: !identifier 'peppers'
+        alias: !identifier 'capsicum'
+        quantity: !integer '4'
+      text: 'and remove seeds.'
+      text: 'Stuff with the filling and place in a '
+      cookware:
+        name: !identifier 'baking dish'
+      text: '.'
+    note:
+      text: 'An aged cheddar is recommended.'
+    step:
+      text: 'Top each pepper with '
+      ingredient:
+        name: !identifier 'cheese'
+        alias: !identifier 'cheddar'
+        quantity: !integer '100'
+        unit: !unit 'g'
+        preparation: !string 'grated'
+      text: 'and optionally '
+      ingredient:
+        name: !identifier 'pecorino'
+        quantity: !integer '50'
+        unit: !unit 'g'
+        preparation: !string 'shaved'
+      text: '.'
+    step:
+      text: 'Bake in a preheated '
+      cookware:
+        name: !identifier 'oven'
+      text: 'at '
+      temperature:
+        quantity: !integer '190'
+        scale: !scale 'C'
+      text: 'for '
+      timer:
+        quantity: !integer '30'
+        unit: !unit 'minutes'
+      text: 'until '
+      ingredient:
+        name: !identifier 'peppers'
+      text: 'are tender and '
+      ingredient:
+        name: !identifier 'cheese'
+      text: 'is bubbling.'
+    step:
+      text: 'Serve with '
+      ingredient:
+        name: !identifier './Sauces/Salsa Verde'
+        quantity: !range
+          left: !integer '1'
+          right: !decimal '1.5'
+        unit: !unit 'servings'
+      text: '. '
+      comment: '-- todo'
+```
 
 ## References
 [^2]: [Cooklang specification](https://github.com/cooklang/spec)
