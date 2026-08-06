@@ -289,9 +289,234 @@ Later add @&flour{200-400%g}.
     (text)))
 
 ========
+Mode
+========
+>> [mode]: all
+
+--------
+
+(recipe
+  (mode
+    (identifier)
+    (string
+      (text))))
+
+========
+ModeBetweenSteps
+========
+Do step 1
+>> [mode]: default
+Do step 2
+
+--------
+
+(recipe
+  (step
+    (text))
+  (mode
+    (identifier)
+    (string
+      (text)))
+  (step
+    (text)))
+
+========
+ModeConsecutive
+========
+>> [duplicate]: new
+>> [define]: steps
+
+--------
+
+(recipe
+  (mode
+    (identifier)
+    (string
+      (text)))
+  (mode
+    (identifier)
+    (string
+      (text))))
+
+========
+InvalidModeMissingKey
+========
+>> all
+
+--------
+
+(recipe
+  (mode
+    (string
+      (text))))
+
+========
+InvalidModeMissingColon
+========
+>> [duplicate] default
+
+--------
+
+(recipe
+  (mode
+    (identifier)
+    (string
+      (text))))
+
+========
+ModeWithComment
+========
+>> [mode]: text --comment
+
+--------
+
+(recipe
+  (mode
+    (identifier)
+    (string
+      (text)
+      (comment))))
+
+========
+ModeWithBlockComment
+========
+>> [duplicate]: ne[- block comment -]w
+
+--------
+
+(recipe
+  (mode
+    (identifier)
+    (string
+      (text)
+      (comment)
+      (text))))
+
+========
+ReferenceStepAbsolute
+========
+@&(3)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (step_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceStepRelative
+========
+@&(~3)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (step_reference
+        (relative_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceSectionAbsolute
+========
+@&(=3)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (section_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceSectionRelative
+========
+@&(=3)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (section_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceWithPrecedingModifiers
+========
+@+-&(5)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (step_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceWithSuceedingModifiers
+========
+@&(5)+?tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (step_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+ReferenceWithSurroundingModifiers
+========
+@+&(5)?tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (step_reference
+        (absolute_reference
+          (integer)))
+      (identifier))))
+
+========
+InvalidReferenceWithoutModifier
+========
+@(5)tomato
+
+--------
+
+(recipe
+  (step
+    (ingredient
+      (identifier))
+    (text)))
+
+
+========
 MixedExtensions
 ========
 Heat #cast iron skillet|pan{}.
+
+>> [duplicate]: ref
 
 Add @@tomato sauce|sauce{200-300 ml}.
 
@@ -308,6 +533,10 @@ Finish with @&tomato sauce|sauce{50-100 ml}.
       (identifier)
       (identifier))
     (text))
+  (mode
+    (identifier)
+    (string
+      (text)))
   (step
     (text)
     (ingredient
