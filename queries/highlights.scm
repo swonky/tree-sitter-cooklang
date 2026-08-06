@@ -1,27 +1,22 @@
-(note
-	">" @punctuation.special
-	@string
-)
-
-(comment) @comment @nospell
-(comment_line) @comment @nospell @markup.italic
+(comment) @nospell @comment
+(comment_line) @nospell @comment
 
 [
-	"{"
-	"}"
-	"}("
-	")"
+	"{" "}"
+	"}(" 
+	"(" ")"
+	"[" "]"
 ] @punctuation.bracket
 
-["%" "|"] @punctuation.delimiter
+["%" "|" ":"] @punctuation.delimiter
 
 (temperature) @number
 (unit) @constant
 
-(ingredient) @markup.link
+((ingredient) @markup.link
+	(#set! priority 90))
 (ingredient	
   ["@" "?" "+" "&" "-"] @keyword.modifier)  
-
 
 (cookware) @type
 
@@ -35,14 +30,6 @@
 		"hour" "hours"
 		"day" "days"))
 
-; ((unit) @constant.builtin
-; 	(#any-of? @constant.builtin
-; 		"s" "h" "min" "d"
-; 		"second" "seconds"
-; 		"minute" "minutes"
-; 		"hour" "hours"
-; 		"day" "days"))
-
 [(integer)
  (fractional 
 	 "/" @punctuation.delimiter)
@@ -52,13 +39,21 @@
 	"-" @punctuation.delimiter)
 
 (decimal) @number.float
-(string) @string @nospell
+(string) @nospell @string 
 (text) @spell
 
 (heading) @markup.heading
 
-(note 
-	(text) @markup.quote
+(note
+	">" @punctuation.special
+) @markup.quote
+
+(mode
+	">>" @keyword.directive
+) @macro.constant
+
+(mode
+	key: (identifier) @keyword.directive
 )
 
 ([
