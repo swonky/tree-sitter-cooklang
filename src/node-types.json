@@ -36,10 +36,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "&",
-        "named": false
-      },
-      {
         "type": "+",
         "named": false
       },
@@ -70,6 +66,22 @@
         "named": true
       }
     ]
+  },
+  {
+    "type": "absolute_reference",
+    "named": true,
+    "fields": {
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "cookware",
@@ -202,7 +214,7 @@
       },
       "name": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
@@ -242,6 +254,16 @@
           }
         ]
       },
+      "target": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
       "unit": {
         "multiple": false,
         "required": false,
@@ -259,6 +281,14 @@
       "types": [
         {
           "type": "modifiers",
+          "named": true
+        },
+        {
+          "type": "section_reference",
+          "named": true
+        },
+        {
+          "type": "step_reference",
           "named": true
         }
       ]
@@ -292,6 +322,42 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "mode",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "text": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -361,10 +427,30 @@
           "named": true
         },
         {
+          "type": "mode",
+          "named": true
+        },
+        {
           "type": "section",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "relative_reference",
+    "named": true,
+    "fields": {
+      "relative_target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -385,6 +471,29 @@
         },
         {
           "type": "heading",
+          "named": true
+        },
+        {
+          "type": "mode",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "absolute_reference",
+          "named": true
+        },
+        {
+          "type": "relative_reference",
           "named": true
         }
       ]
@@ -408,6 +517,44 @@
         },
         {
           "type": "temperature",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "step_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "absolute_reference",
+          "named": true
+        },
+        {
+          "type": "relative_reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
           "named": true
         },
         {
@@ -509,6 +656,10 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
     "type": ")",
     "named": false
   },
@@ -525,7 +676,19 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": ">>",
     "named": false
   },
   {
@@ -534,6 +697,14 @@
   },
   {
     "type": "@",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -566,10 +737,6 @@
   },
   {
     "type": "scale",
-    "named": true
-  },
-  {
-    "type": "string",
     "named": true
   },
   {

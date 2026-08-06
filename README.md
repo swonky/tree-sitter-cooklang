@@ -13,6 +13,14 @@ A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github
 - Structured numeric quantity tokens (`integer`, `decimal`, `fractional`, `range`).
 - Comprehensive test corpus covering canonical recipes and extensions.
 
+## Building
+> Building the parser requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
+
+```bash
+tree-sitter generate
+tree-sitter build -o "path/to/cooklang.so"
+```
+
 ## Supported extensions 
 All documented cooklang extensions [^3] are currently supported.
 
