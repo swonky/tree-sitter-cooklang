@@ -110,11 +110,11 @@ module.exports = grammar({
 		_step_content: $ => choice($.definition, $.text, $.temperature, $._ws_horiz),
 		_ws_horiz: $ => token(WS_HORIZ),
 		_block_seperator: $ =>
-			choice(
-				seq($._empty_line, repeat($._newline)),
-				seq($.comment_line, repeat($._newline)),
-				seq($.mode, repeat($._newline)),
+			seq(
+				choice(seq(choice($._interblock_lines, $._empty_line), repeat($._newline))),
+				repeat(seq($._interblock_lines, repeat($._newline))),
 			),
+		_interblock_lines: $ => choice($.comment_line, $.mode),
 		definition: $ => choice($.ingredient, $.cookware, $.timer),
 		ingredient: $ =>
 			seq($._ingredient_prefix, repeat($.modifiers), $._ingredient_attributes),
