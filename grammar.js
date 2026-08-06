@@ -27,6 +27,8 @@ const DELIMITERS = { fractional: '/', range: '-', alias: '|' };
 const PAREN = { open: '(', close: ')', content: token(/[^\r\n)]+/) };
 const BRACE = { open: '{', close: '}', content: token(/[^\r\n}]+/) };
 
+const REF_MODS = choice('~', '=');
+
 module.exports = grammar({
 	name: 'cooklang',
 	supertypes: $ => [$.block, $.definition, $.number, $.modifiers],
@@ -82,7 +84,6 @@ module.exports = grammar({
 				optional($._block_seperator),
 			),
 		_padding: $ => repeat1(choice($._newline, $.comment_line, $.mode)),
-		modifiers: $ => choice(...Object.values(MODIFIERS)),
 
 		block: $ => choice($.note, $.step),
 		note: $ =>
@@ -117,10 +118,21 @@ module.exports = grammar({
 		definition: $ => choice($.ingredient, $.cookware, $.timer),
 		ingredient: $ =>
 			seq($._ingredient_prefix, repeat($.modifiers), $._ingredient_attributes),
+
 		_ingredient_prefix: $ => token(PREFIX.ingredient),
+
 		_ingredient_attributes: $ =>
 			seq(
-				field('name', $.identifier),
+				choice(
+					seq(
+						'&',
+						choice(
+							seq($._reference, field('name', $.identifier)),
+							field('target', $.identifier),
+						),
+					),
+					field('name', $.identifier),
+				),
 				optional($._alias),
 				optional(
 					seq(
@@ -246,6 +258,31 @@ module.exports = grammar({
 				/[^ \[\r\n\u000B\u000C\u0085\u2028\u2029]/,
 				$._permissive_text_inline,
 			),
+
+		// MODIFIERS
+		modifiers: $ =>
+			choice(MODIFIERS.recipe, MODIFIERS.new, MODIFIERS.optional, MODIFIERS.hidden),
+
+		// INTERMEDIATE PREPARATIONS
+		_reference: $ =>
+			seq(
+				alias($._open_paren, '('),
+				optional($._ws_horiz),
+				optional(choice($.step_reference, $.section_reference)),
+				')',
+			),
+
+		step_reference: $ => seq(choice($.relative_reference, $.absolute_reference)),
+		section_reference: $ =>
+			seq('=', optional($._ws_horiz), choice($.relative_reference, $.absolute_reference)),
+		relative_reference: $ =>
+			seq(
+				'~',
+				optional($._ws_horiz),
+				field('relative_target', $.integer),
+				optional($._ws_horiz),
+			),
+		absolute_reference: $ => seq(field('target', $.integer), optional($._ws_horiz)),
 
 		// PRIMITIVES
 		number: $ => prec.left(choice($.integer, $.decimal)),
