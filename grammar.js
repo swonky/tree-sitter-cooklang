@@ -127,8 +127,8 @@ module.exports = grammar({
 					seq(
 						'&',
 						choice(
-							seq($._reference, field('name', $.identifier)),
-							field('target', $.identifier),
+							seq($._reference, repeat($.modifiers), field('name', $.identifier)),
+							seq(repeat($.modifiers), field('target', $.identifier)),
 						),
 					),
 					field('name', $.identifier),
