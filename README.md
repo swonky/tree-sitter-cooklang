@@ -54,10 +54,7 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 | extensions.txt    | tests covering extended language features [^3]. |
 
 ## Highlighting example
-
-<p align="center">
-  <img src="docs/screenshot.png" alt="Syntax highlighting screenshot" width="700">
-</p>
+![Syntax highlighting example](docs/example.svg)
 
 ## References
 [^2]: [Cooklang specification](https://github.com/cooklang/spec)

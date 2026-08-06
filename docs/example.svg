@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="100%"
+     height="778"
+     viewBox="0 0 100% 778"
+     font-family="monospace"
+     font-size="16"
+     fill="#ebdbb2">
+<rect width="100%" height="100%" fill="#1c1b1b"/>
+<text x="10" y="20"><tspan fill="#928374">1</tspan></text>
+<text x="60" y="20" xml:space="preserve"><tspan font-weight="bold" fill="#cc241d">---</tspan><tspan >
+</tspan></text>
+<text x="10" y="42"><tspan fill="#928374">2</tspan></text>
+<text x="60" y="42" xml:space="preserve"><tspan font-weight="bold" fill="#7dfdfe">title</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">Stuffed Peppers</tspan><tspan >
+</tspan></text>
+<text x="10" y="64"><tspan fill="#928374">3</tspan></text>
+<text x="60" y="64" xml:space="preserve"><tspan font-weight="bold" fill="#7dfdfe">tags</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#ffffff">[</tspan><tspan fill="#00c080">dinner</tspan><tspan font-weight="bold" fill="#ffffff">,</tspan><tspan > </tspan><tspan fill="#00c080">vegetarian</tspan><tspan font-weight="bold" fill="#ffffff">]</tspan><tspan >
+</tspan></text>
+<text x="10" y="86"><tspan fill="#928374">4</tspan></text>
+<text x="60" y="86" xml:space="preserve"><tspan font-weight="bold" fill="#7dfdfe">servings</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#02cc83">4</tspan><tspan >
+</tspan></text>
+<text x="10" y="108"><tspan fill="#928374">5</tspan></text>
+<text x="60" y="108" xml:space="preserve"><tspan font-weight="bold" fill="#7dfdfe">prep time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">20 minutes</tspan><tspan >
+</tspan></text>
+<text x="10" y="130"><tspan fill="#928374">6</tspan></text>
+<text x="60" y="130" xml:space="preserve"><tspan font-weight="bold" fill="#7dfdfe">cook time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">35 minutes</tspan><tspan >
+</tspan></text>
+<text x="10" y="152"><tspan fill="#928374">7</tspan></text>
+<text x="60" y="152" xml:space="preserve"><tspan font-weight="bold" fill="#cc241d">---</tspan><tspan >
+</tspan></text>
+<text x="10" y="174"><tspan fill="#928374">8</tspan></text>
+<text x="60" y="174" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="196"><tspan fill="#928374">9</tspan></text>
+<text x="60" y="196" xml:space="preserve"><tspan fill="#00c080">&gt;</tspan><tspan > </tspan><tspan font-style="italic" fill="#00c080">These freeze well. Double the batch and freeze half for a quick weeknight dinner.</tspan><tspan >
+</tspan></text>
+<text x="10" y="218"><tspan fill="#928374">10</tspan></text>
+<text x="60" y="218" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="240"><tspan fill="#928374">11</tspan></text>
+<text x="60" y="240" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Filling</tspan><tspan >
+</tspan></text>
+<text x="10" y="262"><tspan fill="#928374">12</tspan></text>
+<text x="60" y="262" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="284"><tspan fill="#928374">13</tspan></text>
+<text x="60" y="284" xml:space="preserve"><tspan >Cook </tspan><tspan fill="#f93d5d">@rice</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">200</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">g</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > according to </tspan><tspan font-style="italic" fill="#928374">[- todo: maybe add flavoured rice recipe -]</tspan><tspan > package directions.
+</tspan></text>
+<text x="10" y="306"><tspan fill="#928374">14</tspan></text>
+<text x="60" y="306" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="328"><tspan fill="#928374">15</tspan></text>
+<text x="60" y="328" xml:space="preserve"><tspan >Sauté </tspan><tspan fill="#f93d5d">@onion</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">1</tspan><tspan fill="#ffffff" font-weight="bold">/</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">diced</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan > and </tspan><tspan fill="#f93d5d">@garlic</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">-</tspan><tspan fill="#02cc83" font-weight="bold">3</tspan><tspan fill="#f93d5d"> </tspan><tspan fill="#d79921">cloves</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">minced</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan > in </tspan><tspan fill="#f93d5d">@olive oil</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">tbsp</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >
+</tspan></text>
+<text x="10" y="350"><tspan fill="#928374">16</tspan></text>
+<text x="60" y="350" xml:space="preserve"><tspan >in a </tspan><tspan fill="#ddb700">#large skillet</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > until softened, about </tspan><tspan font-weight="bold" fill="#7dfdfe">~fry</tspan><tspan font-weight="bold" fill="#ffffff">{</tspan><tspan font-weight="bold" fill="#02cc83">5</tspan><tspan font-weight="bold" fill="#7dfdfe"> </tspan><tspan font-weight="bold" fill="#d65d0e">minutes</tspan><tspan font-weight="bold" fill="#ffffff">}</tspan><tspan >.
+</tspan></text>
+<text x="10" y="372"><tspan fill="#928374">17</tspan></text>
+<text x="60" y="372" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="394"><tspan fill="#928374">18</tspan></text>
+<text x="60" y="394" xml:space="preserve"><tspan >Add </tspan><tspan fill="#f93d5d">@canned tomatoes</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">400</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">g</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >, </tspan><tspan fill="#f93d5d">@black beans</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">240</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">g</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">drained</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan >,
+</tspan></text>
+<text x="10" y="416"><tspan fill="#928374">19</tspan></text>
+<text x="60" y="416" xml:space="preserve"><tspan fill="#f93d5d">@cumin</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">1</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">tsp</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >, and </tspan><tspan fill="#f93d5d">@smoked paprika</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">1</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">tsp</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >. Stir in the cooked </tspan><tspan fill="#f93d5d">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f93d5d">rice</tspan><tspan >.
+</tspan></text>
+<text x="10" y="438"><tspan fill="#928374">20</tspan></text>
+<text x="60" y="438" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="460"><tspan fill="#928374">21</tspan></text>
+<text x="60" y="460" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Assembly</tspan><tspan >
+</tspan></text>
+<text x="10" y="482"><tspan fill="#928374">22</tspan></text>
+<text x="60" y="482" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="504"><tspan fill="#928374">23</tspan></text>
+<text x="60" y="504" xml:space="preserve"><tspan font-style="italic" fill="#928374">-- perhaps add sauce section here later?</tspan><tspan >
+</tspan></text>
+<text x="10" y="526"><tspan fill="#928374">24</tspan></text>
+<text x="60" y="526" xml:space="preserve"><tspan >Cut the tops off </tspan><tspan fill="#f93d5d">@peppers</tspan><tspan fill="#ffffff" font-weight="bold">|</tspan><tspan fill="#f93d5d">capsicum</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">4</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > and remove seeds.
+</tspan></text>
+<text x="10" y="548"><tspan fill="#928374">25</tspan></text>
+<text x="60" y="548" xml:space="preserve"><tspan >Stuff with the filling and place in a </tspan><tspan fill="#ddb700">#baking dish</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >.
+</tspan></text>
+<text x="10" y="570"><tspan fill="#928374">26</tspan></text>
+<text x="60" y="570" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="592"><tspan fill="#928374">27</tspan></text>
+<text x="60" y="592" xml:space="preserve"><tspan fill="#00c080">&gt;</tspan><tspan > </tspan><tspan font-style="italic" fill="#00c080">An aged cheddar is recommended.</tspan><tspan >
+</tspan></text>
+<text x="10" y="614"><tspan fill="#928374">28</tspan></text>
+<text x="60" y="614" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="636"><tspan fill="#928374">29</tspan></text>
+<text x="60" y="636" xml:space="preserve"><tspan >Top each pepper with </tspan><tspan fill="#f93d5d">@cheese</tspan><tspan fill="#ffffff" font-weight="bold">|</tspan><tspan fill="#f93d5d">cheddar</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">100</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">g</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">grated</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan > and optionally </tspan><tspan fill="#f93d5d">@</tspan><tspan fill="#d79921" font-weight="bold">?</tspan><tspan fill="#f93d5d">pecorino</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">50</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">g</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">shaved</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan >.
+</tspan></text>
+<text x="10" y="658"><tspan fill="#928374">30</tspan></text>
+<text x="60" y="658" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="680"><tspan fill="#928374">31</tspan></text>
+<text x="60" y="680" xml:space="preserve"><tspan >Bake in a preheated </tspan><tspan fill="#ddb700">#oven</tspan><tspan > at </tspan><tspan font-weight="bold" fill="#02cc83">190</tspan><tspan font-weight="bold" fill="#02cc83">°C</tspan><tspan > for </tspan><tspan font-weight="bold" fill="#7dfdfe">~</tspan><tspan font-weight="bold" fill="#ffffff">{</tspan><tspan font-weight="bold" fill="#02cc83">30</tspan><tspan font-weight="bold" fill="#7dfdfe"> </tspan><tspan font-weight="bold" fill="#d65d0e">minutes</tspan><tspan font-weight="bold" fill="#ffffff">}</tspan><tspan > until </tspan><tspan fill="#f93d5d">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f93d5d">peppers</tspan><tspan >
+</tspan></text>
+<text x="10" y="702"><tspan fill="#928374">32</tspan></text>
+<text x="60" y="702" xml:space="preserve"><tspan >are tender and </tspan><tspan fill="#f93d5d">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f93d5d">cheese</tspan><tspan > is bubbling.
+</tspan></text>
+<text x="10" y="724"><tspan fill="#928374">33</tspan></text>
+<text x="60" y="724" xml:space="preserve"><tspan >
+</tspan></text>
+<text x="10" y="746"><tspan fill="#928374">34</tspan></text>
+<text x="60" y="746" xml:space="preserve"><tspan >Serve with </tspan><tspan fill="#f93d5d">@</tspan><tspan fill="#d79921" font-weight="bold">@</tspan><tspan fill="#f93d5d">./Sauces/Salsa Verde</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">1</tspan><tspan fill="#ffffff" font-weight="bold">-</tspan><tspan fill="#dc8b3f">1.5</tspan><tspan fill="#f93d5d"> </tspan><tspan fill="#d79921">servings</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >. </tspan><tspan font-style="italic" fill="#928374">-- todo</tspan><tspan >
+</tspan></text>
+</svg>
