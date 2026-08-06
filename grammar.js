@@ -20,14 +20,14 @@ const DEGREE = /(?:[°º˚]|[Dd]eg(?:ree)?s?)/;
 const CELSIUS = /(?:[Cc℃](?:elsius)?)/;
 const FAHRENHEIT = /(?:[Ff℉](?:ahrenheit)?)/;
 
-const NOTE = { prefix: '>' };
+const NOTE = { prefix: /[>][^>]/ };
 const PREFIX = { ingredient: /[@]/, cookware: '#', timer: '~' };
 const MODIFIERS = { hidden: '-', optional: '?', reference: '&', new: '+', recipe: '@' };
 const DELIMITERS = { fractional: '/', range: '-', alias: '|' };
 const PAREN = { open: '(', close: ')', content: token(/[^\r\n)]+/) };
 const BRACE = { open: '{', close: '}', content: token(/[^\r\n}]+/) };
 
-const UNIT = (module.exports = grammar({
+module.exports = grammar({
 	name: 'cooklang',
 	supertypes: $ => [$.block, $.definition, $.number, $.modifiers],
 
@@ -81,7 +81,7 @@ const UNIT = (module.exports = grammar({
 				seq($.block, repeat(seq($._block_seperator, $.block))),
 				optional($._block_seperator),
 			),
-		_padding: $ => repeat1(choice($._newline, $.comment_line)),
+		_padding: $ => repeat1(choice($._newline, $.comment_line, $.mode)),
 		modifiers: $ => choice(...Object.values(MODIFIERS)),
 
 		block: $ => choice($.note, $.step),
@@ -89,7 +89,7 @@ const UNIT = (module.exports = grammar({
 			repeat1(
 				prec.left(
 					seq(
-						NOTE.prefix,
+						alias(NOTE.prefix, '>'),
 						optional($._note_line),
 						repeat(seq($._newline, $._note_line)),
 						$._newline,
@@ -112,6 +112,7 @@ const UNIT = (module.exports = grammar({
 			choice(
 				seq($._empty_line, repeat($._newline)),
 				seq($.comment_line, repeat($._newline)),
+				seq($.mode, repeat($._newline)),
 			),
 		definition: $ => choice($.ingredient, $.cookware, $.timer),
 		ingredient: $ =>
@@ -177,6 +178,8 @@ const UNIT = (module.exports = grammar({
 				optional(seq('%', optional(WS_HORIZ), field('unit', $.unit))),
 			),
 		unit: $ => token(seq(/[^\r\n}%\-/ ]/, optional(BRACE.content))),
+
+		// TEMPERATURE
 		temperature: $ =>
 			prec.right(
 				seq(
@@ -189,6 +192,7 @@ const UNIT = (module.exports = grammar({
 			),
 		scale: $ => token(choice(CELSIUS, FAHRENHEIT)),
 
+		// STRUCTURED QUANTITY
 		range: $ =>
 			seq(
 				field('left', $.number),
@@ -205,6 +209,45 @@ const UNIT = (module.exports = grammar({
 				optional(WS_HORIZ),
 				field('right', $.number),
 			),
+
+		// MODE
+		mode: $ =>
+			prec.left(
+				seq(
+					'>>',
+					choice(
+						seq(
+							optional($._ws_horiz),
+							'[',
+							optional(field('key', alias($._mode_key, $.identifier))),
+							optional(
+								seq(
+									']',
+									optional(':'),
+									optional(field('value', alias($._mode_value, $.string))),
+								),
+							),
+						),
+						field('text', seq(alias($._mode_fallback, $.string))),
+					),
+					$._newline,
+				),
+			),
+		_mode_key: $ => repeat1(/[^\]\r\n\u000B\u000C\u0085\u2028\u2029]+/),
+		_mode_value: $ =>
+			seq(
+				optional($._ws_horiz),
+				/[^ \:\r\n\u000B\u000C\u0085\u2028\u2029]/,
+				$._permissive_text_inline,
+			),
+		_mode_fallback: $ =>
+			seq(
+				optional($._ws_horiz),
+				/[^ \[\r\n\u000B\u000C\u0085\u2028\u2029]/,
+				$._permissive_text_inline,
+			),
+
+		// PRIMITIVES
 		number: $ => prec.left(choice($.integer, $.decimal)),
 		decimal: $ => token(DECIMAL),
 		integer: $ => token(INTEGER),
@@ -214,5 +257,10 @@ const UNIT = (module.exports = grammar({
 
 		// use for text that can contain definition prefix characters
 		_permissive_text: $ => prec.right(repeat1(choice($._text, '@', '#', '~'))),
+		_permissive_text_inline: $ =>
+			seq(
+				alias($._permissive_text, $.text),
+				repeat(choice(alias($._permissive_text, $.text), $.comment)),
+			),
 	},
-}));
+});
