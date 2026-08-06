@@ -14,16 +14,16 @@ A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github
 - Comprehensive test corpus covering canonical recipes and extensions.
 
 ## Supported extensions 
-A limited number of extensions [^3] are currently supported.
+All documented cooklang extensions [^3] are currently supported.
 
+- [X] Modes
 - [x] Modifiers
+- [X] Intermediate preparations
 - [x] Component alias
 - [x] Advanced units
 - [x] Range values
 - [x] Timer requires time (otherwise rendered as plain text)
 - [x] Temperature (unicode-aware and some plain English expressions)
-- [ ] Intermediate preparations
-- [ ] Modes
 
 Where possible, numeric amounts are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
 Non-conforming or ambiguous values fall back to representation as a `string` rather than being represented as untyped text.
