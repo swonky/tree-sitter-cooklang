@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="100%"
+     width="1024"
      height="778"
-     viewBox="0 0 100% 778"
+     viewBox="0 0 1024 778"
      font-family="monospace"
      font-size="16"
      fill="#ebdbb2">
@@ -37,7 +37,7 @@
 <text x="60" y="218" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="240"><tspan fill="#928374">11</tspan></text>
-<text x="60" y="240" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Filling</tspan><tspan >
+<text x="60" y="240" xml:space="preserve"><tspan text-decoration="underline" font-weight="bold" fill="#ffffff">= Filling</tspan><tspan >
 </tspan></text>
 <text x="10" y="262"><tspan fill="#928374">12</tspan></text>
 <text x="60" y="262" xml:space="preserve"><tspan >
@@ -67,7 +67,7 @@
 <text x="60" y="438" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="460"><tspan fill="#928374">21</tspan></text>
-<text x="60" y="460" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Assembly</tspan><tspan >
+<text x="60" y="460" xml:space="preserve"><tspan text-decoration="underline" font-weight="bold" fill="#ffffff">= Assembly</tspan><tspan >
 </tspan></text>
 <text x="10" y="482"><tspan fill="#928374">22</tspan></text>
 <text x="60" y="482" xml:space="preserve"><tspan >
