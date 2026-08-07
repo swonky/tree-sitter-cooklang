@@ -1,22 +1,11 @@
-(comment) @nospell @comment
-(comment_line) @nospell @comment
-
-[
-	"{" "}"
-	"}(" 
-	"(" ")"
-	"[" "]"
-] @punctuation.bracket
-
-["%" "|" ":"] @punctuation.delimiter
-
-(temperature) @number
-(unit) @constant
-
-((ingredient) @markup.link
+([
+	(metadata_start)
+	(metadata_end)
+] @keyword.directive
 	(#set! priority 90))
-(ingredient	
-  ["@" "?" "+" "&" "-"] @keyword.modifier)  
+
+((ingredient) @markup.link (#set! priority 90))
+(ingredient ["@" "?" "+" "&" "-"] @keyword.modifier)  
 
 (cookware) @type
 
@@ -30,37 +19,31 @@
 		"hour" "hours"
 		"day" "days"))
 
-[(integer)
- (fractional 
-	 "/" @punctuation.delimiter)
- ]@number
+(heading) @markup.heading
+(note) @markup.quote
+(directive) @macro.constant
 
-(range 
-	"-" @punctuation.delimiter)
+(metadata
+	key: (identifier) @parameter.member
+)
 
+(mode
+	key: (identifier) @keyword.directive.define
+)
+
+(comment) @nospell @comment
+(comment_line) @nospell @comment
+
+(unit) @constant
+(temperature) @number
+(integer) @number
 (decimal) @number.float
 (string) @nospell @string 
 (text) @spell
 
-(heading) @markup.heading
-
-(note
-	">" @punctuation.special
-) @markup.quote
-
-(mode
-	">>" @keyword.directive
-) @macro.constant
-
-(mode
-	key: (identifier) @keyword.directive
-)
-
-([
-	(metadata_start)
-	(metadata_end)
-] @keyword.directive
-	(#set! priority 90))
+["{" "}" "}(" "(" ")" "[" "]"] @punctuation.bracket
+["%" "|" ":" "/" "-"] @punctuation.delimiter
+[">>"] @keyword.directive
+[">"] @punctuation.special
 
 (ERROR) @error-node
-
