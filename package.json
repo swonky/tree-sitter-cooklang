@@ -1,6 +1,6 @@
 {
 	"name": "tree-sitter-cooklang",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A cooklang grammar for the tree-sitter parser generator",
 	"repository": {
 		"type": "git",
