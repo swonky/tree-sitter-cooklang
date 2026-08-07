@@ -21,8 +21,8 @@ tree-sitter generate
 tree-sitter build -o "path/to/cooklang.so"
 ```
 
-## Supported extensions 
-All documented cooklang extensions [^3] are currently supported.
+## Supported extended syntax 
+The following extended syntax features [^3] are currently supported:
 
 - [X] Modes
 - [x] Modifiers
@@ -32,6 +32,8 @@ All documented cooklang extensions [^3] are currently supported.
 - [x] Range values
 - [x] Timer requires time (otherwise rendered as plain text)
 - [x] Temperature (unicode-aware and some plain English expressions)
+
+Legacy metadata directives are also supported.
 
 Where possible, numeric amounts are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
 Non-conforming or ambiguous values fall back to representation as a `string` rather than being represented as untyped text.
@@ -68,7 +70,7 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 ### Concrete syntax tree
 ```
 0:0   - 37:0    recipe
-0:0   - 6:3       metadata
+0:0   - 6:3       frontmatter
 0:0   - 1:0         metadata_start
 0:0   - 0:4           `---\n`
 1:0   - 6:0         content: metadata_content
@@ -78,18 +80,18 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 4:0   - 4:22          `prep time: 20 minutes\n`
 5:0   - 5:22          `cook time: 35 minutes\n`
 6:0   - 6:3         metadata_end `---`
-8:0   - 9:0       mode
+8:0   - 9:0       directive
 8:0   - 8:2         ">>"
-8:3   - 8:4         "["
-8:4   - 8:8         key: identifier `mode`
-8:8   - 8:9         "]"
-8:9   - 8:10        ":"
-8:10  - 8:14        value: string
-8:12  - 8:14          text `ll`
+8:3   - 8:25        mode
+8:3   - 8:4           "["
+8:4   - 8:13          key: identifier `duplicate`
+8:13  - 8:14          "]"
+8:14  - 8:15          ":"
+8:16  - 8:25          value: string `reference`
 10:0  - 11:0      note
 10:0  - 10:2        ">"
 10:2  - 10:83       text `These freeze well. Double the batch and freeze half for a quick weeknight dinner.`
-12:0  - 22:0      section
+12:0  - 24:0      section
 12:0  - 12:9        heading
 12:2  - 12:9          name: text `Filling`
 14:0  - 15:0        step
@@ -198,10 +200,11 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 20:71 - 20:72           "{"
 20:72 - 20:73           "}"
 20:73 - 20:74         text `.`
-22:0  - 37:0      section
-22:0  - 22:10       heading
-22:2  - 22:10         name: text `Assembly`
-24:0  - 24:40       comment_line `-- perhaps add sauce section here later?`
+22:0  - 22:40       comment_line `-- perhaps add sauce section here later?`
+24:0  - 37:0      section
+24:0  - 24:29       heading
+24:2  - 24:11         name: text `Assembly `
+24:11 - 24:29         comment `-- needs some work`
 26:0  - 28:0        step
 26:0  - 26:17         text `Cut the tops off `
 26:17 - 26:37         ingredient

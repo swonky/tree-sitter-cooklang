@@ -10,19 +10,19 @@
 <text x="60" y="20" xml:space="preserve"><tspan font-weight="bold" fill="#cc241d">---</tspan><tspan >
 </tspan></text>
 <text x="10" y="42"><tspan fill="#928374">2</tspan></text>
-<text x="60" y="42" xml:space="preserve"><tspan font-weight="bold" fill="#0a92fa">title</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">Stuffed Peppers</tspan><tspan >
+<text x="60" y="42" xml:space="preserve"><tspan fill="#69eefa">title</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">Stuffed Peppers</tspan><tspan >
 </tspan></text>
 <text x="10" y="64"><tspan fill="#928374">3</tspan></text>
-<text x="60" y="64" xml:space="preserve"><tspan font-weight="bold" fill="#0a92fa">tags</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#ffffff">[</tspan><tspan fill="#00c080">dinner</tspan><tspan font-weight="bold" fill="#ffffff">,</tspan><tspan > </tspan><tspan fill="#00c080">vegetarian</tspan><tspan font-weight="bold" fill="#ffffff">]</tspan><tspan >
+<text x="60" y="64" xml:space="preserve"><tspan fill="#69eefa">tags</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#ffffff">[</tspan><tspan fill="#00c080">dinner</tspan><tspan font-weight="bold" fill="#ffffff">,</tspan><tspan > </tspan><tspan fill="#00c080">vegetarian</tspan><tspan font-weight="bold" fill="#ffffff">]</tspan><tspan >
 </tspan></text>
 <text x="10" y="86"><tspan fill="#928374">4</tspan></text>
-<text x="60" y="86" xml:space="preserve"><tspan font-weight="bold" fill="#0a92fa">servings</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#02cc83">4</tspan><tspan >
+<text x="60" y="86" xml:space="preserve"><tspan fill="#69eefa">servings</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan font-weight="bold" fill="#02cc83">4</tspan><tspan >
 </tspan></text>
 <text x="10" y="108"><tspan fill="#928374">5</tspan></text>
-<text x="60" y="108" xml:space="preserve"><tspan font-weight="bold" fill="#0a92fa">prep time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">20 minutes</tspan><tspan >
+<text x="60" y="108" xml:space="preserve"><tspan fill="#69eefa">prep time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">20 minutes</tspan><tspan >
 </tspan></text>
 <text x="10" y="130"><tspan fill="#928374">6</tspan></text>
-<text x="60" y="130" xml:space="preserve"><tspan font-weight="bold" fill="#0a92fa">cook time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">35 minutes</tspan><tspan >
+<text x="60" y="130" xml:space="preserve"><tspan fill="#69eefa">cook time</tspan><tspan font-weight="bold" fill="#ffffff">:</tspan><tspan > </tspan><tspan fill="#00c080">35 minutes</tspan><tspan >
 </tspan></text>
 <text x="10" y="152"><tspan fill="#928374">7</tspan></text>
 <text x="60" y="152" xml:space="preserve"><tspan font-weight="bold" fill="#cc241d">---</tspan><tspan >
@@ -31,7 +31,7 @@
 <text x="60" y="174" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="196"><tspan fill="#928374">9</tspan></text>
-<text x="60" y="196" xml:space="preserve"><tspan fill="#cc241d" font-weight="bold">&gt;&gt;</tspan><tspan fill="#d79921"> </tspan><tspan fill="#ffffff" font-weight="bold">[</tspan><tspan fill="#cc241d" font-weight="bold">mode</tspan><tspan fill="#ffffff" font-weight="bold">]</tspan><tspan fill="#ffffff" font-weight="bold">:</tspan><tspan fill="#00c080"> all</tspan><tspan >
+<text x="60" y="196" xml:space="preserve"><tspan fill="#cc241d" font-weight="bold">&gt;&gt;</tspan><tspan fill="#d79921"> </tspan><tspan fill="#ffffff" font-weight="bold">[</tspan><tspan fill="#cc241d" font-weight="bold">duplicate</tspan><tspan fill="#ffffff" font-weight="bold">]</tspan><tspan fill="#ffffff" font-weight="bold">:</tspan><tspan fill="#d79921"> </tspan><tspan fill="#00c080">reference</tspan><tspan >
 </tspan></text>
 <text x="10" y="218"><tspan fill="#928374">10</tspan></text>
 <text x="60" y="218" xml:space="preserve"><tspan >
@@ -58,7 +58,7 @@
 <text x="60" y="372" xml:space="preserve"><tspan >Sauté </tspan><tspan fill="#f76565">@onion</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">1</tspan><tspan fill="#ffffff" font-weight="bold">/</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">diced</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan > and </tspan><tspan fill="#f76565">@garlic</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">-</tspan><tspan fill="#02cc83" font-weight="bold">3</tspan><tspan fill="#f76565"> </tspan><tspan fill="#d79921">cloves</tspan><tspan fill="#ffffff" font-weight="bold">}(</tspan><tspan fill="#00c080">minced</tspan><tspan fill="#ffffff" font-weight="bold">)</tspan><tspan > in </tspan><tspan fill="#f76565">@olive oil</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">2</tspan><tspan fill="#ffffff" font-weight="bold">%</tspan><tspan fill="#d79921">tbsp</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >
 </tspan></text>
 <text x="10" y="394"><tspan fill="#928374">18</tspan></text>
-<text x="60" y="394" xml:space="preserve"><tspan >in a </tspan><tspan fill="#ddb700">#large skillet</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > until softened, about </tspan><tspan font-weight="bold" fill="#0a92fa">~fry</tspan><tspan font-weight="bold" fill="#ffffff">{</tspan><tspan font-weight="bold" fill="#02cc83">5</tspan><tspan font-weight="bold" fill="#0a92fa"> </tspan><tspan font-weight="bold" fill="#d65d0e">minutes</tspan><tspan font-weight="bold" fill="#ffffff">}</tspan><tspan >.
+<text x="60" y="394" xml:space="preserve"><tspan >in a </tspan><tspan fill="#ddb700">#large skillet</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > until softened, about </tspan><tspan fill="#69eefa">~fry</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">5</tspan><tspan fill="#69eefa"> </tspan><tspan fill="#d65d0e">minutes</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan >.
 </tspan></text>
 <text x="10" y="416"><tspan fill="#928374">19</tspan></text>
 <text x="60" y="416" xml:space="preserve"><tspan >
@@ -73,13 +73,13 @@
 <text x="60" y="482" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="504"><tspan fill="#928374">23</tspan></text>
-<text x="60" y="504" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Assembly</tspan><tspan >
+<text x="60" y="504" xml:space="preserve"><tspan font-style="italic" fill="#928374">-- perhaps add sauce section here later?</tspan><tspan >
 </tspan></text>
 <text x="10" y="526"><tspan fill="#928374">24</tspan></text>
 <text x="60" y="526" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="548"><tspan fill="#928374">25</tspan></text>
-<text x="60" y="548" xml:space="preserve"><tspan font-style="italic" fill="#928374">-- perhaps add sauce section here later?</tspan><tspan >
+<text x="60" y="548" xml:space="preserve"><tspan font-weight="bold" fill="#ffffff">= Assembly </tspan><tspan fill="#928374" font-style="italic">-- needs some work</tspan><tspan >
 </tspan></text>
 <text x="10" y="570"><tspan fill="#928374">26</tspan></text>
 <text x="60" y="570" xml:space="preserve"><tspan >
@@ -106,7 +106,7 @@
 <text x="60" y="724" xml:space="preserve"><tspan >
 </tspan></text>
 <text x="10" y="746"><tspan fill="#928374">34</tspan></text>
-<text x="60" y="746" xml:space="preserve"><tspan >Bake in a preheated </tspan><tspan fill="#ddb700">#oven</tspan><tspan > at </tspan><tspan font-weight="bold" fill="#02cc83">190</tspan><tspan font-weight="bold" fill="#02cc83">°C</tspan><tspan > for </tspan><tspan font-weight="bold" fill="#0a92fa">~</tspan><tspan font-weight="bold" fill="#ffffff">{</tspan><tspan font-weight="bold" fill="#02cc83">30</tspan><tspan font-weight="bold" fill="#0a92fa"> </tspan><tspan font-weight="bold" fill="#d65d0e">minutes</tspan><tspan font-weight="bold" fill="#ffffff">}</tspan><tspan > until </tspan><tspan fill="#f76565">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f76565">peppers</tspan><tspan >.
+<text x="60" y="746" xml:space="preserve"><tspan >Bake in a preheated </tspan><tspan fill="#ddb700">#oven</tspan><tspan > at </tspan><tspan font-weight="bold" fill="#02cc83">190</tspan><tspan font-weight="bold" fill="#02cc83">°C</tspan><tspan > for </tspan><tspan fill="#69eefa">~</tspan><tspan fill="#ffffff" font-weight="bold">{</tspan><tspan fill="#02cc83" font-weight="bold">30</tspan><tspan fill="#69eefa"> </tspan><tspan fill="#d65d0e">minutes</tspan><tspan fill="#ffffff" font-weight="bold">}</tspan><tspan > until </tspan><tspan fill="#f76565">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f76565">peppers</tspan><tspan >.
 </tspan></text>
 <text x="10" y="768"><tspan fill="#928374">35</tspan></text>
 <text x="60" y="768" xml:space="preserve"><tspan >are tender and </tspan><tspan fill="#f76565">@</tspan><tspan fill="#d79921" font-weight="bold">&amp;</tspan><tspan fill="#f76565">cheese</tspan><tspan > is bubbling.
