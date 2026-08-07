@@ -1,9 +1,9 @@
 # tree-sitter-cooklang
 
-A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github.com/tree-sitter/tree-sitter) parser generator.
+A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.com/tree-sitter/tree-sitter) parser generator.
 
-
-> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
+> [!NOTE]
+> This project is not affiliated with or endorsed by the Cooklang project or its maintainers.
 
 ## Features
 - Implements the current Cooklang language base specification [^2].
@@ -13,13 +13,8 @@ A [cooklang](https://cooklang.org) grammar for the  [tree-sitter](https://github
 - Structured numeric quantity tokens (`integer`, `decimal`, `fractional`, `range`).
 - Comprehensive test corpus covering canonical recipes and extensions.
 
-## Building
-> Building the parser requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
-
-```bash
-tree-sitter generate
-tree-sitter build -o "path/to/cooklang.so"
-```
+> [!TIP]
+> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
 
 ## Supported extended syntax 
 The following extended syntax features [^3] are currently supported:
@@ -33,19 +28,19 @@ The following extended syntax features [^3] are currently supported:
 - [x] Timer requires time (otherwise rendered as plain text)
 - [x] Temperature (unicode-aware and some plain English expressions)
 
-Legacy metadata directives are also supported.
-
-Where possible, numeric amounts are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
-Non-conforming or ambiguous values fall back to representation as a `string` rather than being represented as untyped text.
+Where possible, numeric ingredient quantities are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
+Non-conforming or ambiguous values fall back to representation as a `string`.
 
 ## Deviations from specification
-This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation. Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
+This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation. 
+Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
 
 - __Inline block comments are recognised only where plain text is valid.__ Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. As an implementation trade-off, this parser recognises block comments only where plain text is valid.
 
 ## Testing [^4]
 The repository contains a several test suites located within `./test/corpus`.
 
+> [!TIP]
 > Running the tests requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
 
 ```bash
