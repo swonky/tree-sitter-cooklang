@@ -242,7 +242,7 @@ Mix @flour{500%g}
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     (metadata_content)
     (metadata_end))
@@ -280,7 +280,7 @@ Serve
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     (metadata_content)
     (metadata_end))

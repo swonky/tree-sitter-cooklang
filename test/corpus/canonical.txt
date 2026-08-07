@@ -490,7 +490,7 @@ sourced: babooshka
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     content: (metadata_content)
     (metadata_end)))
@@ -505,7 +505,7 @@ cooking time: 30 mins
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     content: (metadata_content)
     (metadata_end)))
@@ -520,7 +520,7 @@ cooking time    :30 mins
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     content: (metadata_content)
     (metadata_end)))
@@ -551,7 +551,7 @@ Cook Time: 30 minutes
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     content: (metadata_content)
     (metadata_end)))
@@ -634,7 +634,7 @@ servings: 1|2|3
 --------
 
 (recipe
-  (metadata
+  (frontmatter
     (metadata_start)
     content: (metadata_content)
     (metadata_end)))

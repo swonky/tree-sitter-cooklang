@@ -21,6 +21,9 @@ enum TokenType {
 	OPEN_BRACE,
 	CLOSE_BRACE,
 	CLOSE_BRACE_OPEN_PAREN,
+	COLON,
+	// INTEGER_VALUE,
+	// DECIMAL_VALUE,
 };
 
 typedef enum {
@@ -87,6 +90,31 @@ static inline int advance_while(TSLexer *lexer, Asserter fn)
 	return count;
 }
 
+// static bool is_numeric_value(TSLexer *lexer, const bool *valid_symbols)
+// {
+// 	bool first = true;
+// 	bool period = false;
+// 	bool seen = true;
+// 	while (!eof(lexer)) {
+// 		if (first) {
+// 			if (!is_posnum(lexer->lookahead))
+// 				return false;
+// 			first = false;
+// 			advance(lexer);
+// 		}
+// 		if (!is_num(lexer->lookahead)) {
+// 			advance(lexer);
+// 			continue;
+// 		}
+// 		if (valid_symbols[DECIMAL_VALUE] && lexer->lookahead == '.') {
+// 			period = true;
+// 			advance(lexer);
+// 			continue;
+// 		}
+// 		mark_end(lexer);
+// 	}
+// 	return false;
+// }
 static bool scan_hyphen_token(
     TSLexer *lexer, Scanner *scanner, const bool *valid_symbols)
 {
@@ -284,6 +312,14 @@ static bool scan_text(
 			return true;
 		}
 		break;
+	case ':':
+		if (valid_symbols[COLON]) {
+			lexer->result_symbol = COLON;
+			advance(lexer);
+			mark_end(lexer);
+			return true;
+		}
+		break;
 	case ')':
 	case '|':
 		return false;
@@ -315,8 +351,13 @@ static bool scan_text(
 		mark_end(lexer);
 
 		if (!seen) {
+			int pos = get_column(lexer);
 			if (scan_temperature_suffix(lexer))
 				return false;
+			if (pos != get_column(lexer)) {
+				mark_end(lexer);
+				seen = true;
+			}
 		}
 
 		UnicodeChar c = lexer->lookahead;
@@ -394,19 +435,29 @@ static bool scan_metadata_content(TSLexer *lexer)
 static bool scan_newline(TSLexer *lexer, const bool *valid_symbols)
 {
 	if (valid_symbols[EMPTY_LINE] && lexer->get_column(lexer) == 0) {
-		while (is_ws_horiz(lexer->lookahead))
+		while (!eof(lexer) && is_ws_horiz(lexer->lookahead))
 			advance(lexer);
-		if (is_ws_vert(lexer->lookahead)) {
+		if (!eof(lexer) && is_ws_vert(lexer->lookahead)) {
 			mark_end(lexer);
 			lexer->result_symbol = EMPTY_LINE;
 			return true;
 		}
 	}
+	if (!valid_symbols[NEWLINE]) {
+		return false;
+	}
+	// // eof is allowed to be a newline when empty_line to prevent
+	// // `MISSING` nodes for patterns that terminate with newlines.
+	// if (eof(lexer)) {
+	// 	advance(lexer);
+	// 	lexer->result_symbol = NEWLINE;
+	// 	return true;
+	// }
 	if (!is_ws_vert(lexer->lookahead))
 		return false;
 	if (lexer->lookahead == '\r') {
 		advance(lexer);
-		if (lexer->lookahead == '\n')
+		if (!eof(lexer) && lexer->lookahead == '\n')
 			advance(lexer);
 	} else {
 		advance(lexer);
@@ -620,7 +671,8 @@ static bool dispatch(
 	}
 	if ((valid_symbols[TEXT] || valid_symbols[OPEN_BRACE] ||
 		valid_symbols[OPEN_PAREN] || valid_symbols[CLOSE_BRACE] ||
-		valid_symbols[CLOSE_BRACE_OPEN_PAREN]) &&
+		valid_symbols[CLOSE_BRACE_OPEN_PAREN] ||
+		valid_symbols[COLON]) &&
 	    scan_text(lexer, scanner, valid_symbols)) {
 		return true;
 	}

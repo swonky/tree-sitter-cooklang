@@ -50,18 +50,19 @@ module.exports = grammar({
 		$._open_brace,
 		$._close_brace,
 		$._close_brace_open_paren,
+		$._colon,
 	],
 
 	extras: $ => [],
 	rules: {
 		recipe: $ =>
 			seq(
-				optional(seq($.metadata, $._newline)),
+				optional(seq($.frontmatter, $._newline)),
 				optional($._padding),
 				optional($._body),
 				repeat($.section),
 			),
-		metadata: $ =>
+		frontmatter: $ =>
 			seq($.metadata_start, field('content', $.metadata_content), $.metadata_end),
 		section: $ => seq($.heading, $._padding, optional($._body)),
 
@@ -83,7 +84,7 @@ module.exports = grammar({
 				seq($.block, repeat(seq($._block_seperator, $.block))),
 				optional($._block_seperator),
 			),
-		_padding: $ => repeat1(choice($._newline, $.comment_line, $.mode)),
+		_padding: $ => repeat1(choice($._newline, $.comment_line, $.directive)),
 
 		block: $ => choice($.note, $.step),
 		note: $ =>
@@ -114,7 +115,7 @@ module.exports = grammar({
 				choice(seq(choice($._interblock_lines, $._empty_line), repeat($._newline))),
 				repeat(seq($._interblock_lines, repeat($._newline))),
 			),
-		_interblock_lines: $ => choice($.comment_line, $.mode),
+		_interblock_lines: $ => choice($.comment_line, $.directive),
 		definition: $ => choice($.ingredient, $.cookware, $.timer),
 		ingredient: $ =>
 			seq($._ingredient_prefix, repeat($.modifiers), $._ingredient_attributes),
@@ -222,42 +223,52 @@ module.exports = grammar({
 				field('right', $.number),
 			),
 
-		// MODE
-		mode: $ =>
-			prec.left(
+		directive: $ =>
+			prec.left(seq('>>', optional($._ws_horiz), choice($.metadata, $.mode), $._newline)),
+
+		// LEGACY METADATA SYNTAX
+		metadata: $ =>
+			prec.right(
 				seq(
-					'>>',
-					choice(
+					field('key', alias($._metadata_key, $.identifier)),
+					optional(
 						seq(
+							alias($._colon, ':'),
 							optional($._ws_horiz),
-							'[',
-							optional(field('key', alias($._mode_key, $.identifier))),
-							optional(
-								seq(
-									']',
-									optional(':'),
-									optional(field('value', alias($._mode_value, $.string))),
-								),
-							),
+							field('value', $._directive_value),
 						),
-						field('text', seq(alias($._mode_fallback, $.string))),
 					),
-					$._newline,
 				),
 			),
-		_mode_key: $ => repeat1(/[^\]\r\n\u000B\u000C\u0085\u2028\u2029]+/),
-		_mode_value: $ =>
+		_metadata_key: $ =>
 			seq(
-				optional($._ws_horiz),
-				/[^ \:\r\n\u000B\u000C\u0085\u2028\u2029]/,
-				$._permissive_text_inline,
-			),
-		_mode_fallback: $ =>
-			seq(
-				optional($._ws_horiz),
 				/[^ \[\r\n\u000B\u000C\u0085\u2028\u2029]/,
-				$._permissive_text_inline,
+				/[^\:\r\n\u000B\u000C\u0085\u2028\u2029]+/,
 			),
+
+		// MODE
+		mode: $ =>
+			prec.right(
+				seq(
+					'[',
+					optional(field('key', alias($._mode_key, $.identifier))),
+					optional(
+						seq(
+							']',
+							optional(alias($._colon, ':')),
+							optional($._ws_horiz),
+							optional(field('value', $._directive_value)),
+						),
+					),
+				),
+			),
+		_mode_key: $ => /[^\]\r\n\u000B\u000C\u0085\u2028\u2029]+/,
+
+		_directive_value: $ => $._permissive_text_inline,
+		// seq(
+		// 	/[^ \:\r\n\u000B\u000C\u0085\u2028\u2029]/,
+		// 	optional($._ws_horiz),
+		// 	repeat(
 
 		// MODIFIERS
 		modifiers: $ =>
@@ -292,12 +303,29 @@ module.exports = grammar({
 		text: $ => $._text,
 		identifier: $ => $._identifier,
 
-		// use for text that can contain definition prefix characters
+		// use for text that can contain `definition` prefix characters
 		_permissive_text: $ => prec.right(repeat1(choice($._text, '@', '#', '~'))),
+		_permissive_numeric_text: $ =>
+			alias(
+				prec.left(
+					choice($._permissive_text, seq(/[1-9]+/, optional($._permissive_text))),
+				),
+				$.string,
+			),
 		_permissive_text_inline: $ =>
 			seq(
-				alias($._permissive_text, $.text),
-				repeat(choice(alias($._permissive_text, $.text), $.comment)),
+				// $._permissive_numeric_text,
+				// optional($._ws_horiz),
+				repeat1(
+					seq(choice($._permissive_numeric_text, $.comment), optional($._ws_horiz)),
+				),
 			),
+		// _numeric_string_inline: $ =>
+		// 	seq(choice(/[0-9]/, $._permissive_text, $.comment), optional($._ws_horiz)),
+		// _permissive_text_inline: $ =>
+		// 	seq(
+		// 		$._permissive_text,
+		// 		seq(repeat(choice($.number, $._permissive_text, $.comment)), $._ws_horiz),
+		// 	),
 	},
 });
