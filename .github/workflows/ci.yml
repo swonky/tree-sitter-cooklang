@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Tree-sitter parser tests
+        uses: tree-sitter/parser-test-action@v2
+        with:
+          generate: true
+          test-parser: true
+          test-rust: true
+          test-node: true
+          test-python: true
+          test-go: true
+          test-swift: true
+          test-zig: true
+
+      - name: Check scanner
+        run: |
+          clang \
+            -std=c11 \
+            -Wall -Wextra -Wpedantic \
+            -Wconversion -Wsign-conversion \
+            -Wshadow -Wundef \
+            -Werror \
+            -fsyntax-only \
+            src/scanner.c
+
+      - name: Install Clang static analyzer
+        run: sudo apt-get update && sudo apt-get install -y clang-tools
+
+      - name: Static analysis
+        run: |
+          scan-build clang \
+            -std=c11 \
+            -Wall -Wextra \
+            -c src/scanner.c
