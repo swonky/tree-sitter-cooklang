@@ -83,10 +83,10 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 
 | File | Content |
 | ---- | ------- |
-| `canonical.txt`     | adapted from the cooklang-rs `canonical.yml` test file [^5]. |
-| `canonical_cst.txt` | same inputs as above, but shows captured content as a concrete syntax tree. |
-| `additional.txt`    | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
-| `extensions.txt`    | tests covering extended language features [^3]. |
+| [canonical.txt](test/corpus/canonical.txt)            | adapted from the cooklang-rs `canonical.yml` test file [^5].                                              |
+| [canonical_cst.txt](test/corpus/canonical_cst.txt)    | same inputs as above, but shows captured content as a concrete syntax tree.                               |
+| [additional.txt](test/corpus/additional.txt)          | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
+| [extensions.txt](test/corpus/extensions.txt)          | tests covering extended language features [^3].                                                           |
 
 ### Benchmarking
 Benchmarks are also included to measure parser performance, adapted from the benchmarking implementation and corpus in `cooklang-rs` [^6].
