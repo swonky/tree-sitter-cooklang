@@ -24,6 +24,11 @@ enum TokenType {
 	COLON,
 };
 
+enum {
+	PREFIX_HEADING = '=',
+	PREFIX_NOTE = '>',
+};
+
 typedef enum {
 	METADATA_INITIAL = 0,
 	METADATA_BODY,
@@ -39,13 +44,13 @@ typedef struct {
 
 typedef bool (*Asserter)(UnicodeChar);
 
-const UnicodeChar PREFIX_HEADING = '=';
-const UnicodeChar PREFIX_NOTE = '>';
+// const int PREFIX_HEADING = '=';
+// const int PREFIX_NOTE = '>';
 
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 static inline void mark_end(TSLexer *lexer) { lexer->mark_end(lexer); }
-static inline int32_t get_column(TSLexer *lexer)
+static inline unsigned int get_column(TSLexer *lexer)
 {
 	return lexer->get_column(lexer);
 }
@@ -115,15 +120,6 @@ static bool scan_hyphen_token(
 		if (scanner->first && scanner->metadata == METADATA_INITIAL &&
 		    valid_symbols[METADATA_START]) {
 			advance(lexer);
-			//
-			// if (lexer->lookahead == '\r')
-			// 	advance(lexer);
-			//
-			// if (lexer->lookahead != '\n' && !eof(lexer))
-			// 	return false;
-			//
-			// if (lexer->lookahead == '\n')
-			// 	advance(lexer);
 			(void)advance_while(lexer, is_ws_horiz);
 			(void)advance_while(lexer, is_ws_vert);
 			mark_end(lexer);
@@ -324,7 +320,7 @@ static bool scan_text(
 		mark_end(lexer);
 
 		if (!seen) {
-			int pos = get_column(lexer);
+			unsigned int pos = get_column(lexer);
 			if (scan_temperature_suffix(lexer))
 				return false;
 			if (pos != get_column(lexer)) {
@@ -442,24 +438,6 @@ static bool scan_heading(TSLexer *lexer)
 		return false;
 	while (!eof(lexer) && lexer->lookahead == '=')
 		advance(lexer);
-	mark_end(lexer);
-	return true;
-}
-
-static bool scan_block_line(TSLexer *lexer, Scanner *scanner)
-{
-	while (!eof(lexer) && !is_ws_vert(lexer->lookahead)) {
-		if (lexer->lookahead == '-') {
-			mark_end(lexer);
-			advance(lexer);
-			if (lexer->lookahead == ']') {
-				scanner->in_comment = false;
-				return true;
-			}
-			continue;
-		}
-		advance(lexer);
-	}
 	mark_end(lexer);
 	return true;
 }
