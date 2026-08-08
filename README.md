@@ -7,8 +7,14 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 
 ## Contents
 - [Features](#benchmarks)
+    - [Extended syntax](#extended-syntax)
+    - [Deviations from specification](#deviations-from-specification)
 - [Development](#development)
+    - [Testing](#testing)
+    - [Benchmarking](#benchmarking)
 - [Example](#example)
+    - [Syntax highlighting](#syntax-highlighting)
+    - [Concrete syntax tree](#concrete-syntax-tree)
 - [References](#references)
 
 ## Features
@@ -22,7 +28,7 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 > [!TIP]
 > [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
 
-### Supported extended syntax 
+### Extended syntax 
 The following extended syntax features [^3] are currently supported:
 
 - [X] Modes
@@ -75,6 +81,7 @@ cargo bench --manifest-path benchmark/Cargo.toml
 ```
 ## Example
 
+### Syntax highlighting 
 ![Syntax highlighting example](docs/example.svg)
 
 ### Concrete syntax tree
