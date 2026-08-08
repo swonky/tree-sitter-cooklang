@@ -29,14 +29,8 @@ enum {
 	PREFIX_NOTE = '>',
 };
 
-typedef enum {
-	METADATA_INITIAL = 0,
-	METADATA_BODY,
-	METADATA_DONE,
-} MetadataState;
-
 typedef struct {
-	MetadataState metadata;
+	bool in_metadata;
 	bool first;
 	bool found_square_bracket;
 } Scanner;
@@ -113,21 +107,20 @@ static bool scan_hyphen_token(
 	advance(lexer);
 
 	if (lexer->lookahead == '-' && is_line_start) {
-		if (scanner->first && scanner->metadata == METADATA_INITIAL &&
+		if (!scanner->in_metadata && scanner->first &&
 		    valid_symbols[METADATA_START]) {
 			advance(lexer);
 			(void)advance_while(lexer, is_ws_horiz);
 			(void)advance_while(lexer, is_ws_vert);
 			mark_end(lexer);
-			scanner->metadata = METADATA_BODY;
+			scanner->in_metadata = true;
 			lexer->result_symbol = METADATA_START;
 			return true;
 		}
-		if (scanner->metadata == METADATA_BODY &&
-		    valid_symbols[METADATA_END]) {
+		if (scanner->in_metadata && valid_symbols[METADATA_END]) {
 			advance(lexer);
 			mark_end(lexer);
-			scanner->metadata = METADATA_DONE;
+			scanner->in_metadata = false;
 			lexer->result_symbol = METADATA_END;
 			return true;
 		}
@@ -548,9 +541,9 @@ static bool scan_identifier(TSLexer *lexer)
 void *tree_sitter_cooklang_external_scanner_create(void)
 {
 	Scanner *scanner = calloc(1, sizeof(Scanner));
-	scanner->metadata = METADATA_INITIAL;
-	scanner->found_square_bracket = false;
+	scanner->in_metadata = false;
 	scanner->first = true;
+	scanner->found_square_bracket = false;
 	return scanner;
 }
 
@@ -563,7 +556,7 @@ unsigned tree_sitter_cooklang_external_scanner_serialize(
     void *payload, char *buffer)
 {
 	Scanner *scanner = payload;
-	buffer[0] = (char)scanner->metadata;
+	buffer[0] = (char)scanner->in_metadata;
 	buffer[1] = (char)scanner->first;
 	return 2;
 }
@@ -572,12 +565,16 @@ void tree_sitter_cooklang_external_scanner_deserialize(
     void *payload, const char *buffer, unsigned length)
 {
 	Scanner *scanner = payload;
-	if (length == 0) {
-		scanner->metadata = METADATA_INITIAL;
-		scanner->found_square_bracket = false;
+
+	scanner->found_square_bracket = false;
+
+	if (length < 2) {
+		scanner->in_metadata = false;
+		scanner->first = true;
 		return;
 	}
-	scanner->metadata = (MetadataState)buffer[0];
+
+	scanner->in_metadata = (bool)buffer[0];
 	scanner->first = (bool)buffer[1];
 }
 
@@ -593,8 +590,7 @@ static bool dispatch(
 	    scan_hyphen_token(lexer, scanner, valid_symbols)) {
 		return true;
 	}
-	if (valid_symbols[METADATA_CONTENT] &&
-	    scanner->metadata == METADATA_BODY &&
+	if (valid_symbols[METADATA_CONTENT] && scanner->in_metadata &&
 	    scan_metadata_content(lexer)) {
 		lexer->result_symbol = METADATA_CONTENT;
 		return true;
