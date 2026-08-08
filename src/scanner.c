@@ -37,7 +37,6 @@ typedef enum {
 
 typedef struct {
 	MetadataState metadata;
-	bool in_comment;
 	bool first;
 	bool found_square_bracket;
 } Scanner;
@@ -550,7 +549,6 @@ void *tree_sitter_cooklang_external_scanner_create(void)
 {
 	Scanner *scanner = calloc(1, sizeof(Scanner));
 	scanner->metadata = METADATA_INITIAL;
-	scanner->in_comment = false;
 	scanner->found_square_bracket = false;
 	scanner->first = true;
 	return scanner;
@@ -566,9 +564,8 @@ unsigned tree_sitter_cooklang_external_scanner_serialize(
 {
 	Scanner *scanner = payload;
 	buffer[0] = (char)scanner->metadata;
-	buffer[1] = (char)scanner->in_comment;
-	buffer[2] = (char)scanner->first;
-	return 3;
+	buffer[1] = (char)scanner->first;
+	return 2;
 }
 
 void tree_sitter_cooklang_external_scanner_deserialize(
@@ -577,13 +574,11 @@ void tree_sitter_cooklang_external_scanner_deserialize(
 	Scanner *scanner = payload;
 	if (length == 0) {
 		scanner->metadata = METADATA_INITIAL;
-		scanner->in_comment = false;
 		scanner->found_square_bracket = false;
 		return;
 	}
 	scanner->metadata = (MetadataState)buffer[0];
-	scanner->in_comment = (bool)buffer[1];
-	scanner->first = (bool)buffer[2];
+	scanner->first = (bool)buffer[1];
 }
 
 static bool dispatch(
