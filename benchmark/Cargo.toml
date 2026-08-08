@@ -1,0 +1,15 @@
+[package]
+name = "tree-sitter-cooklang-bench"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+tree-sitter = "0.26.6"
+tree-sitter-cooklang = { path = ".." }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "parse"
+harness = false
