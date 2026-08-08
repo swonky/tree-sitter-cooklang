@@ -410,11 +410,8 @@ static bool scan_newline(TSLexer *lexer, const bool *valid_symbols)
 		advance(lexer);
 	}
 	mark_end(lexer);
-	if (valid_symbols[NEWLINE]) {
-		lexer->result_symbol = NEWLINE;
-		return true;
-	}
-	return false;
+	lexer->result_symbol = NEWLINE;
+	return true;
 }
 
 static bool scan_heading(TSLexer *lexer)
