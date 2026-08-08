@@ -26,6 +26,7 @@
 		],
 		"links": {
 			"repository": "https://github.com/swonky/tree-sitter-cooklang"
+			"funding": "https://github.com/swonky/tree-sitter-cooklang"
 		}
 	},
 	"bindings": {
