@@ -7,33 +7,76 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const WS_VERT = String.raw`\u000A-\u000D\u0085\u2028\u2029`;
+const WS_HORIZ = /[\t\p{Zs}]+/u;
+
+const escapeChar = (c) =>
+	`\\x${c.codePointAt(0).toString(16).padStart(2, "0")}`;
+
+const charClassExclude = (...chars) =>
+	String.raw`[^${chars
+		.map((c) => `\\x${c.codePointAt(0).toString(16).padStart(2, "0")}`)
+		.join("")}${WS_VERT}]`;
+
+const charExclude = (...chars) => new RegExp(charClassExclude(...chars));
+
+const strExclude = (...chars) => new RegExp(`${charClassExclude(...chars)}+`);
+
+const ws_suffix = (token) => seq(token, optional(WS_HORIZ));
+
 const INTEGER = /[1-9][0-9]*/;
 const DECIMAL = /(?:0\.[0-9]+|[1-9][0-9]*\.[0-9]+)/;
 const DIGIT = /[0-9]/;
 
-const WS_HORIZ = /[\t\p{Zs}]+/u;
-const TEXT_COMMENT = /[^\u000A-\u000D\u0085\u2028\u2029]+/;
-const STRING =
-	/[^1-9\.-\/\u000A-\u000D\u0085\u2028\u2029%}][^\u000A-\u000D\u0085\u2028\u2029%}]+/;
+const TEXT_COMMENT = new RegExp(`[^${WS_VERT}]+`);
+const STRING = new RegExp(`[^1-9.\\-/${WS_VERT}%}][^${WS_VERT}%}]+`);
 
 const DEGREE = /(?:[°º˚]|[Dd]eg(?:ree)?s?)/;
 const CELSIUS = /(?:[Cc℃](?:elsius)?)/;
 const FAHRENHEIT = /(?:[Ff℉](?:ahrenheit)?)/;
 
 const NOTE = { prefix: /[>][^>]/ };
-const PREFIX = { ingredient: /[@]/, cookware: '#', timer: '~' };
-const MODIFIERS = { hidden: '-', optional: '?', reference: '&', new: '+', recipe: '@' };
-const DELIMITERS = { fractional: '/', range: '-', alias: '|' };
-const PAREN = { open: '(', close: ')', content: token(/[^\r\n)]+/) };
-const BRACE = { open: '{', close: '}', content: token(/[^\r\n}]+/) };
 
-const REF_MODS = choice('~', '=');
+const PREFIX = {
+	ingredient: "@",
+	cookware: "#",
+	timer: "~",
+	directive: ">>",
+	note: ">",
+};
+const MODIFIERS = {
+	hidden: "-",
+	optional: "?",
+	reference: "&",
+	new: "+",
+	recipe: "@",
+};
+const DELIMITERS = {
+	amount: "%",
+	fractional: "/",
+	range: "-",
+	alias: "|",
+	directive: ":",
+};
+const PAREN = { open: "(", close: ")", content: strExclude(")") };
+const BRACE = { open: "{", close: "}", content: strExclude("}") };
+const SQUARE = {
+	open: "[",
+	close: "]",
+	content: strExclude("]"),
+};
+
+const METADATA_KEY = token(seq(charExclude(" ", "["), strExclude(":")));
+
+const REF_MODS = { relative: "~", section: "=" };
+
+const UNIT = /[^\r\n}%\-/ ]/;
 
 module.exports = grammar({
-	name: 'cooklang',
-	supertypes: $ => [$.block, $.definition, $.number, $.modifiers],
+	name: "cooklang",
+	supertypes: ($) => [$.block, $.definition, $.number, $.modifiers],
 
-	externals: $ => [
+	externals: ($) => [
 		$.metadata_start,
 		$.metadata_content,
 		$.metadata_end,
@@ -53,86 +96,103 @@ module.exports = grammar({
 		$._colon,
 	],
 
-	extras: $ => [],
+	// must be defined empty to override default whitespace handling.
+	extras: ($) => [],
 	rules: {
-		recipe: $ =>
+		recipe: ($) =>
 			seq(
 				optional(seq($.frontmatter, $._newline)),
 				optional($._padding),
 				optional($._body),
 				repeat($.section),
 			),
-		frontmatter: $ =>
-			seq($.metadata_start, field('content', $.metadata_content), $.metadata_end),
-		section: $ => seq($.heading, $._padding, optional($._body)),
+		frontmatter: ($) =>
+			seq(
+				$.metadata_start,
+				field("content", $.metadata_content),
+				$.metadata_end,
+			),
 
-		heading: $ =>
+		// SECTIONS
+		section: ($) => seq($.heading, $._padding, optional($._body)),
+
+		heading: ($) =>
 			seq(
 				$._heading_start,
 				optional($._ws_horiz),
 				optional(
 					seq(
-						field('name', alias($._heading_text, $.text)),
+						field("name", alias($._heading_text, $.text)),
 						optional($._ws_horiz),
 						optional($._permissive_text),
 					),
 				),
 				optional($.comment),
 			),
-		_body: $ =>
+		_body: ($) =>
 			seq(
 				seq($.block, repeat(seq($._block_seperator, $.block))),
 				optional($._block_seperator),
 			),
-		_padding: $ => repeat1(choice($._newline, $.comment_line, $.directive)),
 
-		block: $ => choice($.note, $.step),
-		note: $ =>
+		_padding: ($) => repeat1(choice($._newline, $.comment_line, $.directive)),
+		_interblock_lines: ($) => choice($.comment_line, $.directive),
+		_block_seperator: ($) =>
+			seq(
+				choice(
+					seq(choice($._interblock_lines, $._empty_line), repeat($._newline)),
+				),
+				repeat(seq($._interblock_lines, repeat($._newline))),
+			),
+
+		block: ($) => choice($.note, $.step),
+
+		// NOTE
+		note: ($) =>
 			repeat1(
 				prec.left(
 					seq(
-						alias(NOTE.prefix, '>'),
+						alias(NOTE.prefix, PREFIX.note),
 						optional($._note_line),
 						repeat(seq($._newline, $._note_line)),
 						$._newline,
 					),
 				),
 			),
-		_note_line: $ =>
+		_note_line: ($) =>
 			prec.left(repeat1(choice(alias($._permissive_text, $.text), $.comment))),
-		step: $ =>
-			prec.left(seq($._step_line, repeat(seq($._newline, $._step_line)), $._newline)),
-		_step_line: $ =>
-			seq(
-				$._step_content,
-				repeat(choice($._step_content, $.comment)),
-				// optional(WS_HORIZ),
-			),
-		_step_content: $ => choice($.definition, $.text, $.temperature, $._ws_horiz),
-		_ws_horiz: $ => token(WS_HORIZ),
-		_block_seperator: $ =>
-			seq(
-				choice(seq(choice($._interblock_lines, $._empty_line), repeat($._newline))),
-				repeat(seq($._interblock_lines, repeat($._newline))),
-			),
-		_interblock_lines: $ => choice($.comment_line, $.directive),
-		definition: $ => choice($.ingredient, $.cookware, $.timer),
-		ingredient: $ =>
-			seq($._ingredient_prefix, repeat($.modifiers), $._ingredient_attributes),
 
-		_ingredient_prefix: $ => token(PREFIX.ingredient),
+		// STEP
+		step: ($) =>
+			prec.left(
+				seq($._step_line, repeat(seq($._newline, $._step_line)), $._newline),
+			),
+		_step_line: ($) =>
+			seq($._step_content, repeat(choice($._step_content, $.comment))),
+		_step_content: ($) =>
+			choice($.definition, $.text, $.temperature, $._ws_horiz),
 
-		_ingredient_attributes: $ =>
+		definition: ($) => choice($.ingredient, $.cookware, $.timer),
+
+		// INGREDIENT
+		ingredient: ($) =>
+			seq(/[@]/, repeat($.modifiers), $._ingredient_attributes),
+
+		_ingredient_attributes: ($) =>
 			seq(
 				choice(
 					seq(
-						'&',
+						MODIFIERS.reference,
 						choice(
-							seq($._reference, repeat($.modifiers), field('name', $.identifier)),
-							seq(repeat($.modifiers), field('target', $.identifier)),
+							seq(
+								$._reference,
+								repeat($.modifiers),
+								field("name", $.identifier),
+							),
+							seq(repeat($.modifiers), field("target", $.identifier)),
 						),
 					),
-					field('name', $.identifier),
+					field("name", $.identifier),
 				),
 				optional($._alias),
 				optional(
@@ -142,190 +202,219 @@ module.exports = grammar({
 						choice(
 							alias($._close_brace, BRACE.close),
 							seq(
-								alias($._close_brace_open_paren, '}('),
-								field('preparation', alias(PAREN.content, $.string)),
+								alias($._close_brace_open_paren, "}("),
+								field("preparation", alias(PAREN.content, $.string)),
 								PAREN.close,
 							),
 						),
 					),
 				),
 			),
-		cookware: $ =>
+
+		// TIMER
+		timer: ($) =>
+			seq(
+				$._timer_prefix,
+				optional(field("name", $.identifier)),
+				$._amount_standalone,
+			),
+		_timer_prefix: ($) => token(PREFIX.timer),
+
+		// COOKWARE
+		cookware: ($) =>
 			seq(
 				$._cookware_prefix,
-				field('name', $.identifier),
+				field("name", $.identifier),
 				optional($._alias),
 				optional($._amount_standalone),
 			),
-		_cookware_prefix: $ => token(PREFIX.cookware),
-		_alias: $ => seq(DELIMITERS.alias, field('alias', $.identifier)),
-		timer: $ =>
-			seq($._timer_prefix, optional(field('name', $.identifier)), $._amount_standalone),
-		_timer_prefix: $ => token(PREFIX.timer),
+		_cookware_prefix: ($) => token(PREFIX.cookware),
 
-		_amount_standalone: $ =>
+		// INGREDIENT AMOUNTS
+		_amount_standalone: ($) =>
 			seq(
 				alias($._open_brace, BRACE.open),
 				optional($._amount_inner),
 				alias($._close_brace, BRACE.close),
 			),
-		_amount_inner: $ => prec(10, choice($._numeric_amount, $._string_amount, WS_HORIZ)),
-		_numeric_amount: $ =>
+		_amount_inner: ($) =>
+			prec(10, choice($._numeric_amount, $._string_amount, $._ws_horiz)),
+		_numeric_amount: ($) =>
 			seq(
 				field(
-					'quantity',
-					seq(optional(WS_HORIZ), prec.left(choice($.number, $.fractional, $.range))),
+					"quantity",
+					seq(
+						optional($._ws_horiz),
+						prec.left(choice($.number, $.fractional, $.range)),
+					),
 				),
 				optional(
 					seq(
-						optional(WS_HORIZ),
-						optional('%'),
-						optional(WS_HORIZ),
-						field('unit', $.unit),
+						optional($._ws_horiz),
+						optional(DELIMITERS.amount),
+						optional($._ws_horiz),
+						field("unit", $.unit),
 					),
 				),
 			),
-		_string_amount: $ =>
+		_string_amount: ($) =>
 			seq(
-				field('quantity', $.string),
-				optional(seq('%', optional(WS_HORIZ), field('unit', $.unit))),
+				field("quantity", $.string),
+				optional(
+					seq(DELIMITERS.amount, optional($._ws_horiz), field("unit", $.unit)),
+				),
 			),
-		unit: $ => token(seq(/[^\r\n}%\-/ ]/, optional(BRACE.content))),
+		unit: ($) => token(seq(UNIT, optional(BRACE.content))),
 
 		// TEMPERATURE
-		temperature: $ =>
+		temperature: ($) =>
 			prec.right(
 				seq(
-					field('quantity', $.integer),
-					optional(WS_HORIZ),
+					field("quantity", $.integer),
+					optional($._ws_horiz),
 					optional(DEGREE),
-					optional(WS_HORIZ),
-					optional(field('scale', $.scale)),
+					optional($._ws_horiz),
+					optional(field("scale", $.scale)),
 				),
 			),
-		scale: $ => token(choice(CELSIUS, FAHRENHEIT)),
+		scale: ($) => token(choice(CELSIUS, FAHRENHEIT)),
 
 		// STRUCTURED QUANTITY
-		range: $ =>
+		range: ($) =>
 			seq(
-				field('left', $.number),
-				optional(WS_HORIZ),
+				field("left", $.number),
+				optional($._ws_horiz),
 				DELIMITERS.range,
-				optional(WS_HORIZ),
-				field('right', $.number),
+				optional($._ws_horiz),
+				field("right", $.number),
 			),
-		fractional: $ =>
+		fractional: ($) =>
 			seq(
-				field('left', $.number),
-				optional(WS_HORIZ),
+				field("left", $.number),
+				optional($._ws_horiz),
 				DELIMITERS.fractional,
-				optional(WS_HORIZ),
-				field('right', $.number),
+				optional($._ws_horiz),
+				field("right", $.number),
 			),
 
-		directive: $ =>
-			prec.left(seq('>>', optional($._ws_horiz), choice($.metadata, $.mode), $._newline)),
+		// DIRECTIVE (METADATA/MODE)
+		directive: ($) =>
+			prec.left(
+				seq(
+					PREFIX.directive,
+					optional($._ws_horiz),
+					choice($.metadata, $.mode),
+					$._newline,
+				),
+			),
 
-		// LEGACY METADATA SYNTAX
-		metadata: $ =>
+		_directive_delimiter: ($) => alias($._colon, DELIMITERS.directive),
+		_directive_value: ($) => field("value", $._permissive_text_inline),
+
+		// METADATA DIRECTIVE
+		metadata: ($) =>
 			prec.right(
 				seq(
-					field('key', alias($._metadata_key, $.identifier)),
+					field("key", alias(METADATA_KEY, $.identifier)),
 					optional(
 						seq(
-							alias($._colon, ':'),
+							$._directive_delimiter,
 							optional($._ws_horiz),
-							field('value', $._directive_value),
+							optional($._directive_value),
 						),
 					),
 				),
 			),
-		_metadata_key: $ =>
-			seq(
-				/[^ \[\r\n\u000B\u000C\u0085\u2028\u2029]/,
-				/[^\:\r\n\u000B\u000C\u0085\u2028\u2029]+/,
-			),
 
-		// MODE
-		mode: $ =>
+		// MODE DIRECTIVE
+		mode: ($) =>
 			prec.right(
 				seq(
-					'[',
-					optional(field('key', alias($._mode_key, $.identifier))),
+					SQUARE.open,
+					optional(field("key", alias(SQUARE.content, $.identifier))),
 					optional(
 						seq(
-							']',
-							optional(alias($._colon, ':')),
+							SQUARE.close,
+							optional($._directive_delimiter),
 							optional($._ws_horiz),
-							optional(field('value', $._directive_value)),
+							optional($._directive_value),
 						),
 					),
 				),
 			),
-		_mode_key: $ => /[^\]\r\n\u000B\u000C\u0085\u2028\u2029]+/,
-
-		_directive_value: $ => $._permissive_text_inline,
-		// seq(
-		// 	/[^ \:\r\n\u000B\u000C\u0085\u2028\u2029]/,
-		// 	optional($._ws_horiz),
-		// 	repeat(
 
 		// MODIFIERS
-		modifiers: $ =>
-			choice(MODIFIERS.recipe, MODIFIERS.new, MODIFIERS.optional, MODIFIERS.hidden),
+		modifiers: ($) =>
+			choice(
+				MODIFIERS.recipe,
+				MODIFIERS.new,
+				MODIFIERS.optional,
+				MODIFIERS.hidden,
+			),
 
 		// INTERMEDIATE PREPARATIONS
-		_reference: $ =>
+		_reference: ($) =>
 			seq(
-				alias($._open_paren, '('),
+				alias($._open_paren, PAREN.open),
 				optional($._ws_horiz),
 				optional(choice($.step_reference, $.section_reference)),
-				')',
+				PAREN.close,
 			),
 
-		step_reference: $ => seq(choice($.relative_reference, $.absolute_reference)),
-		section_reference: $ =>
-			seq('=', optional($._ws_horiz), choice($.relative_reference, $.absolute_reference)),
-		relative_reference: $ =>
+		step_reference: ($) =>
+			seq(choice($.relative_reference, $.absolute_reference)),
+		section_reference: ($) =>
 			seq(
-				'~',
+				REF_MODS.section,
 				optional($._ws_horiz),
-				field('relative_target', $.integer),
+				choice($.relative_reference, $.absolute_reference),
+			),
+		relative_reference: ($) =>
+			seq(
+				REF_MODS.relative,
+				optional($._ws_horiz),
+				field("target", $.integer),
 				optional($._ws_horiz),
 			),
-		absolute_reference: $ => seq(field('target', $.integer), optional($._ws_horiz)),
+		absolute_reference: ($) =>
+			seq(field("target", $.integer), optional($._ws_horiz)),
+
+		// COMPONENT ALIAS
+		_alias: ($) => seq(DELIMITERS.alias, field("alias", $.identifier)),
 
 		// PRIMITIVES
-		number: $ => prec.left(choice($.integer, $.decimal)),
-		decimal: $ => token(DECIMAL),
-		integer: $ => token(INTEGER),
-		string: $ => STRING,
-		text: $ => $._text,
-		identifier: $ => $._identifier,
+		number: ($) => prec.left(choice($.integer, $.decimal)),
+		decimal: ($) => token(DECIMAL),
+		integer: ($) => token(INTEGER),
+		string: ($) => STRING,
+		text: ($) => $._text,
+		identifier: ($) => $._identifier,
 
-		// use for text that can contain `definition` prefix characters
-		_permissive_text: $ => prec.right(repeat1(choice($._text, '@', '#', '~'))),
-		_permissive_numeric_text: $ =>
+		_ws_horiz: ($) => token(WS_HORIZ),
+		_permissive_text: ($) =>
+			prec.right(
+				repeat1(
+					choice($._text, PREFIX.ingredient, PREFIX.cookware, PREFIX.timer),
+				),
+			),
+		_permissive_numeric_text: ($) =>
 			alias(
 				prec.left(
-					choice($._permissive_text, seq(/[1-9]+/, optional($._permissive_text))),
+					choice(
+						$._permissive_text,
+						seq(/[1-9]+/, optional($._permissive_text)),
+					),
 				),
 				$.string,
 			),
-		_permissive_text_inline: $ =>
+		_permissive_text_inline: ($) =>
 			seq(
-				// $._permissive_numeric_text,
-				// optional($._ws_horiz),
 				repeat1(
-					seq(choice($._permissive_numeric_text, $.comment), optional($._ws_horiz)),
+					seq(
+						choice($._permissive_numeric_text, $.comment),
+						optional($._ws_horiz),
+					),
 				),
 			),
-		// _numeric_string_inline: $ =>
-		// 	seq(choice(/[0-9]/, $._permissive_text, $.comment), optional($._ws_horiz)),
-		// _permissive_text_inline: $ =>
-		// 	seq(
-		// 		$._permissive_text,
-		// 		seq(repeat(choice($.number, $._permissive_text, $.comment)), $._ws_horiz),
-		// 	),
 	},
 });
