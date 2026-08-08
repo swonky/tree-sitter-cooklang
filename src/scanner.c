@@ -32,7 +32,7 @@ enum {
 typedef struct {
 	bool in_metadata;
 	bool first;
-	bool found_square_bracket;
+	bool saw_square;
 } Scanner;
 
 typedef bool (*Asserter)(UnicodeChar);
@@ -51,7 +51,7 @@ static inline bool is_posnum(UnicodeChar c) { return (c >= '1' && c <= '9'); }
 static inline bool is_upper(UnicodeChar c) { return (c >= 'A' && c <= 'Z'); }
 static inline bool is_lower(UnicodeChar c) { return (c >= 'a' && c <= 'z'); }
 
-static inline bool is_link_prefix(UnicodeChar c)
+static inline bool is_def_prefix(UnicodeChar c)
 {
 	return c == '@' || c == '#' || c == '~';
 }
@@ -133,7 +133,6 @@ static bool scan_hyphen_token(
 		lexer->result_symbol = COMMENT_LINE;
 		return true;
 	}
-
 	if (valid_symbols[COMMENT]) {
 		while (!eof(lexer) && !is_ws_vert(lexer->lookahead))
 			advance(lexer);
@@ -149,19 +148,14 @@ static bool match_word(TSLexer *lexer, const char *s)
 	while (*s) {
 		if (eof(lexer))
 			return false;
-
 		UnicodeChar c = lexer->lookahead;
 		char expected = *s++;
-
 		if (c >= 'A' && c <= 'Z')
 			c += 'a' - 'A';
-
 		if (c != expected)
 			return false;
-
 		advance(lexer);
 	}
-
 	return true;
 }
 
@@ -215,7 +209,7 @@ static bool scan_heading_text(TSLexer *lexer, Scanner *scanner)
 			mark_end(lexer);
 			return seen;
 		case '[':
-			scanner->found_square_bracket = true;
+			scanner->saw_square = true;
 			/* fall through */
 		case '-':
 			mark_end(lexer);
@@ -291,7 +285,7 @@ static bool scan_text(
 	lexer->result_symbol = TEXT;
 
 	while (!eof(lexer)) {
-		scanner->found_square_bracket = lexer->lookahead == '[';
+		scanner->saw_square = lexer->lookahead == '[';
 		if (escape) {
 			advance(lexer);
 			mark_end(lexer);
@@ -331,7 +325,7 @@ static bool scan_text(
 		if (is_ws_vert(c))
 			return seen;
 
-		if (is_link_prefix(c)) {
+		if (is_def_prefix(c)) {
 			advance(lexer);
 			bool no_name = lexer->lookahead == '{';
 			if (c == '~') {
@@ -435,7 +429,7 @@ static bool scan_heading(TSLexer *lexer)
 
 static bool scan_block_start(TSLexer *lexer, Scanner *scanner)
 {
-	if (scanner->found_square_bracket && lexer->lookahead == '-')
+	if (scanner->saw_square && lexer->lookahead == '-')
 		return true;
 	if (lexer->lookahead == '[') {
 		advance(lexer);
@@ -447,14 +441,14 @@ static bool scan_block_start(TSLexer *lexer, Scanner *scanner)
 static bool scan_block(
     TSLexer *lexer, Scanner *scanner, const bool *valid_symbols)
 {
-	if (!scanner->found_square_bracket) {
+	if (!scanner->saw_square) {
 		(void)skip_while(lexer, is_ws_horiz);
 		(void)skip_while(lexer, is_ws_vert);
 	}
 
 	bool is_line_start =
-	    (scanner->found_square_bracket && lexer->get_column(lexer) == 1) ||
-	    (!scanner->found_square_bracket && lexer->get_column(lexer) == 0);
+	    (scanner->saw_square && lexer->get_column(lexer) == 1) ||
+	    (!scanner->saw_square && lexer->get_column(lexer) == 0);
 
 	if (!scan_block_start(lexer, scanner))
 		return false;
@@ -543,7 +537,7 @@ void *tree_sitter_cooklang_external_scanner_create(void)
 	Scanner *scanner = calloc(1, sizeof(Scanner));
 	scanner->in_metadata = false;
 	scanner->first = true;
-	scanner->found_square_bracket = false;
+	scanner->saw_square = false;
 	return scanner;
 }
 
@@ -558,6 +552,10 @@ unsigned tree_sitter_cooklang_external_scanner_serialize(
 	Scanner *scanner = payload;
 	buffer[0] = (char)scanner->in_metadata;
 	buffer[1] = (char)scanner->first;
+
+	// Intentionally not serialised: saw_square is transient.
+	(void)scanner->saw_square;
+
 	return 2;
 }
 
@@ -566,7 +564,8 @@ void tree_sitter_cooklang_external_scanner_deserialize(
 {
 	Scanner *scanner = payload;
 
-	scanner->found_square_bracket = false;
+	// Intentionally not de-serialised: saw_square is transient.
+	scanner->saw_square = false;
 
 	if (length < 2) {
 		scanner->in_metadata = false;
@@ -623,7 +622,8 @@ bool tree_sitter_cooklang_external_scanner_scan(
 {
 	Scanner *scanner = payload;
 	if (dispatch(lexer, scanner, valid_symbols)) {
-		scanner->first = false;
+		if (scanner->first && lexer->result_symbol != NEWLINE)
+			scanner->first = false;
 		return true;
 	}
 	return false;
