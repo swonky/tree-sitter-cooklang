@@ -1,4 +1,10 @@
 build/
+ignore
+
+# Rust
+*/target
+*/criterion
+
+# Formatting
 .clang-format
 .prettierrc.json
-ignore
