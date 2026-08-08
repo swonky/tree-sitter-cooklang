@@ -68,7 +68,7 @@ Bindings are available under [./bindings](bindings/) for C, Go, Java, JavaScript
 ## Development
 
 ### Testing [^4]
-The repository contains a several test suites located within [./test/corpus].
+The repository contains a several test suites located within [./test/corpus](test/corpus/).
 
 > [!TIP]
 > Running the tests requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
