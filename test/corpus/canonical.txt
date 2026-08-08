@@ -741,6 +741,10 @@ Preheat the oven to 200℃/Fan 180°C.
     (temperature
       quantity: (integer)
       scale: (scale))
+    (text)
+    (temperature
+      quantity: (integer)
+      scale: (scale))
     (text)))
 
 ========
