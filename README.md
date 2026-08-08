@@ -19,9 +19,10 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 
 ## Features
 - Implements the current Cooklang language base specification [^2].
-- Supports the documented Cooklang extensions [^3] listed below.
-- Unicode-aware parsing.
-- Query files for syntax highlighting, folding, and YAML frontmatter injection.
+- Supports the documented **Cooklang extensions** [^3] listed below.
+- **Unicode-aware** parsing.
+- Query files for **syntax highlighting**, **code folding**, and **YAML frontmatter injection**.
+- **Hierarchical sections**, with content assigned as children of the corresponding section headings.
 - Structured numeric quantity tokens (`integer`, `decimal`, `fractional`, `range`).
 - Comprehensive test corpus covering canonical recipes and extensions.
 
