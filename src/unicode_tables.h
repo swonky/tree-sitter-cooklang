@@ -282,6 +282,8 @@ static inline bool is_degree_symbol(UnicodeChar c)
 	case 0x00B0: // °
 	case 0x00BA: // º
 	case 0x02DA: // ˚
+	case 0x2103: // ℃
+	case 0x2109: // ℉
 		return true;
 	default:
 		return false;
