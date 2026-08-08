@@ -9,9 +9,11 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 > [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
 
 ## Contents
-- [Features](#benchmarks)
+- [Features](#features)
+    - [Base syntax](#base-syntax)
     - [Extended syntax](#extended-syntax)
-    - [Deviations from specification](#deviations-from-specification)
+    - [Scheme files](#scheme-files)
+    - [Language bindings](#language-bindings)
 - [Development](#development)
     - [Testing](#testing)
     - [Benchmarking](#benchmarking)
@@ -40,7 +42,7 @@ Aside from comments, this grammar is intentionally more permissive than the _coo
 Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
 
 ### Extended syntax 
-The following documented [^3] Cooklang language extensions are currently supported:
+The following Cooklang language extensions[^3] are currently supported:
 
 - **Modes**
 - **Ingredient modifiers** (`@`, `&`, `?`, `+`, `-`)
@@ -51,8 +53,8 @@ The following documented [^3] Cooklang language extensions are currently support
 - **Timer requires time** (rendered as plain text)
 - **Temperature** (unicode-aware symbol parsing and some plain English expressions)
 
-### Query scheme files
-The following scheme files[^8] are included in [./queries] to facilitate editor integrations and syntax highlight.
+### Scheme files
+The following scheme files[^8] are included in [./queries](queries/) to facilitate editor integrations and syntax highlight.
 
 | File | Content |
 | ---- | ------- |
@@ -61,7 +63,7 @@ The following scheme files[^8] are included in [./queries] to facilitate editor 
 | [injections.scm](queries/injections.scm)  | YAML[^7] language injection        |
 
 ### Language bindings
-Bindings are available under [./bindings] for C, Go, Java, JavaScript, Python, Rust, Swift, and Zig.
+Bindings are available under [./bindings](bindings/) for C, Go, Java, JavaScript, Python, Rust, Swift, and Zig.
 
 ## Development
 
@@ -71,7 +73,7 @@ The repository contains a several test suites located within [./test/corpus].
 > [!TIP]
 > Running the tests requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
 
-```bash
+```sh
 # runs all tests in the corpus
 tree-sitter test
 
@@ -93,7 +95,7 @@ Benchmarks are also included to measure parser performance, adapted from the ben
 > Running the benchmarks requires [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 Run them with:
-```bash
+```sh
 cargo bench --manifest-path benchmark/Cargo.toml
 ```
 ## Example
