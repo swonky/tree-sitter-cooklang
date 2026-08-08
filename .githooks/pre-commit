@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+VERSION_FILE=".tree-sitter-version"
+
+if [ ! -s "$VERSION_FILE" ]; then
+    echo "warning: $VERSION_FILE is missing or empty" >&2
+    exit 1
+fi
+
+if ! command -v tree-sitter >/dev/null 2>&1; then
+    echo "warning: tree-sitter command not found on PATH" >&2
+    exit 1
+fi
+
+required_version=$(cat "$VERSION_FILE")
+current_version=$(tree-sitter --version | sed 's/^tree-sitter //')
+
+if [ "$current_version" != "$required_version" ]; then
+    echo "warning: tree-sitter version mismatch" >&2
+    echo "  required: $required_version" >&2
+    echo "  current:  $current_version" >&2
+    exit 1
+fi
+
+tree-sitter generate

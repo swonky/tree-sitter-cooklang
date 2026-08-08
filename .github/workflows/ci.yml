@@ -7,12 +7,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Read tree-sitter version
+        id: tree-sitter-version
+        run: |
+          test -s .tree-sitter-version
+          echo "version=$(cat .tree-sitter-version)" >> "$GITHUB_OUTPUT"
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: v${{ steps.tree-sitter-version.outputs.version }}
       - name: Tree-sitter parser tests
         uses: tree-sitter/parser-test-action@v3
         with:
