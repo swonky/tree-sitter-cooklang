@@ -14,7 +14,7 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
       - name: Tree-sitter parser tests
-        uses: tree-sitter/parser-test-action@v2
+        uses: tree-sitter/parser-test-action@v3
         with:
           generate: true
           test-parser: true
@@ -23,7 +23,7 @@ jobs:
           test-python: true
           test-go: true
           test-swift: true
-          # test-zig: true
+          test-zig: true
       - name: Check scanner
         run: |
           clang \
