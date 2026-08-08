@@ -44,9 +44,6 @@ typedef struct {
 
 typedef bool (*Asserter)(UnicodeChar);
 
-// const int PREFIX_HEADING = '=';
-// const int PREFIX_NOTE = '>';
-
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 static inline void mark_end(TSLexer *lexer) { lexer->mark_end(lexer); }
@@ -227,12 +224,14 @@ static bool scan_heading_text(TSLexer *lexer, Scanner *scanner)
 			return seen;
 		case '[':
 			scanner->found_square_bracket = true;
+			/* fall through */
 		case '-':
 			mark_end(lexer);
 			advance(lexer);
 			if (lexer->lookahead == '-') {
 				return seen;
 			}
+			/* fall through */
 		default:
 			advance(lexer);
 		}
