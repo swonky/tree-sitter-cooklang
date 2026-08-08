@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-typedef uint32_t UnicodeChar;
+typedef int32_t UnicodeChar;
 
 typedef struct {
 	UnicodeChar first;
@@ -226,7 +226,7 @@ static const UnicodeRange unicode_whitespace[] = {
 };
 
 static inline bool unicode_in_ranges(
-    uint32_t c, const UnicodeRange *ranges, size_t count)
+    int32_t c, const UnicodeRange *ranges, size_t count)
 {
 	size_t lo = 0;
 	size_t hi = count;
