@@ -22,8 +22,6 @@ enum TokenType {
 	CLOSE_BRACE,
 	CLOSE_BRACE_OPEN_PAREN,
 	COLON,
-	// INTEGER_VALUE,
-	// DECIMAL_VALUE,
 };
 
 typedef enum {
@@ -90,31 +88,6 @@ static inline int advance_while(TSLexer *lexer, Asserter fn)
 	return count;
 }
 
-// static bool is_numeric_value(TSLexer *lexer, const bool *valid_symbols)
-// {
-// 	bool first = true;
-// 	bool period = false;
-// 	bool seen = true;
-// 	while (!eof(lexer)) {
-// 		if (first) {
-// 			if (!is_posnum(lexer->lookahead))
-// 				return false;
-// 			first = false;
-// 			advance(lexer);
-// 		}
-// 		if (!is_num(lexer->lookahead)) {
-// 			advance(lexer);
-// 			continue;
-// 		}
-// 		if (valid_symbols[DECIMAL_VALUE] && lexer->lookahead == '.') {
-// 			period = true;
-// 			advance(lexer);
-// 			continue;
-// 		}
-// 		mark_end(lexer);
-// 	}
-// 	return false;
-// }
 static bool scan_hyphen_token(
     TSLexer *lexer, Scanner *scanner, const bool *valid_symbols)
 {
@@ -141,18 +114,18 @@ static bool scan_hyphen_token(
 	if (lexer->lookahead == '-' && is_line_start) {
 		if (scanner->first && scanner->metadata == METADATA_INITIAL &&
 		    valid_symbols[METADATA_START]) {
-
 			advance(lexer);
-
-			if (lexer->lookahead == '\r')
-				advance(lexer);
-
-			if (lexer->lookahead != '\n' && !eof(lexer))
-				return false;
-
-			if (lexer->lookahead == '\n')
-				advance(lexer);
-
+			//
+			// if (lexer->lookahead == '\r')
+			// 	advance(lexer);
+			//
+			// if (lexer->lookahead != '\n' && !eof(lexer))
+			// 	return false;
+			//
+			// if (lexer->lookahead == '\n')
+			// 	advance(lexer);
+			(void)advance_while(lexer, is_ws_horiz);
+			(void)advance_while(lexer, is_ws_vert);
 			mark_end(lexer);
 			scanner->metadata = METADATA_BODY;
 			lexer->result_symbol = METADATA_START;
@@ -446,13 +419,6 @@ static bool scan_newline(TSLexer *lexer, const bool *valid_symbols)
 	if (!valid_symbols[NEWLINE]) {
 		return false;
 	}
-	// // eof is allowed to be a newline when empty_line to prevent
-	// // `MISSING` nodes for patterns that terminate with newlines.
-	// if (eof(lexer)) {
-	// 	advance(lexer);
-	// 	lexer->result_symbol = NEWLINE;
-	// 	return true;
-	// }
 	if (!is_ws_vert(lexer->lookahead))
 		return false;
 	if (lexer->lookahead == '\r') {

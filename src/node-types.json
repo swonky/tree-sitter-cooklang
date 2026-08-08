@@ -484,7 +484,7 @@
     "type": "relative_reference",
     "named": true,
     "fields": {
-      "relative_target": {
+      "target": {
         "multiple": false,
         "required": true,
         "types": [
