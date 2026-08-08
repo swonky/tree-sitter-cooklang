@@ -5,6 +5,9 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 > [!NOTE]
 > This project is not affiliated with or endorsed by the Cooklang project or its maintainers.
 
+> [!TIP]
+> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
+
 ## Contents
 - [Features](#benchmarks)
     - [Extended syntax](#extended-syntax)
@@ -18,42 +21,52 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 - [References](#references)
 
 ## Features
-- Implements the current Cooklang language specification [^2].
-- Supports the documented Cooklang extensions [^3] listed [below](#extended-syntax).
-- **Unicode-aware** parsing.
-- Query files for **syntax highlighting**, **code folding**, and **YAML frontmatter injection**.
-- **Hierarchical sections**, with content assigned as children of the corresponding section headings.
-- Typed **numeric** tokens (`integer`, `decimal`) and **structured quantity** nodes (`fractional`, `range`).
-- **Comprehensive test corpus** covering canonical recipes [^5] and extensions.
+### Base syntax
+The grammar implements the current Cooklang language specification[^2], including:
 
-> [!TIP]
-> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
+- **Single and multi-word definitions** (incl. `ingredient`, `cookware`, `timer`)
+- **Delimited `step` and `note` nodes with multi-line support**
+- **Metadata** (legacy directive syntax & YAML[^7] frontmatter)
+- **Unicode-aware whitespace handling**
+- **Hierarchical sections** (with content assigned as children of the corresponding section headings)
+- **Typed numeric tokens** (`integer`, `decimal`) 
+- **Structured quantities** (`fractional`)
+- **Comments** (in-line, multi-line, and block comments within plain text)
 
-### Extended syntax 
-The following extended syntax features [^3] are currently supported:
+#### Deviations from specification
+__In-line block comments are recognised only where plain text is valid.__ Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. As an implementation trade-off, this parser recognises block comments only where plain text is valid.
 
-- [X] Modes
-- [x] Modifiers
-- [X] Intermediate preparations
-- [x] Component alias
-- [x] Advanced units
-- [x] Range values
-- [x] Timer requires time (otherwise rendered as plain text)
-- [x] Temperature (unicode-aware and some plain English expressions)
-
-Where possible, numeric ingredient quantities are classified as `integer` or `decimal` tokens, or as structured `fractional` or `range` nodes. 
-Non-conforming or ambiguous values fall back to representation as a `string`.
-
-### Deviations from specification
-This grammar is intentionally more permissive than the cooklang-rs reference parser [^3] and performs limited semantic validation. 
+Aside from comments, this grammar is intentionally more permissive than the _cooklang-rs_[^3] reference parser and performs limited semantic validation. 
 Where practical, syntactically recoverable constructs are parsed instead of rejected, allowing editor features such as syntax highlighting and incremental parsing to continue operating on incomplete or non-conforming documents.
 
-- __Inline block comments are recognised only where plain text is valid.__ Because tree-sitter performs incremental parsing, comments cannot simply be stripped from the input before lexing. Supporting block comments within structured constructs such as ingredients, cookware, and timers therefore requires substantially more complex grammar and scanner logic. As an implementation trade-off, this parser recognises block comments only where plain text is valid.
+### Extended syntax 
+The following documented [^3] Cooklang language extensions are currently supported:
+
+- **Modes**
+- **Ingredient modifiers** (`@`, `&`, `?`, `+`, `-`)
+- **Intermediate preparations**
+- **Component alias** (ingredient & cookware)
+- **Advanced units**
+- **Range values** (with mixed integer & decimal support)
+- **Timer requires time** (rendered as plain text)
+- **Temperature** (unicode-aware symbol parsing and some plain English expressions)
+
+### Query scheme files
+The following scheme files[^8] are included in [./queries] to facilitate editor integrations and syntax highlight.
+
+| File | Content |
+| ---- | ------- |
+| [highlights.scm](queries/highlights.scm)  | syntax highlighting & spell check  |
+| [folds.scm](queries/folds.scm)            | code folding                       |
+| [injections.scm](queries/injections.scm)  | YAML[^7] language injection        |
+
+### Language bindings
+Bindings are available under [./bindings] for C, Go, Java, JavaScript, Python, Rust, Swift, and Zig.
 
 ## Development
 
 ### Testing [^4]
-The repository contains a several test suites located within `./test/corpus`.
+The repository contains a several test suites located within [./test/corpus].
 
 > [!TIP]
 > Running the tests requires [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md).
@@ -68,13 +81,16 @@ tree-sitter fuzz --exclude "\b\w+_cst\b"
 
 | File | Content |
 | ---- | ------- |
-| canonical.txt     | adapted from the cooklang-rs `canonical.yml` test file [^5]. |
-| canonical_cst.txt | same inputs as above, but shows captured content as a concrete syntax tree. |
-| additional.txt    | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
-| extensions.txt    | tests covering extended language features [^3]. |
+| `canonical.txt`     | adapted from the cooklang-rs `canonical.yml` test file [^5]. |
+| `canonical_cst.txt` | same inputs as above, but shows captured content as a concrete syntax tree. |
+| `additional.txt`    | additional tests covering notes, section headings, multiline steps, and more complex syntax combinations. |
+| `extensions.txt`    | tests covering extended language features [^3]. |
 
 ### Benchmarking
 Benchmarks are also included to measure parser performance, adapted from the benchmarking implementation and corpus in `cooklang-rs` [^6].
+
+> [!TIP]
+> Running the benchmarks requires [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 Run them with:
 ```bash
@@ -326,3 +342,5 @@ cargo bench --manifest-path benchmark/Cargo.toml
 [^4]: [tree-sitter: Writing tests](https://tree-sitter.github.io/tree-sitter/creating-parsers/5-writing-tests.html)
 [^5]: [cooklang-rs Tests](https://github.com/cooklang/cooklang-rs/blob/94540020fe54c96fc7eb0370b66c6d36d54256b6/tests/canonical.yaml)
 [^6]: [cooklang-rs Benchmarks](https://github.com/cooklang/cooklang-rs/tree/94540020fe54c96fc7eb0370b66c6d36d54256b6/benches)
+[^7]: YAML injection requires [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml)
+[^8]: [tree-sitter: Query syntax](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html)
