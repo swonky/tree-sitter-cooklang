@@ -4,8 +4,23 @@
 ] @keyword.directive
 	(#set! priority 90))
 
-((ingredient) @markup.link (#set! priority 90))
-(ingredient ["@" "?" "+" "&" "-"] @keyword.modifier)  
+(directive
+	">>" @keyword.directive.define
+)
+
+(metadata
+	key: (identifier) @property
+)
+
+(mode
+	key: (identifier) @keyword.directive.define
+)
+
+((ingredient) @attribute (#set! priority 90))
+
+(ingredient 
+	["@" "?" "+" "&" "-"] @keyword.modifier
+)
 
 (cookware) @type
 
@@ -21,15 +36,6 @@
 
 (heading) @markup.heading
 (note) @markup.quote
-(directive) @macro.constant
-
-(metadata
-	key: (identifier) @parameter.member
-)
-
-(mode
-	key: (identifier) @keyword.directive.define
-)
 
 (comment) @nospell @comment
 (comment_line) @nospell @comment
@@ -43,7 +49,6 @@
 
 ["{" "}" "}(" "(" ")" "[" "]"] @punctuation.bracket
 ["%" "|" ":" "/" "-"] @punctuation.delimiter
-[">>"] @keyword.directive
 [">"] @punctuation.special
 
 (ERROR) @error-node
