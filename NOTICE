@@ -1,0 +1,17 @@
+===================
+Third-Party Notices
+===================
+
+This repository contains test corpus files and benchmarking code adapted from cooklang-rs:
+
+<https://github.com/cooklang/cooklang-rs>
+Copyright (c) 2023-2024 Francisco J. Sanchez
+Licensed under the MIT License.
+
+---
+
+This repository contains software derived from Tree-sitter.
+
+<https://doi.org/10.5281/zenodo.4619183>
+Copyright (c) 2018 Max Brunsfeld
+Licensed under the MIT License.
