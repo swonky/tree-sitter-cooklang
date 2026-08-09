@@ -22,6 +22,7 @@ enum TokenType {
 	CLOSE_BRACE,
 	CLOSE_BRACE_OPEN_PAREN,
 	COLON,
+	VERT_BAR,
 };
 
 enum {
@@ -274,9 +275,15 @@ static bool scan_text(
 			return true;
 		}
 		break;
-	case ')':
 	case '|':
-		return false;
+		if (valid_symbols[VERT_BAR]) {
+			lexer->result_symbol = VERT_BAR;
+			advance(lexer);
+			mark_end(lexer);
+			return true;
+		}
+		break;
+		// case ')':
 	}
 
 	if (!valid_symbols[TEXT])
@@ -601,8 +608,8 @@ static bool dispatch(
 	}
 	if ((valid_symbols[TEXT] || valid_symbols[OPEN_BRACE] ||
 		valid_symbols[OPEN_PAREN] || valid_symbols[CLOSE_BRACE] ||
-		valid_symbols[CLOSE_BRACE_OPEN_PAREN] ||
-		valid_symbols[COLON]) &&
+		valid_symbols[CLOSE_BRACE_OPEN_PAREN] || valid_symbols[COLON] ||
+		valid_symbols[VERT_BAR]) &&
 	    scan_text(lexer, scanner, valid_symbols)) {
 		return true;
 	}

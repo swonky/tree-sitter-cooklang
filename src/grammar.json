@@ -1607,7 +1607,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_vert_bar"
+          },
+          "named": false,
           "value": "|"
         },
         {
@@ -1848,6 +1853,10 @@
     {
       "type": "SYMBOL",
       "name": "_colon"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_vert_bar"
     }
   ],
   "inline": [],

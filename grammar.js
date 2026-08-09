@@ -94,6 +94,7 @@ module.exports = grammar({
 		$._close_brace,
 		$._close_brace_open_paren,
 		$._colon,
+		$._vert_bar,
 	],
 
 	// must be defined empty to override default whitespace handling.
@@ -380,7 +381,8 @@ module.exports = grammar({
 			seq(field("target", $.integer), optional($._ws_horiz)),
 
 		// COMPONENT ALIAS
-		_alias: ($) => seq(DELIMITERS.alias, field("alias", $.identifier)),
+		_alias: ($) =>
+			seq(alias($._vert_bar, DELIMITERS.alias), field("alias", $.identifier)),
 
 		// PRIMITIVES
 		number: ($) => prec.left(choice($.integer, $.decimal)),
