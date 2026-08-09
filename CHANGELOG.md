@@ -1,13 +1,24 @@
-## [0.2.1] - 2026-08-08
+## [0.2.2] - 2026-08-09
+
+### Features
+
+- Frontmatter can now begin following vertical whitespace.
+- Slightly improved highlight query groups.
 
 ### Bug Fixes
 
-- Fixed tokenisation failure for trailing horizontal whitespace after frontmatter '---' token.
-- Big typedef oversight in unicode_tables header causing unsafe conversion to unsigned int.
-- Fixed some more implicit type conversions and constant folding issues.
-- Removed blank field in tree-sitter.json.
+- Added missing `℃` (U+2103) and `℉` (U+2109) degree symbols to `unicode_tables.h` header.
+- `TEXT` tokens can now begin with `)` and `|` when appropriate.
 
 ### Refactor
 
-- `grammar.js` Tidied up rule definitions.
-- `scanner.c` Added explicit fallthrough comments for switch statements as per draconian compiler expectations.
+- `scanner.c`
+    - Removed vestigial field from Scanner struct.
+    - Simplified `metadata` Scanner struct field to bool.
+    - Removed redundant valid_symbol check.
+    - Documented transient `in_bracket` Scanner field.
+
+### Testing
+
+- Added a Rust-based criterion benchmarking suite based on the implementation in _cooklang-rs_.
+- Updated expected test outputs to accommodate improved temperature parsing
