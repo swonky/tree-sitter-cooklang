@@ -5,24 +5,28 @@
 #include <stdlib.h>
 
 enum TokenType {
-	METADATA_START,
-	METADATA_CONTENT,
-	METADATA_END,
-	TEXT,
-	IDENTIFIER,
-	HIDDEN_MODIFIER,
-	NEWLINE,
-	EMPTY_LINE,
+	// frontmatter
+	FMAT_PREFIX,
+	FMAT_CONTENT,
+	FMAT_SUFFIX,
+	// plain text content
+	TXT_PLAIN,
+	TXT_IDENT,
+	SYM_HIDDEN,
+	EOL,
+	LINE_BLANK,
 	COMMENT_LINE,
 	COMMENT,
-	HEADING_START,
-	HEADING_TEXT,
-	OPEN_PAREN,
-	OPEN_BRACE,
-	CLOSE_BRACE,
-	CLOSE_BRACE_OPEN_PAREN,
-	COLON,
-	VERT_BAR,
+	// headings
+	SYM_HEADING, // [=]+
+	TXT_HEADING,
+	// symbolic operators
+	SYM_PAREN_O,	 // (
+	SYM_BRACE_O,	 // {
+	SYM_BRACE_C,	 // }
+	SYM_BRACE_PAREN, // }(
+	SYM_COLON,	 // :
+	SYM_VBAR,	 // |
 };
 
 enum {
@@ -56,14 +60,12 @@ static inline bool is_def_prefix(UnicodeChar c)
 {
 	return c == '@' || c == '#' || c == '~';
 }
-static inline bool is_modifier(UnicodeChar c)
-{
-	return c == '@' || c == '?' || c == '&' || c == '-' || c == '+';
-}
+
 static inline bool is_alnum(UnicodeChar c)
 {
 	return is_num(c) || is_upper(c) || is_lower(c);
 }
+
 static inline int skip_while(TSLexer *lexer, Asserter fn)
 {
 	int count = 0;
@@ -84,6 +86,16 @@ static inline int advance_while(TSLexer *lexer, Asserter fn)
 	return count;
 }
 
+// consume the rest of the line (incl. newline characters)
+static inline int advance_rol(TSLexer *lexer)
+{
+	int count = 0;
+	while (!eof(lexer) && get_column(lexer) != 0) {
+		advance(lexer);
+	}
+	return count;
+}
+
 static bool scan_hyphen_token(
     TSLexer *lexer, Scanner *scanner, const bool *valid_symbols)
 {
@@ -97,9 +109,9 @@ static bool scan_hyphen_token(
 	advance(lexer);
 
 	if (lexer->lookahead != '-') {
-		if (valid_symbols[HIDDEN_MODIFIER]) {
+		if (valid_symbols[SYM_HIDDEN]) {
 			mark_end(lexer);
-			lexer->result_symbol = HIDDEN_MODIFIER;
+			lexer->result_symbol = SYM_HIDDEN;
 			return true;
 		}
 		return false;
@@ -109,20 +121,18 @@ static bool scan_hyphen_token(
 
 	if (lexer->lookahead == '-' && is_line_start) {
 		if (!scanner->in_metadata && scanner->first &&
-		    valid_symbols[METADATA_START]) {
-			advance(lexer);
-			(void)advance_while(lexer, is_ws_horiz);
-			(void)advance_while(lexer, is_ws_vert);
+		    valid_symbols[FMAT_PREFIX]) {
+			(void)advance_rol(lexer);
 			mark_end(lexer);
 			scanner->in_metadata = true;
-			lexer->result_symbol = METADATA_START;
+			lexer->result_symbol = FMAT_PREFIX;
 			return true;
 		}
-		if (scanner->in_metadata && valid_symbols[METADATA_END]) {
+		if (scanner->in_metadata && valid_symbols[FMAT_SUFFIX]) {
 			advance(lexer);
 			mark_end(lexer);
 			scanner->in_metadata = false;
-			lexer->result_symbol = METADATA_END;
+			lexer->result_symbol = FMAT_SUFFIX;
 			return true;
 		}
 	}
@@ -239,45 +249,45 @@ static bool scan_text(
 
 	switch (lexer->lookahead) {
 	case '{':
-		if (valid_symbols[OPEN_BRACE]) {
-			lexer->result_symbol = OPEN_BRACE;
+		if (valid_symbols[SYM_BRACE_O]) {
+			lexer->result_symbol = SYM_BRACE_O;
 			advance(lexer);
 			mark_end(lexer);
 			return true;
 		}
 		break;
 	case '(':
-		if (valid_symbols[OPEN_PAREN]) {
-			lexer->result_symbol = OPEN_PAREN;
+		if (valid_symbols[SYM_PAREN_O]) {
+			lexer->result_symbol = SYM_PAREN_O;
 			advance(lexer);
 			mark_end(lexer);
 			return true;
 		}
 		break;
 	case '}':
-		if (valid_symbols[CLOSE_BRACE]) {
+		if (valid_symbols[SYM_BRACE_C]) {
 			advance(lexer);
-			if (valid_symbols[CLOSE_BRACE_OPEN_PAREN] &&
+			if (valid_symbols[SYM_BRACE_PAREN] &&
 			    lexer->lookahead == '(') {
 				advance(lexer);
-				lexer->result_symbol = CLOSE_BRACE_OPEN_PAREN;
+				lexer->result_symbol = SYM_BRACE_PAREN;
 			} else
-				lexer->result_symbol = CLOSE_BRACE;
+				lexer->result_symbol = SYM_BRACE_C;
 			mark_end(lexer);
 			return true;
 		}
 		break;
 	case ':':
-		if (valid_symbols[COLON]) {
-			lexer->result_symbol = COLON;
+		if (valid_symbols[SYM_COLON]) {
+			lexer->result_symbol = SYM_COLON;
 			advance(lexer);
 			mark_end(lexer);
 			return true;
 		}
 		break;
 	case '|':
-		if (valid_symbols[VERT_BAR]) {
-			lexer->result_symbol = VERT_BAR;
+		if (valid_symbols[SYM_VBAR]) {
+			lexer->result_symbol = SYM_VBAR;
 			advance(lexer);
 			mark_end(lexer);
 			return true;
@@ -286,10 +296,10 @@ static bool scan_text(
 		// case ')':
 	}
 
-	if (!valid_symbols[TEXT])
+	if (!valid_symbols[TXT_PLAIN])
 		return false;
 
-	lexer->result_symbol = TEXT;
+	lexer->result_symbol = TXT_PLAIN;
 
 	while (!eof(lexer)) {
 		scanner->saw_square = lexer->lookahead == '[';
@@ -332,7 +342,7 @@ static bool scan_text(
 		if (is_ws_vert(c))
 			return seen;
 
-		if (is_def_prefix(c)) {
+		if (contains(c, sym_tags)) {
 			advance(lexer);
 			bool no_name = lexer->lookahead == '{';
 			if (c == '~') {
@@ -395,16 +405,16 @@ static bool scan_metadata_content(TSLexer *lexer)
 
 static bool scan_newline(TSLexer *lexer, const bool *valid_symbols)
 {
-	if (valid_symbols[EMPTY_LINE] && lexer->get_column(lexer) == 0) {
+	if (valid_symbols[LINE_BLANK] && lexer->get_column(lexer) == 0) {
 		while (!eof(lexer) && is_ws_horiz(lexer->lookahead))
 			advance(lexer);
 		if (!eof(lexer) && is_ws_vert(lexer->lookahead)) {
 			mark_end(lexer);
-			lexer->result_symbol = EMPTY_LINE;
+			lexer->result_symbol = LINE_BLANK;
 			return true;
 		}
 	}
-	if (!valid_symbols[NEWLINE]) {
+	if (!valid_symbols[EOL]) {
 		return false;
 	}
 	if (!is_ws_vert(lexer->lookahead))
@@ -417,7 +427,7 @@ static bool scan_newline(TSLexer *lexer, const bool *valid_symbols)
 		advance(lexer);
 	}
 	mark_end(lexer);
-	lexer->result_symbol = NEWLINE;
+	lexer->result_symbol = EOL;
 	return true;
 }
 
@@ -503,7 +513,7 @@ static bool scan_identifier(TSLexer *lexer)
 		}
 
 		UnicodeChar c = lexer->lookahead;
-		if (first_char && is_modifier(c)) {
+		if (first_char && contains(c, sym_modifiers)) {
 			return false;
 		}
 		first_char = false;
@@ -584,37 +594,37 @@ void tree_sitter_cooklang_external_scanner_deserialize(
 static bool dispatch(
     TSLexer *lexer, Scanner *scanner, const bool *valid_symbols)
 {
-	if ((valid_symbols[NEWLINE] || valid_symbols[EMPTY_LINE]) &&
+	if ((valid_symbols[EOL] || valid_symbols[LINE_BLANK]) &&
 	    scan_newline(lexer, valid_symbols)) {
 		return true;
 	}
-	if ((valid_symbols[METADATA_START] || valid_symbols[METADATA_END] ||
-		valid_symbols[COMMENT] || valid_symbols[HIDDEN_MODIFIER]) &&
+	if ((valid_symbols[FMAT_PREFIX] || valid_symbols[FMAT_SUFFIX] ||
+		valid_symbols[COMMENT] || valid_symbols[SYM_HIDDEN]) &&
 	    scan_hyphen_token(lexer, scanner, valid_symbols)) {
 		return true;
 	}
-	if (valid_symbols[METADATA_CONTENT] && scanner->in_metadata &&
+	if (valid_symbols[FMAT_CONTENT] && scanner->in_metadata &&
 	    scan_metadata_content(lexer)) {
-		lexer->result_symbol = METADATA_CONTENT;
+		lexer->result_symbol = FMAT_CONTENT;
 		return true;
 	}
-	if (valid_symbols[HEADING_START] && scan_heading(lexer)) {
-		lexer->result_symbol = HEADING_START;
+	if (valid_symbols[SYM_HEADING] && scan_heading(lexer)) {
+		lexer->result_symbol = SYM_HEADING;
 		return true;
 	}
-	if (valid_symbols[HEADING_TEXT] && scan_heading_text(lexer, scanner)) {
-		lexer->result_symbol = HEADING_TEXT;
+	if (valid_symbols[TXT_HEADING] && scan_heading_text(lexer, scanner)) {
+		lexer->result_symbol = TXT_HEADING;
 		return true;
 	}
-	if ((valid_symbols[TEXT] || valid_symbols[OPEN_BRACE] ||
-		valid_symbols[OPEN_PAREN] || valid_symbols[CLOSE_BRACE] ||
-		valid_symbols[CLOSE_BRACE_OPEN_PAREN] || valid_symbols[COLON] ||
-		valid_symbols[VERT_BAR]) &&
+	if ((valid_symbols[TXT_PLAIN] || valid_symbols[SYM_BRACE_O] ||
+		valid_symbols[SYM_PAREN_O] || valid_symbols[SYM_BRACE_C] ||
+		valid_symbols[SYM_BRACE_PAREN] || valid_symbols[SYM_COLON] ||
+		valid_symbols[SYM_VBAR]) &&
 	    scan_text(lexer, scanner, valid_symbols)) {
 		return true;
 	}
-	if (valid_symbols[IDENTIFIER] && scan_identifier(lexer)) {
-		lexer->result_symbol = IDENTIFIER;
+	if (valid_symbols[TXT_IDENT] && scan_identifier(lexer)) {
+		lexer->result_symbol = TXT_IDENT;
 		return true;
 	}
 	return ((valid_symbols[COMMENT] || valid_symbols[COMMENT_LINE]) &&
@@ -626,7 +636,7 @@ bool tree_sitter_cooklang_external_scanner_scan(
 {
 	Scanner *scanner = payload;
 	if (dispatch(lexer, scanner, valid_symbols)) {
-		if (scanner->first && lexer->result_symbol != NEWLINE)
+		if (scanner->first && lexer->result_symbol != EOL)
 			scanner->first = false;
 		return true;
 	}
