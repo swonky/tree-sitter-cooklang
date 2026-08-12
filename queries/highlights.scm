@@ -1,9 +1,3 @@
-([
-	(metadata_start)
-	(metadata_end)
-] @keyword.directive
-	(#set! priority 90))
-
 (directive
 	">>" @keyword.directive.define
 )
@@ -26,7 +20,7 @@
 
 (timer) @property
 (timer
-	unit: (unit) @constant.builtin
+	unit: (string) @constant.builtin
 	(#any-of? @constant.builtin
 		"s" "h" "min" "d"
 		"second" "seconds"
@@ -40,7 +34,6 @@
 (comment) @nospell @comment
 (comment_line) @nospell @comment
 
-(unit) @constant
 (temperature) @number
 (integer) @number
 (decimal) @number.float
@@ -49,6 +42,7 @@
 
 ["{" "}" "}(" "(" ")" "[" "]"] @punctuation.bracket
 ["%" "|" ":" "/" "-"] @punctuation.delimiter
+["---"] @keyword.directive
 [">"] @punctuation.special
 
 (ERROR) @error-node

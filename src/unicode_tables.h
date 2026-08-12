@@ -7,6 +7,11 @@
 
 typedef int32_t UnicodeChar;
 
+static const uint64_t ascii_punctuation[2] = {
+    UINT64_C(0x8C00F7EE00000000),
+    UINT64_C(0x28000000B8000001),
+};
+
 typedef struct {
 	UnicodeChar first;
 	UnicodeChar last;
@@ -215,15 +220,24 @@ static const UnicodeRange unicode_punctuation[] = {
     {0x01E95E, 0x01E95F},
 };
 
-static const UnicodeRange unicode_whitespace[] = {
-    {0x000020, 0x000020},
-    {0x0000A0, 0x0000A0},
-    {0x001680, 0x001680},
-    {0x002000, 0x00200A},
-    {0x00202F, 0x00202F},
-    {0x00205F, 0x00205F},
-    {0x003000, 0x003000},
+enum Symbols {
+	// tags
+	UC_TAG_INGREDIENT = '@',
+	UC_TAG_COOKWARE = '#',
+	UC_TAG_TIMER = '~',
+	// modifiers
+	UC_MOD_RECIPE = '@',
+	UC_MOD_HIDDEN = '-',
+	UC_MOD_REF = '&',
+	UC_MOD_NEW = '+',
+	UC_MOD_OPT = '?',
 };
+
+static const UnicodeChar sym_tags[] = {
+    UC_TAG_INGREDIENT, UC_TAG_COOKWARE, UC_TAG_TIMER};
+
+static const UnicodeChar sym_modifiers[] = {
+    UC_MOD_RECIPE, UC_MOD_HIDDEN, UC_MOD_REF, UC_MOD_NEW, UC_MOD_OPT};
 
 static inline bool unicode_in_ranges(
     int32_t c, const UnicodeRange *ranges, size_t count)
@@ -245,19 +259,58 @@ static inline bool unicode_in_ranges(
 	return false;
 }
 
+#define contains(value, array)                                                 \
+	contains_impl(value, array, sizeof(array) / sizeof(*(array)))
+
+static inline bool is_ascii_punc(UnicodeChar c)
+{
+	uint32_t u = (uint32_t)c;
+	return u < 0x80 && (ascii_punctuation[u >> 6] >> (u & 63)) & 1;
+}
+
 static inline bool is_punc(UnicodeChar c)
 {
-	return unicode_in_ranges(c, unicode_punctuation,
-	    sizeof(unicode_punctuation) / sizeof(*unicode_punctuation));
+	return (c < 0x80) ? is_ascii_punc(c)
+			  : unicode_in_ranges(c, unicode_punctuation,
+				sizeof(unicode_punctuation) /
+				    sizeof(*unicode_punctuation));
+}
+
+static inline bool contains_impl(
+    UnicodeChar value, const UnicodeChar *array, size_t length)
+{
+	for (size_t i = 0; i < length; i++)
+		if (array[i] == value)
+			return true;
+
+	return false;
 }
 
 static inline bool is_ws_horiz(UnicodeChar c)
 {
-	if (c == 0x0009)
+	switch (c) {
+	case ' ':
+	case '\t':
+	case 0x00A0:
+	case 0x1680:
+	case 0x2000:
+	case 0x2001:
+	case 0x2002:
+	case 0x2003:
+	case 0x2004:
+	case 0x2005:
+	case 0x2006:
+	case 0x2007:
+	case 0x2008:
+	case 0x2009:
+	case 0x200A:
+	case 0x202F:
+	case 0x205F:
+	case 0x3000:
 		return true;
-
-	return unicode_in_ranges(c, unicode_whitespace,
-	    sizeof(unicode_whitespace) / sizeof(*unicode_whitespace));
+	default:
+		return false;
+	}
 }
 
 static inline bool is_ws_vert(UnicodeChar c)
@@ -284,6 +337,24 @@ static inline bool is_degree_symbol(UnicodeChar c)
 	case 0x02DA: // ˚
 	case 0x2103: // ℃
 	case 0x2109: // ℉
+		return true;
+	default:
+		return false;
+	}
+}
+
+static inline bool is_solidus(UnicodeChar c)
+{
+	switch (c) {
+	case 0x002F:
+	case 0x0337:
+	case 0x0338:
+	case 0x2044:
+	case 0x2215:
+	case 0x2571:
+	case 0x29F8:
+	case 0xFF0F:
+	case 0x1F67C:
 		return true;
 	default:
 		return false;

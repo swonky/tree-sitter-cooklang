@@ -586,12 +586,10 @@ sourced: babooshka
 --------
 
 0:0  - 3:0    recipe
-0:0  - 2:3      frontmatter
-0:0  - 1:0        metadata_start
-0:0  - 0:4          `---\n`
-1:0  - 2:0        content: metadata_content
-1:0  - 1:19         `sourced: babooshka\n`
-2:0  - 2:3        metadata_end `---`
+0:0  - 1:0      "---"
+1:0  - 2:0      frontmatter
+1:0  - 1:19       `sourced: babooshka\n`
+2:0  - 2:3      "---"
 
 ========
 MetadataMultiwordKey_cst
@@ -604,12 +602,10 @@ cooking time: 30 mins
 --------
 
 0:0  - 3:0    recipe
-0:0  - 2:3      frontmatter
-0:0  - 1:0        metadata_start
-0:0  - 0:4          `---\n`
-1:0  - 2:0        content: metadata_content
-1:0  - 1:22         `cooking time: 30 mins\n`
-2:0  - 2:3        metadata_end `---`
+0:0  - 1:0      "---"
+1:0  - 2:0      frontmatter
+1:0  - 1:22       `cooking time: 30 mins\n`
+2:0  - 2:3      "---"
 
 ========
 MetadataMultiwordKeyWithSpaces_cst
@@ -622,12 +618,10 @@ cooking time    :30 mins
 --------
 
 0:0  - 3:0    recipe
-0:0  - 2:3      frontmatter
-0:0  - 1:0        metadata_start
-0:0  - 0:4          `---\n`
-1:0  - 2:0        content: metadata_content
-1:0  - 1:25         `cooking time    :30 mins\n`
-2:0  - 2:3        metadata_end `---`
+0:0  - 1:0      "---"
+1:0  - 2:0      frontmatter
+1:0  - 1:25       `cooking time    :30 mins\n`
+2:0  - 2:3      "---"
 
 ========
 MultiLineDirections_cst
@@ -657,13 +651,11 @@ Cook Time: 30 minutes
 --------
 
 0:0  - 4:0    recipe
-0:0  - 3:3      frontmatter
-0:0  - 1:0        metadata_start
-0:0  - 0:4          `---\n`
-1:0  - 3:0        content: metadata_content
-1:0  - 1:22         `Prep Time: 15 minutes\n`
-2:0  - 2:22         `Cook Time: 30 minutes\n`
-3:0  - 3:3        metadata_end `---`
+0:0  - 1:0      "---"
+1:0  - 3:0      frontmatter
+1:0  - 1:22       `Prep Time: 15 minutes\n`
+2:0  - 2:22       `Cook Time: 30 minutes\n`
+3:0  - 3:3      "---"
 
 ========
 MultiWordIngredient_cst
@@ -758,12 +750,10 @@ servings: 1|2|3
 --------
 
 0:0  - 3:0    recipe
-0:0  - 2:3      frontmatter
-0:0  - 1:0        metadata_start
-0:0  - 0:4          `---\n`
-1:0  - 2:0        content: metadata_content
-1:0  - 1:16         `servings: 1|2|3\n`
-2:0  - 2:3        metadata_end `---`
+0:0  - 1:0      "---"
+1:0  - 2:0      frontmatter
+1:0  - 1:16       `servings: 1|2|3\n`
+2:0  - 2:3      "---"
 
 ========
 SingleWordCookwareWithPunctuation_cst

@@ -490,10 +490,7 @@ sourced: babooshka
 --------
 
 (recipe
-  (frontmatter
-    (metadata_start)
-    content: (metadata_content)
-    (metadata_end)))
+  (frontmatter))
 
 ========
 MetadataMultiwordKey
@@ -505,10 +502,7 @@ cooking time: 30 mins
 --------
 
 (recipe
-  (frontmatter
-    (metadata_start)
-    content: (metadata_content)
-    (metadata_end)))
+  (frontmatter))
 
 ========
 MetadataMultiwordKeyWithSpaces
@@ -520,10 +514,7 @@ cooking time    :30 mins
 --------
 
 (recipe
-  (frontmatter
-    (metadata_start)
-    content: (metadata_content)
-    (metadata_end)))
+  (frontmatter))
 
 ========
 MultiLineDirections
@@ -551,10 +542,7 @@ Cook Time: 30 minutes
 --------
 
 (recipe
-  (frontmatter
-    (metadata_start)
-    content: (metadata_content)
-    (metadata_end)))
+  (frontmatter))
 
 ========
 MultiWordIngredient
@@ -634,10 +622,7 @@ servings: 1|2|3
 --------
 
 (recipe
-  (frontmatter
-    (metadata_start)
-    content: (metadata_content)
-    (metadata_end)))
+  (frontmatter))
 
 ========
 SingleWordCookwareWithPunctuation

@@ -1,6 +1,6 @@
 build/
 ignore
-
+*.so
 # Rust
 */target
 */criterion

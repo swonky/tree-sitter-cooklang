@@ -1,0 +1,1040 @@
+_ingredient_attributes         	114
+_numeric_amount                	50
+range                          	22
+fractional                     	22
+mode                           	18
+heading                        	18
+recipe                         	13
+directive                      	12
+_string_amount                 	10
+temperature                    	10
+_block_seperator_repeat2       	10
+note_repeat2                   	9
+_block_seperator               	8
+note_repeat1                   	8
+_reference                     	7
+_amount_inner                  	6
+relative_reference             	6
+recipe_repeat1                 	6
+_body_repeat1                  	6
+_block_seperator_repeat1       	6
+step_repeat1                   	6
+cookware                       	5
+metadata                       	5
+_permissive_text_inline_repeat1	4
+step                           	4
+ingredient                     	4
+timer                          	4
+_amount_standalone             	4
+_body                          	4
+_padding                       	4
+section_reference              	4
+ingredient_repeat1             	4
+_permissive_text_repeat1       	4
+_frontmatter                   	3
+section                        	3
+identifier                     	3
+_permissive_numeric_text       	3
+_note_line_repeat1             	3
+_step_line                     	2
+absolute_reference             	2
+_alias                         	2
+number                         	2
+_permissive_text               	2
+_step_line_repeat1             	2
+note                           	1
+step_reference                 	1
+text                           	1
+_permissive_text_inline        	1
+_directive_value               	1
+definition                     	1
+block                          	1
+modifiers                      	1
+_note_line                     	1
+_timer_prefix                  	0
+_step_content                  	0
+_interblock_lines              	0
+_cookware_prefix               	0
+_directive_delimiter           	0
+
+state index: 73
+state id: 41
+symbol sequence: ingredient_token1 &
+
+items:
+_ingredient_attributes → & • identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & • _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 60
+state id: 45
+symbol sequence: ingredient_token1 identifier
+
+items:
+_ingredient_attributes → identifier •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier • _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 114
+state id: 91
+symbol sequence: ingredient_token1 & _reference
+
+items:
+_ingredient_attributes → & _reference • identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference • ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 64
+state id: 92
+symbol sequence: ingredient_token1 & identifier
+
+items:
+_ingredient_attributes → & identifier •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier • _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 126
+state id: 93
+symbol sequence: ingredient_token1 & ingredient_repeat1
+
+items:
+ingredient_repeat1 → ingredient_repeat1 • ingredient_repeat1	[-, @, +, ?, _identifier]
+_ingredient_attributes → & ingredient_repeat1 • identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 • identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 41
+state id: 94
+symbol sequence: ingredient_token1 identifier _open_brace
+
+items:
+_ingredient_attributes → identifier _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 86
+state id: 96
+symbol sequence: ingredient_token1 identifier _alias
+
+items:
+_ingredient_attributes → identifier _alias •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 57
+state id: 150
+symbol sequence: ingredient_token1 & _reference identifier
+
+items:
+_ingredient_attributes → & _reference identifier •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier • _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 129
+state id: 151
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1
+
+items:
+ingredient_repeat1 → ingredient_repeat1 • ingredient_repeat1	[-, @, +, ?, _identifier]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 • identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 43
+state id: 152
+symbol sequence: ingredient_token1 & identifier _open_brace
+
+items:
+_ingredient_attributes → & identifier _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 97
+state id: 153
+symbol sequence: ingredient_token1 & identifier _alias
+
+items:
+_ingredient_attributes → & identifier _alias •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 58
+state id: 154
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier • _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 160
+state id: 156
+symbol sequence: ingredient_token1 identifier _open_brace _close_brace
+
+items:
+_ingredient_attributes → identifier _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 399
+state id: 157
+symbol sequence: ingredient_token1 identifier _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → identifier _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 259
+state id: 161
+symbol sequence: ingredient_token1 identifier _open_brace _amount_inner
+
+items:
+_ingredient_attributes → identifier _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 44
+state id: 168
+symbol sequence: ingredient_token1 identifier _alias _open_brace
+
+items:
+_ingredient_attributes → identifier _alias _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 46
+state id: 217
+symbol sequence: ingredient_token1 & _reference identifier _open_brace
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 99
+state id: 218
+symbol sequence: ingredient_token1 & _reference identifier _alias
+
+items:
+_ingredient_attributes → & _reference identifier _alias •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 63
+state id: 219
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _alias	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _alias _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _alias _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier • _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 103
+state id: 220
+symbol sequence: ingredient_token1 & identifier _open_brace _close_brace
+
+items:
+_ingredient_attributes → & identifier _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 342
+state id: 221
+symbol sequence: ingredient_token1 & identifier _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & identifier _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 279
+state id: 222
+symbol sequence: ingredient_token1 & identifier _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & identifier _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 39
+state id: 223
+symbol sequence: ingredient_token1 & identifier _alias _open_brace
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 47
+state id: 224
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 83
+state id: 225
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 350
+state id: 226
+symbol sequence: ingredient_token1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 116
+state id: 230
+symbol sequence: ingredient_token1 identifier _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → identifier _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 352
+state id: 231
+symbol sequence: ingredient_token1 identifier _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → identifier _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 117
+state id: 238
+symbol sequence: ingredient_token1 identifier _alias _open_brace _close_brace
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 354
+state id: 239
+symbol sequence: ingredient_token1 identifier _alias _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 285
+state id: 240
+symbol sequence: ingredient_token1 identifier _alias _open_brace _amount_inner
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → identifier _alias _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 121
+state id: 281
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _close_brace
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 308
+state id: 282
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 273
+state id: 283
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 48
+state id: 284
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 49
+state id: 285
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 87
+state id: 286
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias • _open_brace _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias • _open_brace _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias • _open_brace _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias • _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 321
+state id: 287
+symbol sequence: ingredient_token1 & identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 123
+state id: 288
+symbol sequence: ingredient_token1 & identifier _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & identifier _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 326
+state id: 289
+symbol sequence: ingredient_token1 & identifier _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & identifier _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 124
+state id: 290
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _close_brace
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 331
+state id: 291
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 277
+state id: 292
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 125
+state id: 293
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _close_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 359
+state id: 294
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 287
+state id: 295
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 50
+state id: 296
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 127
+state id: 297
+symbol sequence: ingredient_token1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 366
+state id: 304
+symbol sequence: ingredient_token1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 368
+state id: 315
+symbol sequence: ingredient_token1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 128
+state id: 316
+symbol sequence: ingredient_token1 identifier _alias _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 373
+state id: 317
+symbol sequence: ingredient_token1 identifier _alias _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 360
+state id: 339
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 130
+state id: 340
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 381
+state id: 341
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 131
+state id: 342
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _close_brace
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 394
+state id: 343
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 261
+state id: 344
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 132
+state id: 345
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _close_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 314
+state id: 346
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 263
+state id: 347
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 51
+state id: 348
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace • _amount_inner _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace • _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 133
+state id: 349
+symbol sequence: ingredient_token1 & identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 338
+state id: 350
+symbol sequence: ingredient_token1 & identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 339
+state id: 351
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 134
+state id: 352
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 344
+state id: 353
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 346
+state id: 354
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 135
+state id: 355
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 348
+state id: 356
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 136
+state id: 357
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _close_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 401
+state id: 358
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 265
+state id: 359
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 137
+state id: 364
+symbol sequence: ingredient_token1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 164
+state id: 371
+symbol sequence: ingredient_token1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 362
+state id: 372
+symbol sequence: ingredient_token1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 139
+state id: 380
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 377
+state id: 381
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 378
+state id: 382
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 140
+state id: 383
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 385
+state id: 384
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 386
+state id: 385
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 141
+state id: 386
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 392
+state id: 387
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 142
+state id: 388
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 396
+state id: 389
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 271
+state id: 390
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner • _close_brace	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner • _close_brace_open_paren _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 143
+state id: 391
+symbol sequence: ingredient_token1 & identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 144
+state id: 392
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 310
+state id: 393
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 145
+state id: 394
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 312
+state id: 395
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 313
+state id: 396
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 146
+state id: 397
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 315
+state id: 398
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 147
+state id: 404
+symbol sequence: ingredient_token1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 148
+state id: 406
+symbol sequence: ingredient_token1 & _reference identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 149
+state id: 407
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 320
+state id: 408
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 150
+state id: 409
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 322
+state id: 410
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 323
+state id: 411
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 151
+state id: 412
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 325
+state id: 413
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren • _ingredient_attributes_token1 )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 152
+state id: 414
+symbol sequence: ingredient_token1 & identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 153
+state id: 415
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 154
+state id: 416
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 329
+state id: 417
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 155
+state id: 419
+symbol sequence: ingredient_token1 & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 156
+state id: 420
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 157
+state id: 421
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 333
+state id: 422
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 • )	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 158
+state id: 423
+symbol sequence: ingredient_token1 & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
+state index: 159
+state id: 424
+symbol sequence: ingredient_token1 & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 )
+
+items:
+_ingredient_attributes → & _reference ingredient_repeat1 identifier _alias _open_brace _amount_inner _close_brace_open_paren _ingredient_attributes_token1 ) •	[ingredient_token1, ~, #, integer, _ws_horiz, _text, _newline, comment]
+
