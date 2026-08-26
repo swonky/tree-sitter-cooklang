@@ -1,2 +1,2 @@
-((metadata_content) @injection.content
+((frontmatter) @injection.content
   (#set! injection.language "yaml"))

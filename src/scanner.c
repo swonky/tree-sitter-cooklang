@@ -1,8 +1,8 @@
+#include "tree_sitter/alloc.h"
 #include "tree_sitter/parser.h"
 #include "unicode_tables.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdlib.h>
 
 enum TokenType {
 	METADATA_START,
@@ -283,7 +283,6 @@ static bool scan_text(
 			return true;
 		}
 		break;
-		// case ')':
 	}
 
 	if (!valid_symbols[TEXT])
@@ -538,7 +537,7 @@ static bool scan_identifier(TSLexer *lexer)
 
 void *tree_sitter_cooklang_external_scanner_create(void)
 {
-	Scanner *scanner = calloc(1, sizeof(Scanner));
+	Scanner *scanner = ts_calloc(1, sizeof(Scanner));
 	scanner->in_metadata = false;
 	scanner->first = true;
 	scanner->saw_square = false;
@@ -547,7 +546,7 @@ void *tree_sitter_cooklang_external_scanner_create(void)
 
 void tree_sitter_cooklang_external_scanner_destroy(void *payload)
 {
-	free(payload);
+	ts_free(payload);
 }
 
 unsigned tree_sitter_cooklang_external_scanner_serialize(
