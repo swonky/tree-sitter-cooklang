@@ -1,0 +1,178 @@
+
+<!doctype HTML>
+<head>
+  <title>Tree-sitter Highlighting</title>
+  <style>
+    body {
+      font-family: monospace
+    }
+    .line-number {
+      user-select: none;
+      text-align: right;
+      color: rgba(27,31,35,.3);
+      padding: 0 10px;
+    }
+    .line {
+      white-space: pre;
+    }
+  </style>
+  <style>
+    .comment { font-style: italic;color: #928374; }
+    .constant { color: #d79921; }
+    .constant.builtin { color: #d65d0e; }
+    .error-node { font-weight: bold;color: #fbf1c7; }
+    .keyword.directive { font-weight: bold;color: #cc241d; }
+    .keyword.modifier { font-weight: bold;color: #d79921; }
+    .markup.heading { font-weight: bold;color: #ffffff; }
+    .markup.italic { font-style: italic;; }
+    .markup.link { color: #f76565; }
+    .markup.quote { font-style: italic;color: #f765eb; }
+    .number { font-weight: bold;color: #02cc83; }
+    .number.float { color: #dc8b3f; }
+    .property { color: #69eefa; }
+    .punctuation.bracket { font-weight: bold;color: #ffffff; }
+    .punctuation.delimiter { font-weight: bold;color: #ffffff; }
+    .punctuation.special { font-weight: bold;color: #f765eb; }
+    .string { color: #00c080; }
+    .type { color: #ddb700; }
+    .variable.member { color: #d79921; }
+  </style>
+
+</head>
+<body>
+
+<table>
+<tr><td class=line-number>1</td><td class=line><span class='comment'>-- this uses the cooklang-rs extensions</span>
+</td></tr>
+<tr><td class=line-number>2</td><td class=line>
+</td></tr>
+<tr><td class=line-number>3</td><td class=line><span class='constant'><span class='keyword directive'>&gt;&gt;</span> emoji<span class='punctuation delimiter'>:</span> <span class='string'>🌶️</span></span>
+</td></tr>
+<tr><td class=line-number>4</td><td class=line><span class='constant'></span><span class='constant'><span class='keyword directive'>&gt;&gt;</span> source<span class='punctuation delimiter'>:</span> <span class='string'>https://www.gimmesomeoven.com/best-chicken-enchiladas-ever/print-recipe/59596/</span></span>
+</td></tr>
+<tr><td class=line-number>5</td><td class=line><span class='constant'></span><span class='constant'><span class='keyword directive'>&gt;&gt;</span> tags<span class='punctuation delimiter'>:</span> <span class='string'>mejicano, picante</span></span>
+</td></tr>
+<tr><td class=line-number>6</td><td class=line><span class='constant'></span><span class='constant'><span class='keyword directive'>&gt;&gt;</span> description<span class='punctuation delimiter'>:</span> <span class='string'>De las comidas más satisfactorias que he comido.</span></span>
+</td></tr>
+<tr><td class=line-number>7</td><td class=line><span class='constant'></span><span class='constant'><span class='keyword directive'>&gt;&gt;</span> <span class='punctuation bracket'>[</span><span class='keyword directive'>duplicate</span><span class='punctuation bracket'>]</span><span class='punctuation delimiter'>:</span> <span class='string'>reference</span></span>
+</td></tr>
+<tr><td class=line-number>8</td><td class=line><span class='constant'></span>
+</td></tr>
+<tr><td class=line-number>9</td><td class=line><span class='constant'><span class='keyword directive'>&gt;&gt;</span> <span class='punctuation bracket'>[</span><span class='keyword directive'>mode</span><span class='punctuation bracket'>]</span><span class='punctuation delimiter'>:</span> <span class='string'>ingredients</span></span>
+</td></tr>
+<tr><td class=line-number>10</td><td class=line><span class='constant'></span>
+</td></tr>
+<tr><td class=line-number>11</td><td class=line>- <span class='markup link'>@queso<span class='punctuation delimiter'>|</span>mezcla de quesos mejicanos<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>
+</td></tr>
+<tr><td class=line-number>12</td><td class=line>- <span class='markup link'>@tortilla<span class='punctuation delimiter'>|</span>tortilla de trigo<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}(</span><span class='string'>grande</span><span class='punctuation bracket'>)</span></span>
+</td></tr>
+<tr><td class=line-number>13</td><td class=line>- <span class='markup link'>@aceite<span class='punctuation delimiter'>|</span>aceite de aguacata<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}(</span><span class='string'>Sí, se puede usar de oliva</span><span class='punctuation bracket'>)</span></span>
+</td></tr>
+<tr><td class=line-number>14</td><td class=line>
+</td></tr>
+<tr><td class=line-number>15</td><td class=line><span class='constant'><span class='keyword directive'>&gt;&gt;</span> <span class='punctuation bracket'>[</span><span class='keyword directive'>mode</span><span class='punctuation bracket'>]</span><span class='punctuation delimiter'>:</span> <span class='string'>default</span></span>
+</td></tr>
+<tr><td class=line-number>16</td><td class=line><span class='constant'></span>
+</td></tr>
+<tr><td class=line-number>17</td><td class=line><span class='markup heading'>= Salsa</span>
+</td></tr>
+<tr><td class=line-number>18</td><td class=line>
+</td></tr>
+<tr><td class=line-number>19</td><td class=line>Calienta el <span class='markup link'>@aceite<span class='punctuation bracket'>{</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>tbsp</span><span class='punctuation bracket'>}</span></span> en un <span class='type'>#cazo pequeño<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span> a fuego
+</td></tr>
+<tr><td class=line-number>20</td><td class=line>medio-alto.
+</td></tr>
+<tr><td class=line-number>21</td><td class=line>
+</td></tr>
+<tr><td class=line-number>22</td><td class=line>Añade <span class='markup link'>@harina<span class='punctuation bracket'>{</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>tbsp</span><span class='punctuation bracket'>}</span></span> y cocina durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span> sin parar de remover. Añade el 
+</td></tr>
+<tr><td class=line-number>23</td><td class=line><span class='markup link'>@<span class='keyword modifier'>@</span>polvo de chile<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>/</span><span class='number'>4</span><span class='punctuation delimiter'>%</span><span class='constant'>cup</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@polvo de ajo<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>/</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>tsp</span><span class='punctuation bracket'>}</span></span> <span class='markup link'>@comino molido<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>/</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>tsp</span><span class='punctuation bracket'>}</span></span>,
+</td></tr>
+<tr><td class=line-number>24</td><td class=line><span class='markup link'>@orégano<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>/</span><span class='number'>4</span><span class='punctuation delimiter'>%</span><span class='constant'>tsp</span><span class='punctuation bracket'>}</span></span> y sigue cocinando durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span> sin parar de remover.
+</td></tr>
+<tr><td class=line-number>25</td><td class=line>
+</td></tr>
+<tr><td class=line-number>26</td><td class=line><span class='markup quote'><span class='punctuation special'>&gt; </span>A mi me gusta más con caldo de verduras, pero caldo de pollo también está bueno.</span>
+</td></tr>
+<tr><td class=line-number>27</td><td class=line><span class='markup quote'></span>
+</td></tr>
+<tr><td class=line-number>28</td><td class=line>Agrega el <span class='markup link'>@caldo de verdura<span class='punctuation bracket'>{</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>cups</span><span class='punctuation bracket'>}</span></span> poco a poco removiendo para que no se formen
+</td></tr>
+<tr><td class=line-number>29</td><td class=line>grumos. Sigue cocinando hasta que hierva y luego baja el fuego a medio-bajo
+</td></tr>
+<tr><td class=line-number>30</td><td class=line>para que reduzca durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>10</span><span class='punctuation delimiter'>-</span><span class='number'>15</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span>, sin cubrir, hasta que haya espesado un poco.
+</td></tr>
+<tr><td class=line-number>31</td><td class=line>
+</td></tr>
+<tr><td class=line-number>32</td><td class=line>Añade <span class='markup link'>@sal</span> al gusto.
+</td></tr>
+<tr><td class=line-number>33</td><td class=line>
+</td></tr>
+<tr><td class=line-number>34</td><td class=line><span class='markup heading'>= Enchiladas</span>
+</td></tr>
+<tr><td class=line-number>35</td><td class=line>
+</td></tr>
+<tr><td class=line-number>36</td><td class=line>Precalienta el <span class='type'>#horno</span> a <span class='number'><span class='number'>350</span> ºF</span>.
+</td></tr>
+<tr><td class=line-number>37</td><td class=line>
+</td></tr>
+<tr><td class=line-number>38</td><td class=line><span class='markup quote'><span class='punctuation special'>&gt; </span>Para mi son muchos chiles, sustituyo la mitad o más por pimiento verde normal.</span>
+</td></tr>
+<tr><td class=line-number>39</td><td class=line><span class='markup quote'></span>
+</td></tr>
+<tr><td class=line-number>40</td><td class=line>Pela y corta en dados la <span class='markup link'>@cebolla<span class='punctuation bracket'>{</span><span class='number'>1</span><span class='punctuation bracket'>}(</span><span class='string'>pequeña</span><span class='punctuation bracket'>)</span></span>. En dados los <span class='markup link'>@chiles verdes<span class='punctuation bracket'>{</span><span class='number'>4</span><span class='punctuation delimiter'>%</span><span class='constant'>oz</span><span class='punctuation bracket'>}</span></span>.
+</td></tr>
+<tr><td class=line-number>41</td><td class=line>En dados de 1,5 cm la <span class='markup link'>@pechuga de pollo<span class='punctuation bracket'>{</span><span class='number'>1</span> <span class='constant'>1/2</span><span class='punctuation bracket'>}(</span><span class='string'>deshuesado y sin piel</span><span class='punctuation bracket'>)</span></span>.
+</td></tr>
+<tr><td class=line-number>42</td><td class=line>
+</td></tr>
+<tr><td class=line-number>43</td><td class=line>En una <span class='type'>#sartén grande<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, calienta <span class='markup link'>@aceite<span class='punctuation bracket'>{</span><span class='number'>2</span><span class='punctuation delimiter'>%</span><span class='constant'>tbsp</span><span class='punctuation bracket'>}</span></span> a fuego
+</td></tr>
+<tr><td class=line-number>44</td><td class=line>medio-alto. Añade la <span class='markup link'>@cebolla</span> y sofrie durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>3</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span>, moviendo de vez en cuando.
+</td></tr>
+<tr><td class=line-number>45</td><td class=line>
+</td></tr>
+<tr><td class=line-number>46</td><td class=line>Añade los <span class='markup link'>@chiles verdes<span class='punctuation delimiter'>|</span>pimientos<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span> y el <span class='markup link'>@pollo</span>. Añade <span class='markup link'>@sal</span> y <span class='markup link'>@pimienta</span> al gusto.
+</td></tr>
+<tr><td class=line-number>47</td><td class=line>Sofríe durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>6</span><span class='punctuation delimiter'>-</span><span class='number'>8</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span> o hasta que el pollo se haya cocinado por completo.
+</td></tr>
+<tr><td class=line-number>48</td><td class=line>
+</td></tr>
+<tr><td class=line-number>49</td><td class=line>Añade las <span class='markup link'>@judías negras<span class='punctuation bracket'>{</span><span class='number'>15</span><span class='punctuation delimiter'>%</span><span class='constant'>oz</span><span class='punctuation bracket'>}</span></span> ya cocidas y mezcla todo. Aparta del fuego.
+</td></tr>
+<tr><td class=line-number>50</td><td class=line>
+</td></tr>
+<tr><td class=line-number>51</td><td class=line>Engrasa una <span class='type'>#bandeja<span class='punctuation delimiter'>|</span>bandeja de horno<span class='punctuation bracket'>{</span><span class='number'>20</span><span class='constant'>x30 cm</span><span class='punctuation bracket'>}</span></span>.
+</td></tr>
+<tr><td class=line-number>52</td><td class=line>
+</td></tr>
+<tr><td class=line-number>53</td><td class=line>Prepara una línea de montaje de enchiladas:
+</td></tr>
+<tr><td class=line-number>54</td><td class=line><span class='markup link'>@tortilla<span class='punctuation bracket'>{</span><span class='number'>8</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>&amp;</span><span class='punctuation bracket'>(</span>=<span class='number'>1</span><span class='punctuation bracket'>)</span>salsa</span>, la mezcla de pollo y <span class='markup link'>@queso<span class='punctuation bracket'>{</span><span class='number'>3</span><span class='punctuation delimiter'>%</span><span class='constant'>cup</span><span class='punctuation bracket'>}</span></span>. Pon una <span class='markup link'>@tortilla</span>,
+</td></tr>
+<tr><td class=line-number>55</td><td class=line>luego 2 cucharadas de salsa, generosa mezcla de pollo en el centro y luego unas
+</td></tr>
+<tr><td class=line-number>56</td><td class=line>4 cucharadas de <span class='markup link'>@queso</span>. Enrolla y directamente a la <span class='type'>#bandeja</span>.
+</td></tr>
+<tr><td class=line-number>57</td><td class=line>Ve poniéndolas una al lado de otra, debería llenar la bandeja al completo. Al
+</td></tr>
+<tr><td class=line-number>58</td><td class=line>final, echa toda la salsa y el <span class='markup link'>@queso</span> que sobre.
+</td></tr>
+<tr><td class=line-number>59</td><td class=line>
+</td></tr>
+<tr><td class=line-number>60</td><td class=line>Hornear sin tapar durante <span class='property'>~<span class='punctuation bracket'>{</span><span class='number'>20</span><span class='punctuation delimiter'>%</span><span class='constant'>min</span><span class='punctuation bracket'>}</span></span>, hasta que estén completamente cocidas y
+</td></tr>
+<tr><td class=line-number>61</td><td class=line>algo crujientes afuera.
+</td></tr>
+<tr><td class=line-number>62</td><td class=line>
+</td></tr>
+<tr><td class=line-number>63</td><td class=line>Acompañar de <span class='markup link'>@<span class='keyword modifier'>?</span>queso cotija<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>queso feta<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>cebolla roja<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>,
+</td></tr>
+<tr><td class=line-number>64</td><td class=line><span class='markup link'>@<span class='keyword modifier'>?</span>aguacate<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>crema agria<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>cilantro<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>limón<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span>, <span class='markup link'>@<span class='keyword modifier'>?</span>lima<span class='punctuation bracket'>{</span><span class='punctuation bracket'>}</span></span> o lo que guste,
+</td></tr>
+<tr><td class=line-number>65</td><td class=line>pero no dejes que se enfríe.
+</td></tr>
+</table>
+
+</body>
+
