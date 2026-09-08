@@ -2,13 +2,10 @@
 
 A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.com/tree-sitter/tree-sitter) parser generator.
 
+Check out the interactive [Playground](https://swonky.github.io/tree-sitter-cooklang/)!
+
 > [!NOTE]
 > This project is not affiliated with or endorsed by the Cooklang project or its maintainers.
-
-> [!TIP]
-> [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
-
-Check out the interactive [Playground](https://swonky.github.io/tree-sitter-cooklang/)!
 
 ## Contents
 - [Features](#features)
@@ -26,6 +23,9 @@ Check out the interactive [Playground](https://swonky.github.io/tree-sitter-cook
 
 ## Features
 ### Base syntax
+
+Check out the interactive [Playground](https://swonky.github.io/tree-sitter-cooklang/)!
+
 The grammar implements the current Cooklang language specification[^2], including:
 
 - **Single and multi-word definitions** (incl. `ingredient`, `cookware`, `timer`)
