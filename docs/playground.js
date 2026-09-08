@@ -85,7 +85,7 @@ window.initializePlayground = async (opts) => {
 		section: "#FBBF24",
 		note: "#6B7280",
 		punctuation: "#9CA3AF",
-		ingredient_punc: "#737779",
+		ingredient_punc: "#993b18",
 		cookware_punc: "#0A789A",
 		timer_punc: "#0B8060",
 	};

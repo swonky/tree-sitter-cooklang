@@ -43,7 +43,7 @@
 ["%" "|" ":" "/" "-"] @section
 
 (ingredient ["{" "}" "}(" "(" ")"] @ingredient_punc)
-(cookware ["{" "}"] @cookware_punc)
-(timer ["{" "}"] @timer_punc)
-[">"] @timer
+(cookware ["#" "{" "}"] @cookware_punc)
+(timer ["~" "{" "}"] @timer_punc)
+[ ">"] @timer
 (directive ">>" @ingredient)
