@@ -40,10 +40,10 @@
 
 
 ["[" "]"] @punctuation
-["%" "|" ":" "/" "-"] @section
+[ "|" ":" "/" "-"] @section
 
-(ingredient ["{" "}" "}(" "(" ")"] @ingredient_punc)
-(cookware ["#" "{" "}"] @cookware_punc)
-(timer ["~" "{" "}"] @timer_punc)
+(ingredient ["{" "}" "}(" "(" ")" "%"] @ingredient_punc)
+(cookware ["#" "{" "}" "%"] @cookware_punc)
+(timer ["~" "{" "}" "%"] @timer_punc)
 [ ">"] @timer
 (directive ">>" @ingredient)
