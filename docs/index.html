@@ -145,6 +145,11 @@
         flex-direction: column;
       }
 
+      @font-face {
+	font-family: "JetBrains Mono";
+	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+      }
+
       #output-container {
         font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
         line-height: 1.5;
@@ -170,7 +175,7 @@
         right: 0;
         bottom: 0;
         height: 100%;
-        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	font-family: "JetBrains Mono", Monaco, monospace;
         font-size: 14px;
         line-height: 1.6;
         background-color: var(--code-bg) !important;
