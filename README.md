@@ -8,6 +8,8 @@ A [Cooklang](https://cooklang.org) grammar for the [Tree-sitter](https://github.
 > [!TIP]
 > [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) is also required to enable YAML frontmatter metadata parsing.
 
+Check out the interactive [Playground](https://swonky.github.io/tree-sitter-cooklang/)!
+
 ## Contents
 - [Features](#features)
     - [Base syntax](#base-syntax)
