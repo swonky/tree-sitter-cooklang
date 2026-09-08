@@ -4,22 +4,23 @@
 ] @metadata
 	(#set! priority 90))
 
-(directive ">>" @punctuation)
-(mode key: (identifier) @mode)
-(metadata key: (identifier) @metadata)
+(mode key: (identifier) @property)
+(metadata key: (identifier) @property)
 
 ((ingredient) @ingredient (#set! priority 90))
+(ingredient unit: (_) @ingredient)
+(ingredient preparation: (_) @ingredient)
 
 (ingredient 
-	["@" "?" "+" "&" "-"] @modifier
+	["@" "?" "+" "&" "-"] @section
 )
 
 (cookware) @cookware
 
 (timer) @timer
 (timer
-	unit: (unit) @property
-	(#any-of? @property
+	unit: (unit) @timer
+	(#any-of? @timer
 		"s" "h" "min" "d"
 		"second" "seconds"
 		"minute" "minutes"
@@ -36,8 +37,13 @@
 (temperature) @number
 (integer) @number
 (decimal) @number
-(string) @property 
 
-["{" "}" "}(" "(" ")" "[" "]"] @punctuation
-["%" "|" ":" "/" "-"] @punctuation
-[">"] @punctuation
+
+["[" "]"] @punctuation
+["%" "|" ":" "/" "-"] @section
+
+(ingredient ["{" "}" "}(" "(" ")"] @ingredient_punc)
+(cookware ["{" "}"] @cookware_punc)
+(timer ["{" "}"] @timer_punc)
+[">"] @timer
+(directive ">>" @ingredient)
