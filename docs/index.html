@@ -11,29 +11,33 @@
       sizes="16x16" />
     <style>
       /* Base Variables */
-      :root {
-        --light-bg: #f9f9f9;
-        --light-border: #e0e0e0;
-        --light-text: #333;
-        --light-hover-border: #c1c1c1;
-        --light-scrollbar-track: #f1f1f1;
-        --light-scrollbar-thumb: #c1c1c1;
-        --light-scrollbar-thumb-hover: #a8a8a8;
+/* Base Variables */
+:root {
+  --light-bg: #ffffff;
+  --light-border: #d1d5db;
+  --light-text: #374151;
 
-        --dark-bg: #1d1f21;
-        --dark-border: #2d2d2d;
-        --dark-text: #c5c8c6;
-        --dark-panel-bg: #252526;
-        --dark-code-bg: #1e1e1e;
-        --dark-scrollbar-track: #25282c;
-        --dark-scrollbar-thumb: #4a4d51;
-        --dark-scrollbar-thumb-hover: #5a5d61;
+  --light-hover-border: #9ca3af;
+  --light-scrollbar-track: #f3f4f6;
+  --light-scrollbar-thumb: #d1d5db;
+  --light-scrollbar-thumb-hover: #9ca3af;
 
-        --primary-color: #0550ae;
-        --primary-color-alpha: rgba(5, 80, 174, 0.1);
-        --primary-color-alpha-dark: rgba(121, 192, 255, 0.1);
-        --selection-color: rgba(39, 95, 255, 0.3);
-      }
+  --dark-bg: #161718;
+  --dark-border: #374151;
+  --dark-text: #e9ecef;
+
+  --dark-panel-bg: #161718;
+  --dark-code-bg: #161718;
+
+  --dark-scrollbar-track: #25282c;
+  --dark-scrollbar-thumb: #4a4d51;
+  --dark-scrollbar-thumb-hover: #5a5d61;
+
+  --primary-color: #e15a29;
+  --selection-color: rgba(225, 90, 41, 0.3);
+  --primary-color-alpha: rgba(225, 90, 41, 0.1);
+  --primary-color-alpha-dark: rgba(225, 90, 41, 0.1);
+}
 
       /* Theme Colors */
       [data-theme="dark"] {
@@ -48,8 +52,8 @@
         --bg-color: var(--light-bg);
         --border-color: var(--light-border);
         --text-color: var(--light-text);
-        --panel-bg: white;
-        --code-bg: white;
+        --panel-bg: var(--light-bg);
+        --code-bg: var(--light-bg);
       }
 
       /* Base Styles */
@@ -171,6 +175,14 @@
         line-height: 1.6;
         background-color: var(--code-bg) !important;
         color: var(--text-color) !important;
+      }
+
+      a {
+	color: #268bd2;
+      }
+
+      a:hover {
+       color: #2aa198;
       }
 
       .query-error {
@@ -380,7 +392,7 @@
     <div id="playground-container" style="visibility: hidden;">
       <header>
         <div class="header-item">
-          <span class="language-name">Language: cooklang</span>
+	  <a href="https://github.com/swonky/tree-sitter-cooklang">swonky/tree-sitter-cooklang</a>
           <span id="language-version"></span>
         </div>
 
@@ -407,10 +419,6 @@
         <div class="header-item">
           <label for="update-time">parse time: </label>
           <span id="update-time"></span>
-        </div>
-
-        <div class="header-item">
-          <a href="https://tree-sitter.github.io/tree-sitter/7-playground.html#about">(?)</a>
         </div>
 
         <select id="language-select" style="display: none;">
