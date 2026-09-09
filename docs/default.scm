@@ -7,7 +7,9 @@
 (mode key: (identifier) @property)
 (metadata key: (identifier) @property)
 
-((ingredient) @ingredient (#set! priority 90))
+(ingredient) @ingredient_punc
+(ingredient name: (_) @ingredient)
+(ingredient target: (_) @ingredient)
 (ingredient unit: (_) @ingredient)
 (ingredient preparation: (_) @ingredient)
 
@@ -47,3 +49,4 @@
 (timer ["~" "{" "}" "%"] @timer_punc)
 [ ">"] @timer
 (directive ">>" @ingredient)
+
